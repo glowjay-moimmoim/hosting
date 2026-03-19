@@ -456,6 +456,22 @@
     transition: background 0.2s, color 0.2s;
   }
   .cta-btn:hover { background: var(--pink-deep); color: var(--black); }
+  @media (max-width: 640px) {
+    :root { --fs-3xl: 36px; --fs-2xl: 28px; --fs-xl: 24px; }
+    .hero { padding: 48px 24px 44px; }
+    .hero-badge { top: 20px; right: 24px; font-size: 11px; }
+    section, .pain-section { padding: 56px 24px; }
+    .proof-grid { grid-template-columns: 1fr; }
+    .asset-grid { grid-template-columns: 1fr; }
+    .ba-grid { grid-template-columns: 1fr; }
+    .reuse-grid { grid-template-columns: 1fr; }
+    .ri-asset { white-space: normal; }
+    .notion-link-box { flex-direction: column; align-items: flex-start; gap: 12px; }
+    .nl-btn { width: 100%; text-align: center; }
+    .brand-bar { padding: 16px 24px; }
+    .cta { padding: 64px 24px; }
+    .cta-btn { display: block; width: 100%; text-align: center; padding: 16px 24px; }
+  }
 </style>
 </head>
 <body>
