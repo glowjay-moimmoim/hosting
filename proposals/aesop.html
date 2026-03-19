@@ -458,7 +458,9 @@
     letter-spacing: 0.5px;
     transition: background 0.2s, color 0.2s;
   }
-  .cta-btn:hover { background: var(--pink-deep); color: var(--black); }
+  @media (hover: hover) {
+    .cta-btn:hover { background: var(--pink-deep); color: var(--black); }
+  }
   .footer-detail { display: block; }
   @media (max-width: 768px) {
     :root { --fs-3xl: 36px; --fs-2xl: 28px; --fs-xl: 24px; }
