@@ -458,6 +458,7 @@
     transition: background 0.2s, color 0.2s;
   }
   .cta-btn:hover { background: var(--pink-deep); color: var(--black); }
+  .footer-detail { display: block; }
   @media (max-width: 768px) {
     :root { --fs-3xl: 36px; --fs-2xl: 28px; --fs-xl: 24px; }
     .hero { padding: 48px 24px 44px; }
@@ -473,6 +474,8 @@
     .brand-bar { padding: 16px 24px; }
     .cta { padding: 64px 24px; }
     .cta-btn { display: block; width: 100%; text-align: center; padding: 16px 24px; }
+    .footer-detail { display: none; }
+    footer { padding: 20px 24px !important; }
   }
 </style>
 </head>
@@ -686,7 +689,7 @@
   <!-- CTA -->
   <div class="cta" style="position:relative;">
     <a href="https://www.youtube.com/@모임모임moimmoim" target="_blank"
-       style="position:absolute; top:28px; right:48px; display:inline-flex; align-items:center; justify-content:center; opacity:0.4; transition:opacity 0.2s;"
+       style="position:absolute; top:28px; right:48px; display:inline-flex; align-items:center; justify-content:center; opacity:0.4; transition:opacity 0.2s; padding:8px;"
        onmouseover="this.style.opacity='1';"
        onmouseout="this.style.opacity='0.4';">
       <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="#FFFFFF">
@@ -708,8 +711,8 @@
 <!-- 법인 푸터 -->
 <footer style="background:#111; color:#888; padding:28px 60px; text-align:center; font-size:11px; font-weight:300; line-height:2; max-width:800px; margin:0 auto;">
   <p style="color:#fff; font-size:12px; font-weight:600; letter-spacing:1px; margin-bottom:6px;">© 2026 GLOWNOVA Inc. All rights reserved</p>
-  <p>주식회사 글로우노바 &nbsp;|&nbsp; 대표: 손지혜 &nbsp;|&nbsp; 주소: 서울특별시 강남구 학동로24길 20, 402호</p>
-  <p>사업자등록번호: 332-87-03453 &nbsp;|&nbsp; 통신판매업 신고번호: 제2026-서울강남-00850호</p>
+  <p class="footer-detail">주식회사 글로우노바 &nbsp;|&nbsp; 대표: 손지혜 &nbsp;|&nbsp; 주소: 서울특별시 강남구 학동로24길 20, 402호</p>
+  <p class="footer-detail">사업자등록번호: 332-87-03453 &nbsp;|&nbsp; 통신판매업 신고번호: 제2026-서울강남-00850호</p>
 </footer>
 
 </body>
