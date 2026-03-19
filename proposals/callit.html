@@ -3,19 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>성공그램 × SKOOL 제안서</title>
+<title>콜잇 AI × SKOOL 제안서</title>
 <style>
-  @font-face { font-family: 'Paperlogy'; src: url('/sessions/dreamy-laughing-keller/mnt/curves/모임모임/00_디자인시스템/폰트/Paperlogy-1Thin.ttf'); font-weight: 100; }
-  @font-face { font-family: 'Paperlogy'; src: url('/sessions/dreamy-laughing-keller/mnt/curves/모임모임/00_디자인시스템/폰트/Paperlogy-3Light.ttf'); font-weight: 300; }
-  @font-face { font-family: 'Paperlogy'; src: url('/sessions/dreamy-laughing-keller/mnt/curves/모임모임/00_디자인시스템/폰트/Paperlogy-4Regular.ttf'); font-weight: 400; }
-  @font-face { font-family: 'Paperlogy'; src: url('/sessions/dreamy-laughing-keller/mnt/curves/모임모임/00_디자인시스템/폰트/Paperlogy-5Medium.ttf'); font-weight: 500; }
-  @font-face { font-family: 'Paperlogy'; src: url('/sessions/dreamy-laughing-keller/mnt/curves/모임모임/00_디자인시스템/폰트/Paperlogy-6SemiBold.ttf'); font-weight: 600; }
-  @font-face { font-family: 'Paperlogy'; src: url('/sessions/dreamy-laughing-keller/mnt/curves/모임모임/00_디자인시스템/폰트/Paperlogy-7Bold.ttf'); font-weight: 700; }
-  @font-face { font-family: 'Paperlogy'; src: url('/sessions/dreamy-laughing-keller/mnt/curves/모임모임/00_디자인시스템/폰트/Paperlogy-8ExtraBold.ttf'); font-weight: 800; }
-  @font-face { font-family: 'Paperlogy'; src: url('/sessions/dreamy-laughing-keller/mnt/curves/모임모임/00_디자인시스템/폰트/Paperlogy-9Black.ttf'); font-weight: 900; }
-
   :root {
-    /* ── 폰트 스케일 ── */
     --fs-xs:   13px;
     --fs-sm:   15px;
     --fs-body: 17px;
@@ -32,7 +22,6 @@
     --yellow: #F7F289;
     --green: #40AB6C;
     --green-dark: #0D7440;
-    --pink-light: #F6DFEF;
     --pink-deep: #F7CAE9;
     --gray-bg: #F5F5F5;
     --gray-border: #E8E8E8;
@@ -42,7 +31,7 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
-    font-family: 'Paperlogy', 'Apple SD Gothic Neo', sans-serif;
+    font-family: 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
     background: var(--gray-bg);
     color: var(--black);
     line-height: 1.7;
@@ -95,6 +84,7 @@
     line-height: 1.2;
     margin-bottom: 24px;
     letter-spacing: -0.5px;
+    word-break: keep-all;
   }
   .hero h1 em {
     color: var(--orange);
@@ -106,6 +96,7 @@
     color: #888;
     line-height: 1.8;
     font-weight: 300;
+    word-break: keep-all;
   }
 
   /* ── 공통 섹션 ── */
@@ -126,6 +117,7 @@
     line-height: 1.3;
     margin-bottom: 10px;
     letter-spacing: -0.3px;
+    word-break: keep-all;
   }
   .sec-sub {
     font-size: var(--fs-md);
@@ -133,6 +125,7 @@
     margin-bottom: 40px;
     line-height: 1.8;
     font-weight: 400;
+    word-break: keep-all;
   }
 
   /* ── PAIN 섹션 ── */
@@ -156,12 +149,6 @@
     background: rgba(255, 145, 77, 0.10);
     border: 1px solid rgba(255, 145, 77, 0.2);
     border-left: 5px solid var(--orange);
-    transition: all 0.2s;
-  }
-  .pain-item.hot {
-    background: rgba(255, 145, 77, 0.10);
-    border-color: rgba(255, 145, 77, 0.2);
-    border-left-color: var(--orange);
   }
   .pain-icon { font-size: 22px; flex-shrink: 0; margin-top: 1px; }
   .pain-text { font-size: var(--fs-md); font-weight: 600; line-height: 1.5; }
@@ -183,9 +170,8 @@
     color: var(--white);
     line-height: 1.65;
     margin-bottom: 8px;
+    word-break: keep-all;
   }
-  .pain-punchline p em { color: var(--white); font-style: normal; }
-  .pain-punchline small { font-size: var(--fs-sm); color: #777; font-weight: 300; }
   .punchline-emphasis {
     margin-top: 14px;
     font-size: var(--fs-lg);
@@ -193,6 +179,7 @@
     color: var(--orange);
     letter-spacing: -0.3px;
     line-height: 1.4;
+    word-break: keep-all;
   }
 
   /* ── 증명 섹션 ── */
@@ -209,11 +196,6 @@
     border: 1px solid rgba(255, 145, 77, 0.2);
     border-left: 5px solid var(--orange);
   }
-  .proof-card.dark {
-    background: rgba(255, 145, 77, 0.10);
-    border-color: rgba(255, 145, 77, 0.2);
-    border-left-color: var(--orange);
-  }
   .pc-label {
     font-size: var(--fs-xs);
     font-weight: 700;
@@ -221,23 +203,20 @@
     color: var(--orange);
     margin-bottom: 8px;
   }
-  .proof-card:not(.dark) .pc-label { color: var(--orange); }
   .pc-name {
     font-size: var(--fs-md);
     font-weight: 800;
     margin-bottom: 14px;
     color: var(--black);
   }
-  .proof-card.dark .pc-name { color: var(--black); }
   .pc-result {
     font-size: var(--fs-body);
     color: #555;
     line-height: 1.75;
     font-weight: 400;
+    word-break: keep-all;
   }
-  .proof-card.dark .pc-result { color: #444; }
   .pc-result strong { color: var(--black); font-weight: 700; }
-  .proof-card.dark .pc-result strong { color: var(--black); }
   .pc-result .highlight { color: var(--orange); font-weight: 700; }
 
   .notion-link-box {
@@ -249,6 +228,7 @@
     align-items: center;
     justify-content: space-between;
     gap: 16px;
+    margin-top: 32px;
   }
   .nl-text { font-size: var(--fs-md); font-weight: 700; }
   .nl-text span {
@@ -258,7 +238,6 @@
     font-weight: 400;
     margin-top: 3px;
   }
-  .nl-btn:hover { background: var(--green-dark); color: var(--white); }
   .nl-btn {
     background: var(--orange);
     color: var(--white);
@@ -269,7 +248,9 @@
     text-decoration: none;
     white-space: nowrap;
     letter-spacing: 0.5px;
+    transition: background 0.2s;
   }
+  .nl-btn:hover { background: var(--green-dark); }
 
   /* ── 자산 섹션 ── */
   .asset-grid {
@@ -283,7 +264,6 @@
     border-radius: 12px;
     padding: 24px 16px;
     text-align: center;
-    border: 1px solid var(--black);
   }
   .ab-num {
     display: block;
@@ -298,6 +278,7 @@
     margin-top: 6px;
     line-height: 1.5;
     font-weight: 400;
+    word-break: keep-all;
   }
   .gap-box {
     background: var(--yellow);
@@ -309,8 +290,14 @@
     font-weight: 800;
     color: var(--black);
     margin-bottom: 6px;
+    word-break: keep-all;
   }
-  .gap-box small { font-size: var(--fs-lg); color: var(--orange); font-weight: 800; }
+  .gap-box small {
+    font-size: var(--fs-lg);
+    color: var(--orange);
+    font-weight: 800;
+    word-break: keep-all;
+  }
 
   /* ── Before After ── */
   .ba-grid {
@@ -326,9 +313,7 @@
     background: var(--gray-bg);
     border: 1px solid var(--gray-border);
   }
-  .ba-card.after {
-    background: var(--black);
-  }
+  .ba-card.after { background: var(--black); }
   .ba-label {
     font-size: var(--fs-xs);
     font-weight: 800;
@@ -341,8 +326,9 @@
     font-size: var(--fs-md);
     font-weight: 800;
     margin-bottom: 20px;
-    color: var(--black);
+    word-break: keep-all;
   }
+  .ba-card.before .ba-title { color: var(--black); }
   .ba-card.after .ba-title { color: var(--white); }
   .ba-list {
     list-style: none;
@@ -389,9 +375,6 @@
     padding: 32px 28px;
     border: 1px solid var(--gray-border);
   }
-  .ri-from { display: none; }
-  .ri-left { display: contents; }
-  .ri-right { display: contents; }
   .ri-header {
     display: flex;
     align-items: center;
@@ -423,7 +406,7 @@
     font-weight: 400;
   }
 
-  /* ── MOIMMOIM 로고 브랜드 바 ── */
+  /* ── 브랜드 바 ── */
   .brand-bar {
     background: var(--orange);
     padding: 20px 60px;
@@ -437,11 +420,6 @@
     color: var(--white);
     letter-spacing: 2px;
   }
-  .brand-bar-sub {
-    font-size: 12px;
-    color: rgba(255,255,255,0.75);
-    font-weight: 400;
-  }
 
   /* ── CTA ── */
   .cta {
@@ -449,38 +427,7 @@
     padding: 88px 60px;
     text-align: center;
   }
-  .cta h2 {
-    font-size: var(--fs-2xl);
-    font-weight: 900;
-    color: var(--white);
-    line-height: 1.35;
-    margin-bottom: 16px;
-    letter-spacing: -0.5px;
-  }
-  .cta h2 em { color: var(--orange); font-style: normal; }
-  .cta p {
-    font-size: var(--fs-md);
-    color: #777;
-    margin-bottom: 40px;
-    line-height: 1.9;
-    font-weight: 300;
-  }
-  .cta-btn:hover { background: var(--pink-deep); color: var(--black); border-color: var(--pink-deep); }
-  .cta-btn {
-    display: inline-block;
-    background: var(--orange);
-    color: var(--white);
-    font-family: 'Paperlogy', sans-serif;
-    font-size: var(--fs-body);
-    font-weight: 800;
-    padding: 18px 52px;
-    border-radius: 50px;
-    text-decoration: none;
-    letter-spacing: 0.5px;
-  }
-  .cta-headline {
-    margin-bottom: 40px;
-  }
+  .cta-headline { margin-bottom: 40px; }
   .cta-headline-main {
     font-size: var(--fs-2xl);
     font-weight: 900;
@@ -488,29 +435,29 @@
     line-height: 1.25;
     letter-spacing: -0.5px;
     margin-bottom: 16px;
+    word-break: keep-all;
   }
   .cta-headline-sub {
     font-size: var(--fs-md);
     color: #888;
     line-height: 1.9;
     font-weight: 300;
+    word-break: keep-all;
   }
-  .cta-footer {
-    margin-top: 48px;
-    padding-top: 32px;
-    border-top: 1px solid #222;
-    font-size: var(--fs-sm);
-    color: #555;
-    font-weight: 300;
-  }
-  .cta-footer strong {
-    display: block;
+  .cta-btn {
+    display: inline-block;
+    background: var(--orange);
     color: var(--white);
-    font-size: var(--fs-md);
+    font-family: inherit;
+    font-size: var(--fs-body);
     font-weight: 800;
-    margin-bottom: 4px;
-    letter-spacing: 1px;
+    padding: 18px 52px;
+    border-radius: 50px;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: background 0.2s, color 0.2s;
   }
+  .cta-btn:hover { background: var(--pink-deep); color: var(--black); }
 </style>
 </head>
 <body>
@@ -518,105 +465,99 @@
 
   <!-- HERO -->
   <div class="hero">
-    <div class="hero-greeting">안녕하세요, <span class="hero-name">성공그램</span>님 👋</div>
+    <div class="hero-greeting">안녕하세요, <span class="hero-name">콜잇 AI</span> 님 👋</div>
     <div class="hero-badge">SKOOL PROPOSAL · MOIMMOIM</div>
-    <h1>이미 모은 팔로워를,<br>더 깊은 관계로<br><em>이어갈 수 있다면.</em></h1>
-    <p class="hero-desc">콘텐츠로 사람을 모으는 건 됩니다.<br>그 사람들이 머물고, 소통하고, 다시 돌아올 구조가 없을 뿐이에요.</p>
+    <h1>유튜브 트래픽은 있습니다.<br><em>그 다음 구조를 만들 수 있다면.</em></h1>
+    <p class="hero-desc">800개 영상, 구독자 1만 — 콘텐츠는 충분합니다.<br>그 트래픽이 머무는 공간을 만들 수 있다면 어떨까요.</p>
   </div>
 
   <!-- PAIN -->
   <div class="pain-section">
     <div class="eyebrow">PAIN POINT</div>
-    <div class="sec-title">어디서 많이 보던<br>상황 아닌가요?</div>
-    <p class="sec-sub" style="margin-bottom:32px;">콘텐츠로 사람을 모으는 건 되는데,<br>그 다음 단계가 잘 안 보이는 느낌.</p>
+    <div class="sec-title">유튜브는 잘 되는데<br>한 번쯤 드는 생각들</div>
+    <p class="sec-sub" style="margin-bottom:32px;">영상을 올리면 조회수는 나오는데,<br>그게 어디로 이어지는지 잘 모르는 느낌.</p>
 
     <div class="pain-list">
-      <div class="pain-item hot">
-        <div class="pain-icon">📢</div>
+      <div class="pain-item">
+        <div class="pain-icon">📺</div>
         <div class="pain-text">
-          릴스 보고 팔로우한 사람들, 막상 DM 보내도 반응이 없다
-          <span>팔로워는 늘어도 실제로 연결된 사람이 없다는 느낌</span>
+          유튜브 구독자가 내 사람이 아니다
+          <span>알고리즘이 바꾸면 연락할 방법이 없음 —<br>구독자 이메일을 내가 갖고 있지 않다</span>
         </div>
       </div>
-      <div class="pain-item hot">
-        <div class="pain-icon">📂</div>
+      <div class="pain-item">
+        <div class="pain-icon">💬</div>
         <div class="pain-text">
-          교육이나 컨설팅 올리면, 사려는 사람이 어디서 오는지 모른다
-          <span>팔로워한테 올렸는데 반응이 없고, 그냥 조용히 넘어간다</span>
+          오픈채팅은 운영하기 애매하다
+          <span>275명이 있지만 체계적으로 관리하기 어렵고,<br>수익 구조로 연결하기도 쉽지 않음</span>
         </div>
       </div>
-      <div class="pain-item hot">
-        <div class="pain-icon">🔄</div>
+      <div class="pain-item">
+        <div class="pain-icon">🔁</div>
         <div class="pain-text">
-          한 번 연결된 사람을 계속 붙잡아둘 방법이 없다
-          <span>매번 새 콘텐츠로 새 사람을 불러야만 하는 구조</span>
+          콘텐츠를 만들어도 한 번 보고 끝난다
+          <span>800개 영상이 있는데 새 영상 올려야만<br>사람들이 다시 돌아오는 구조</span>
         </div>
       </div>
     </div>
 
     <div class="pain-punchline">
-      <p>트래픽이 없는 게 아닙니다.<br><em>그 사람들이 모이는 공간이 없는 겁니다.</em></p>
-      <div class="punchline-emphasis">사람을 모았다면, 다음은 그 관계를 설계하는 겁니다.</div>
+      <p>트래픽도 있고, 콘텐츠도 있습니다.<br>그걸 담아둘 공간만 있으면 됩니다.</p>
+      <div class="punchline-emphasis">유튜브 다음 단계, 지금 만들 수 있습니다.</div>
     </div>
   </div>
 
-
   <!-- SKOOL 소개 -->
   <section style="background: var(--black); padding: 80px 60px; border-bottom: none; text-align:center;">
-
-    <!-- 이미지 가운데 -->
     <div style="margin: 0 auto 36px; max-width:480px; border-radius:16px; overflow:hidden;">
       <img src="https://raw.githubusercontent.com/glowjay-moimmoim/hosting/main/images/skool_intro.png" alt="SKOOL 소개"
            style="width:100%; display:block;"
            onerror="this.style.display='none';">
     </div>
-
-    <!-- 텍스트 + CTA -->
     <div style="font-size:var(--fs-xs); font-weight:700; letter-spacing:3px; color:var(--orange); margin-bottom:16px;">WHAT IS SKOOL?</div>
-    <div style="font-size:var(--fs-xl); font-weight:900; color:var(--white); line-height:1.3; margin-bottom:16px; letter-spacing:-0.3px;">
+    <div style="font-size:var(--fs-xl); font-weight:900; color:var(--white); line-height:1.3; margin-bottom:16px; letter-spacing:-0.3px; word-break:keep-all;">
       강의·커뮤니티·멤버십을<br>하나로 운영하는 올인원 플랫폼
     </div>
-    <p style="font-size:var(--fs-md); color:#888; font-weight:300; line-height:1.8; margin-bottom:36px;">
-      사람을 모으는 것과 비즈니스를 만드는 건 다릅니다.<br>
-      SKOOL은 그 두 가지를 한 공간에서 해결합니다.
+    <p style="font-size:var(--fs-md); color:#888; font-weight:300; line-height:1.8; margin-bottom:36px; word-break:keep-all;">
+      유튜브 트래픽을 멤버십으로 연결하고<br>
+      오픈채팅을 SKOOL 커뮤니티로 업그레이드할 수 있습니다.
     </p>
     <a href="https://www.skool.com/signup?ref=2578fb4caef54db196b9de57ef7bada4" target="_blank"
-       style="display:inline-block; background:var(--orange); color:var(--white); font-family:'Paperlogy',sans-serif; font-size:var(--fs-body); font-weight:800; padding:16px 48px; border-radius:50px; text-decoration:none; letter-spacing:0.5px; transition:background 0.2s;"
+       style="display:inline-block; background:var(--orange); color:var(--white); font-family:inherit; font-size:var(--fs-body); font-weight:800; padding:16px 48px; border-radius:50px; text-decoration:none; letter-spacing:0.5px; transition:background 0.2s;"
        onmouseover="this.style.background='var(--pink-deep)'; this.style.color='#000';"
        onmouseout="this.style.background='var(--orange)'; this.style.color='#fff';">
       스쿨 구경하기 →
     </a>
-
   </section>
 
   <!-- 증명 -->
   <section>
     <div class="eyebrow">SOCIAL PROOF</div>
     <div class="sec-title">이미 이렇게 도입한<br>사람들이 있습니다</div>
-    <p class="sec-sub">유튜브 크리에이터부터 전문 기관 및 협회까지.</p>
+    <p class="sec-sub">유튜브 크리에이터부터 커뮤니티 운영자까지.</p>
 
     <div class="proof-grid">
-      <div class="proof-card dark">
+      <div class="proof-card">
         <div class="pc-label">CASE 01 · 그린코끼리 AI</div>
-        <div class="pc-name">유튜브 지식 크리에이터</div>
+        <div class="pc-name">유튜브 AI 크리에이터</div>
         <div class="pc-result">
           유튜브 바이오 링크 하나로<br>
           <strong>4개월 만에 커뮤니티 2,400명.</strong><br>
-          새 채널 오픈시 <span class="highlight">구독자 68명</span> 즉시 확보.
+          새 채널 오픈 시 <span class="highlight">구독자 68명</span> 즉시 확보.
         </div>
       </div>
       <div class="proof-card">
         <div class="pc-label">CASE 02 · 식품산업인재양성협회</div>
         <div class="pc-name">전문 기관 및 협회</div>
         <div class="pc-result">
-          네이버 카페 회원 15,000명 보유.<br>
-          <strong>카페 자산 그대로 SKOOL 이전.</strong><br>
+          카카오 기반 커뮤니티에서<br>
+          <strong>SKOOL로 이전, 구조 정비.</strong><br>
           저희 팀이 세팅 전 과정을 함께했습니다.
         </div>
       </div>
     </div>
 
-    <div class="notion-link-box" style="margin-top:32px;">
+    <div class="notion-link-box">
       <div class="nl-text">
         그린코끼리AI 케이스 자세히 보기
         <span>실제 구조와 수치, 노션에 정리해뒀어요</span>
@@ -625,59 +566,59 @@
     </div>
   </section>
 
-  <!-- 도와쌤 자산 -->
+  <!-- 콜잇 AI 자산 -->
   <section style="background:#f9f9f9;">
-    <div class="eyebrow">성공그램의 현재</div>
-    <div class="sec-title">성공그램은<br>시작점이 이미 있습니다</div>
-    <p class="sec-sub">팔로워도, 콘텐츠도, 교육 판매 구조도 이미 있습니다.</p>
+    <div class="eyebrow">콜잇 AI의 현재</div>
+    <div class="sec-title">이미 시작점이<br>있습니다</div>
+    <p class="sec-sub">800개 영상, 구독자 1만, 오픈채팅 275명.<br>이 자산을 연결할 구조만 있으면 됩니다.</p>
 
     <div class="asset-grid">
       <div class="asset-box">
-        <span class="ab-num">2.3만</span>
-        <div class="ab-label">인스타그램 팔로워<br>(메인 채널)</div>
+        <span class="ab-num">1만</span>
+        <div class="ab-label">유튜브<br>구독자</div>
       </div>
       <div class="asset-box">
-        <span class="ab-num">11명</span>
-        <div class="ab-label">현재 커뮤니티 멤버<br>(시작점)</div>
+        <span class="ab-num">800개</span>
+        <div class="ab-label">유튜브<br>영상</div>
       </div>
       <div class="asset-box">
-        <span class="ab-num">다수</span>
-        <div class="ab-label">릴스 & 교육 콘텐츠<br>자산</div>
+        <span class="ab-num">275명</span>
+        <div class="ab-label">오픈채팅<br>멤버</div>
       </div>
     </div>
 
     <div class="gap-box">
-      <p>한 단계 더 — 팔로워가 멤버가 되는 구조</p>
-      <small>이미 모인 사람들이 자연스럽게 머무는 공간을 만들면 됩니다.</small>
+      <p>한 단계 더 — 유튜브 구독자가 내 멤버가 되는 구조로</p>
+      <small>일회성 시청자가, 오래 함께하는 멤버가 되는 구조로.</small>
     </div>
   </section>
 
   <!-- Before After -->
   <section>
     <div class="eyebrow">BEFORE → AFTER</div>
-    <div class="sec-title">인스타 팔로워 2.3만이<br>이렇게 달라집니다</div>
+    <div class="sec-title">운영 구조가<br>이렇게 달라집니다</div>
 
     <div class="ba-grid">
       <div class="ba-card before">
-        <div class="ba-label">NOW · 인스타그램</div>
-        <div class="ba-title">팔로워 2.3만 · 단순 관계</div>
+        <div class="ba-label">NOW · 현재 구조</div>
+        <div class="ba-title">트래픽이 머물지 않는다</div>
         <ul class="ba-list">
-          <li>팔로우만 하고 연락 없음</li>
-          <li>게시물 반응이 구매로 이어지기 어려움</li>
-          <li>누가 찐팬인지 알 수 없음</li>
-          <li>DM 답장 안 하면 끊기는 관계</li>
-          <li>새 서비스 소식을 전달할 채널이 없음</li>
+          <li>유튜브 구독자 — 연락처 없음</li>
+          <li>오픈채팅 관리 어렵고 수익 연결 안 됨</li>
+          <li>새 영상 올려야만 사람이 돌아옴</li>
+          <li>프로그램 시도했지만 구조가 약함</li>
+          <li>다음 달 수익 예측 어려움</li>
         </ul>
       </div>
       <div class="ba-card after">
-        <div class="ba-label">SKOOL · 커뮤니티</div>
-        <div class="ba-title">사람이 모이는 구조</div>
+        <div class="ba-label">SKOOL · 달라지는 것</div>
+        <div class="ba-title">트래픽이 멤버로 남는다</div>
         <ul class="ba-list">
-          <li>가입 시 이름·이메일·관심사 수집</li>
-          <li>자발적으로 소통하고 피드백 주는 문화</li>
-          <li>찐팬이 누군지 데이터로 보임</li>
-          <li>서비스 출시 → 전체 이메일 원클릭</li>
-          <li>한 번 모으면 계속 돌아오는 구조</li>
+          <li>가입 즉시 이메일 수집 — 내 자산</li>
+          <li>오픈채팅 → SKOOL 커뮤니티로 전환</li>
+          <li>기존 영상 Classroom에 — 멤버 재소비</li>
+          <li>멤버십 월정액으로 안정적 수익</li>
+          <li>유튜브 훈련소 → 정식 멤버십 프로그램으로</li>
         </ul>
       </div>
     </div>
@@ -687,40 +628,36 @@
   <section>
     <div class="eyebrow">기존 자산 활용</div>
     <div class="sec-title">새로 만들 필요 없습니다<br>있는 걸 옮기면 됩니다</div>
-    <p class="sec-sub">인스타 릴스, 교육 콘텐츠, 컨설팅 사례.<br>전부 SKOOL 안에서 그대로 재활용할 수 있어요.</p>
+    <p class="sec-sub">유튜브, 오픈채팅, 기존 프로그램.<br>전부 SKOOL 안에서 재활용할 수 있어요.</p>
 
     <div class="reuse-grid">
       <div class="reuse-item">
-        <div class="ri-from">카페 → SKOOL</div>
         <div class="ri-header">
-          <div class="ri-asset">릴스 & 콘텐츠</div>
+          <div class="ri-asset">유튜브</div>
+          <div class="ri-arrow">→ 멤버 유입</div>
+        </div>
+        <div class="ri-desc">구독자 1만이<br>멤버십 유입 채널로</div>
+      </div>
+      <div class="reuse-item">
+        <div class="ri-header">
+          <div class="ri-asset">영상</div>
           <div class="ri-arrow">→ Classroom</div>
         </div>
-        <div class="ri-desc">인스타 성장 강의로 재배치.<br>멤버가 SKOOL 안에서 학습 재소비</div>
+        <div class="ri-desc">800개 영상을 Classroom으로.<br>멤버 전용 아카이브로 재활용</div>
       </div>
       <div class="reuse-item">
-        <div class="ri-from">카페 → SKOOL</div>
         <div class="ri-header">
-          <div class="ri-asset">성장 사례 콘텐츠</div>
-          <div class="ri-arrow">→ 커뮤니티 게시판</div>
+          <div class="ri-asset">오픈채팅</div>
+          <div class="ri-arrow">→ 커뮤니티</div>
         </div>
-        <div class="ri-desc">사례 아카이브가<br>멤버 소통의 시작점으로</div>
+        <div class="ri-desc">275명 오픈채팅을 SKOOL로.<br>체계적인 커뮤니티 구조로</div>
       </div>
       <div class="reuse-item">
-        <div class="ri-from">카페 → SKOOL</div>
         <div class="ri-header">
-          <div class="ri-asset">교육 수강 후기</div>
-          <div class="ri-arrow">→ About 페이지</div>
+          <div class="ri-asset">훈련소</div>
+          <div class="ri-arrow">→ 멤버십</div>
         </div>
-        <div class="ri-desc">신규 유입자를 설득하는<br>신뢰 자산으로 전환</div>
-      </div>
-      <div class="reuse-item">
-        <div class="ri-from">매주 일요일</div>
-        <div class="ri-header">
-          <div class="ri-asset">1:1 컨설팅</div>
-          <div class="ri-arrow">→ 멤버십 업셀</div>
-        </div>
-        <div class="ri-desc">컨설팅 수강생을 SKOOL 멤버로.<br>지속 관계로 전환</div>
+        <div class="ri-desc">콜잇 유튜브 훈련소를<br>정식 멤버십 프로그램으로</div>
       </div>
     </div>
   </section>
@@ -742,13 +679,12 @@
     </a>
     <div class="cta-headline">
       <div class="cta-headline-main">30분만 이야기 나눠보시겠어요?</div>
-      <div class="cta-headline-sub">성공그램만의 커뮤니티 구조를 같이 설계해드립니다.<br>세팅부터 운영까지, 혼자 고민하지 않아도 됩니다.</div>
+      <div class="cta-headline-sub">콜잇 AI만의 멤버십 구조를 같이 설계해드립니다.<br>세팅부터 운영까지, 혼자 고민하지 않아도 됩니다.</div>
     </div>
     <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
       <a class="cta-btn" href="https://whattime.co.kr/moimmoim" target="_blank">미팅 신청하기</a>
       <a class="cta-btn" href="https://www.skool.com/signup?ref=2578fb4caef54db196b9de57ef7bada4" target="_blank">스쿨 구경하기</a>
     </div>
-
   </div>
 
 </div>
@@ -758,7 +694,6 @@
   <p style="color:#fff; font-size:12px; font-weight:600; letter-spacing:1px; margin-bottom:6px;">© 2026 GLOWNOVA Inc. All rights reserved</p>
   <p>주식회사 글로우노바 &nbsp;|&nbsp; 대표: 손지혜 &nbsp;|&nbsp; 주소: 서울특별시 강남구 학동로24길 20, 402호</p>
   <p>사업자등록번호: 332-87-03453 &nbsp;|&nbsp; 통신판매업 신고번호: 제2026-서울강남-00850호</p>
-
 </footer>
 
 </body>
