@@ -44,6 +44,7 @@
     max-width: 800px;
     margin: 0 auto;
     background: var(--white);
+    overflow: hidden;
   }
 
   /* ── HERO ── */
@@ -455,10 +456,7 @@
     letter-spacing: 0.5px;
     transition: background 0.2s, color 0.2s;
   }
-  .cta-btn:hover { background: var(--pink-deep); color: var(--black); }
-  @media (max-width: 640px) {
-    :root { --fs-3xl: 36px; --fs-2xl: 28px; --fs-xl: 24px; }
-    .hero { padding: 48px 24px 44px; }
+  .cta-btn:hover { background: var(--pink-deep); color: var(--black); }    .hero { padding: 48px 24px 44px; }
     .hero-badge { top: 20px; right: 24px; font-size: 11px; }
     section, .pain-section { padding: 56px 24px; }
     .proof-grid { grid-template-columns: 1fr; }
@@ -471,6 +469,37 @@
     .brand-bar { padding: 16px 24px; }
     .cta { padding: 64px 24px; }
     .cta-btn { display: block; width: 100%; text-align: center; padding: 16px 24px; }
+  }
+  @media (hover: hover) {
+    .cta-btn:hover { background: var(--pink-deep); color: var(--black); }
+  }
+  /* ── CTA 유튜브 아이콘 ── */
+  .cta-yt-wrap {
+    position: absolute;
+    top: 28px;
+    right: 48px;
+  }
+  .footer-detail { display: block; }
+  @media (max-width: 768px) {
+    :root { --fs-3xl: 36px; --fs-2xl: 28px; --fs-xl: 24px; }
+    .hero { padding: 100px 24px 44px; }
+    .hero-badge { top: 20px; right: 24px; font-size: 11px; }
+    .hero-greeting { padding-top: 0; }
+    .cta { padding: 72px 24px 64px; }
+    section, .pain-section { padding: 56px 24px; }
+    .proof-grid { grid-template-columns: 1fr !important; }
+    .asset-grid { grid-template-columns: 1fr !important; }
+    .ba-grid { grid-template-columns: 1fr !important; display: flex !important; flex-direction: column !important; }
+    .ba-card { width: 100% !important; min-width: 0 !important; padding: 24px 20px !important; }
+    .reuse-grid { grid-template-columns: 1fr !important; }
+    .ri-asset { white-space: normal; }
+    .notion-link-box { flex-direction: column; align-items: flex-start; gap: 12px; }
+    .nl-btn { width: 100%; text-align: center; }
+    .brand-bar { padding: 16px 24px; }
+    .cta-btn { display: block; width: 100%; text-align: center; padding: 16px 24px; }
+    .cta-yt-wrap { position: static; text-align: center; margin-bottom: 32px; display: block; }
+    .footer-detail { display: none; }
+    footer { padding: 20px 24px !important; }
   }
 </style>
 </head>
@@ -612,7 +641,7 @@
     <div class="eyebrow">BEFORE → AFTER</div>
     <div class="sec-title">지금 운영 구조가<br>이렇게 달라집니다</div>
 
-    <div class="ba-grid">
+    <div class="ba-grid" style="margin-top:40px;">
       <div class="ba-card before">
         <div class="ba-label">NOW · 현재 구조</div>
         <div class="ba-title">채널은 여럿, 연결은 없음</div>
@@ -683,14 +712,15 @@
 
   <!-- CTA -->
   <div class="cta" style="position:relative;">
-    <a href="https://www.youtube.com/@모임모임moimmoim" target="_blank"
-       style="position:absolute; top:28px; right:48px; display:inline-flex; align-items:center; justify-content:center; opacity:0.4; transition:opacity 0.2s;"
+    <div class="cta-yt-wrap"><a href="https://www.youtube.com/@모임모임moimmoim" target="_blank"
+       style="display:inline-flex; align-items:center; justify-content:center; opacity:0.4; transition:opacity 0.2s; padding:8px;"
        onmouseover="this.style.opacity='1';"
        onmouseout="this.style.opacity='0.4';">
       <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="#FFFFFF">
         <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
       </svg>
-    </a>
+      </a>
+    </div>
     <div class="cta-headline">
       <div class="cta-headline-main">30분만 이야기 나눠보시겠어요?</div>
       <div class="cta-headline-sub">김인숙님만의 커뮤니티 구조를 같이 설계해드립니다.<br>세팅부터 운영까지, 혼자 고민하지 않아도 됩니다.</div>
@@ -706,8 +736,8 @@
 <!-- 법인 푸터 -->
 <footer style="background:#111; color:#888; padding:28px 60px; text-align:center; font-size:11px; font-weight:300; line-height:2; max-width:800px; margin:0 auto;">
   <p style="color:#fff; font-size:12px; font-weight:600; letter-spacing:1px; margin-bottom:6px;">© 2026 GLOWNOVA Inc. All rights reserved</p>
-  <p>주식회사 글로우노바 &nbsp;|&nbsp; 대표: 손지혜 &nbsp;|&nbsp; 주소: 서울특별시 강남구 학동로24길 20, 402호</p>
-  <p>사업자등록번호: 332-87-03453 &nbsp;|&nbsp; 통신판매업 신고번호: 제2026-서울강남-00850호</p>
+  <p class="footer-detail">주식회사 글로우노바 &nbsp;|&nbsp; 대표: 손지혜 &nbsp;|&nbsp; 주소: 서울특별시 강남구 학동로24길 20, 402호</p>
+  <p class="footer-detail">사업자등록번호: 332-87-03453 &nbsp;|&nbsp; 통신판매업 신고번호: 제2026-서울강남-00850호</p>
 </footer>
 
 </body>
