@@ -349,9 +349,41 @@
     }
 
     @media (max-width: 600px) {
-      .hero h1 { font-size: 28px; }
+      /* 전체 */
+      .hero { padding: 48px 24px; }
+      .hero h1 { font-size: 26px; }
+      .hero p { font-size: 15px; }
+      section { padding: 48px 24px; }
+      .message-section { padding: 48px 24px; }
+
+      /* 히어로 서브 문구 줄바꿈 */
+      .hero p br { display: none; }
+      .hero p { white-space: normal; }
+
+      /* 현재 문제 */
       .pain-grid { grid-template-columns: 1fr; }
-      .week-row { grid-template-columns: 60px 1fr; }
+
+      /* 커리큘럼 — 주차 레이블 카드 위로 */
+      .week-row {
+        grid-template-columns: 1fr;
+      }
+      .week-label {
+        padding-top: 0;
+        padding-bottom: 6px;
+        font-size: 12px;
+      }
+
+      /* 캘린더 */
+      .cal-day { min-height: 52px; padding: 4px; font-size: 11px; }
+      .cal-event { font-size: 9px; padding: 1px 4px; }
+      .cal-month-label-row { font-size: 14px; padding: 12px 16px 6px; }
+
+      /* 프라이싱 카드 */
+      .pricing-row { flex-direction: column; gap: 12px; }
+      .pricing-row span { font-size: 13px; }
+
+      /* 푸터 */
+      .site-footer { flex-direction: column; gap: 6px; text-align: center; }
     }
   </style>
 </head>
@@ -361,7 +393,7 @@
   <div class="hero">
     <p class="label">GlowNova × 로지젠</p>
     <h1>하루 20건의 견적 요청,<br><span>인지적 고민은 AI가 대신합니다.</span></h1>
-    <p>반복 업무를 줄이고, 직원이 직접 AI를 다룰 수 있도록.<br>로지젠을 위한 맞춤형 AX 전환 프로그램입니다.</p>
+    <p>반복 업무를 줄이고,<br>직원이 직접 AI를 다룰 수 있도록.<br>로지젠을 위한 맞춤형 AX 전환 프로그램입니다.</p>
     <a href="#curriculum" class="free-badge">커리큘럼 확인하기 ↓</a>
   </div>
 
@@ -371,7 +403,7 @@
   <div class="message-section">
     <div class="message-inner">
       <p>직원 스스로가 AI로 문제를 해결하는 조직.</p>
-      <p><em>외주 없이, 누구에게도 종속되지 않고 자생하는 구조.<br>그것이 우리가 만들고자 하는 변화입니다.</em></p>
+      <p><em>외주 없이,<br>누구에게도 종속되지 않고 자생하는 구조.<br>그것이 우리가 만들고자 하는 변화입니다.</em></p>
       <p>우리의 목표는 단 하나입니다,<br>여러분이 우리를 더 이상 필요로 하지 않게 되는 것.</p>
     </div>
   </div>
@@ -601,11 +633,11 @@
       <div style="padding: 28px 28px 28px 28px; border-bottom: 1px solid #f0f0f0;">
         <p style="font-size:13px; font-weight:600; color:#aaa; letter-spacing:0.05em; text-transform:uppercase; margin-bottom:16px;">투입 인원</p>
         <div style="display:flex; flex-direction:column; gap:10px; padding: 0 24px;">
-          <div style="display:flex; justify-content:space-between; align-items:center;">
+          <div class="pricing-row" style="display:flex; justify-content:space-between; align-items:center;">
             <span style="font-size:15px; color:#1a1a1a;">0주차 — 현장 진단</span>
             <span style="font-size:15px; color:#555;">3명 · 11:00 – 17:00</span>
           </div>
-          <div style="display:flex; justify-content:space-between; align-items:center;">
+          <div class="pricing-row" style="display:flex; justify-content:space-between; align-items:center;">
             <span style="font-size:15px; color:#1a1a1a;">1–4주차 — 교육 및 코칭</span>
             <span style="font-size:15px; color:#555;">2명 · 11:00 – 17:00</span>
           </div>
