@@ -348,6 +348,8 @@
       color: #444;
     }
 
+    .mobile-br { display: none; }
+
     @media (max-width: 600px) {
       /* 전체 */
       .hero { padding: 48px 24px; }
@@ -384,6 +386,13 @@
       .pricing-amount { flex-direction: column !important; align-items: flex-start !important; gap: 16px !important; }
       .pricing-amount .discount-badge { align-self: flex-start; }
 
+      /* 메시지 섹션 모바일 줄바꿈 */
+      .mobile-br { display: inline; }
+
+      /* 커리큘럼 카드 제목 폰트 */
+      .week-card .week-title { font-size: 16px; }
+      .week-card .week-desc { font-size: 14px; }
+
       /* 푸터 */
       .site-footer { flex-direction: column; gap: 6px; text-align: center; }
     }
@@ -406,7 +415,7 @@
     <div class="message-inner">
       <p>직원 스스로가 AI로 문제를 해결하는 조직.</p>
       <p><em>외주 없이,<br>누구에게도 종속되지 않고 자생하는 구조.<br>그것이 우리가 만들고자 하는 변화입니다.</em></p>
-      <p>우리의 목표는 단 하나입니다,<br>여러분이 우리를 더 이상 필요로 하지 않게 되는 것.</p>
+      <p>우리의 목표는 단 하나입니다,<br>여러분이 우리를 더 이상 필요로<br class="mobile-br"> 하지 않게 되는 것.</p>
     </div>
   </div>
 
@@ -558,7 +567,7 @@
       <div class="week-row">
         <div class="week-label">2주차</div>
         <div class="week-card">
-          <div class="week-title">데이터 정리 + 클라우드 연결</div>
+          <div class="week-title">데이터 정리 +<br class="mobile-br"> 클라우드 연결</div>
           <div class="week-desc"><ul>
             <li>팀원별로 필요한 데이터가 다릅니다. 역할에 맞게 데이터를 나누고 구조화합니다</li>
             <li>10만 행 데이터를 빠르게 조회·수정할 수 있는 클라우드 DB로 옮깁니다</li>
@@ -588,7 +597,7 @@
       <div class="week-row">
         <div class="week-label">4주차</div>
         <div class="week-card">
-          <div class="week-title">대시보드 + Vercel 배포</div>
+          <div class="week-title">대시보드 +<br class="mobile-br"> Vercel 배포</div>
           <div class="week-desc"><ul>
             <li>개인화 업무용 맞춤 대시보드 제작</li>
             <li>Vercel 배포로 팀 전체 공유</li>
