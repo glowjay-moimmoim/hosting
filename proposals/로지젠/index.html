@@ -381,9 +381,10 @@
       .cal-month-label-row { font-size: 14px; padding: 12px 16px 6px; }
 
       /* 프라이싱 카드 */
-      .pricing-row { flex-wrap: wrap; gap: 4px; }
-      .pricing-row span { font-size: 13px; }
-      .pricing-amount { flex-direction: column !important; align-items: flex-start !important; gap: 16px !important; }
+      .pricing-row { flex-direction: column !important; gap: 2px; }
+      .pricing-row span:first-child { font-size: 14px; font-weight: 600; color: #1a1a1a; }
+      .pricing-row span:last-child { font-size: 13px; color: #888; }
+      .pricing-amount { flex-direction: column !important; align-items: flex-start !important; gap: 12px !important; }
       .pricing-amount .discount-badge { align-self: flex-start; }
 
       /* 메시지 섹션 모바일 줄바꿈 */
@@ -394,7 +395,9 @@
       .week-card .week-desc { font-size: 14px; }
 
       /* 푸터 */
-      .site-footer { flex-direction: column; gap: 6px; text-align: center; }
+      .site-footer { flex-direction: column; gap: 2px; text-align: center; padding: 24px 40px; }
+      .site-footer .sep { display: none; }
+      .site-footer span { font-size: 11px; }
     }
   </style>
 </head>
