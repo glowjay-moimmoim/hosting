@@ -380,13 +380,14 @@
       .cal-event { font-size: 9px; padding: 1px 4px; }
       .cal-month-label-row { font-size: 14px; padding: 12px 16px 6px; }
 
-      /* 프라이싱 카드 들여쓰기 제거 */
-      .pricing-row { flex-direction: column !important; gap: 2px; margin-bottom: 14px; padding: 0 !important; }
+      /* 프라이싱 — 모바일 왼쪽 정렬 */
+      .pricing-row { flex-direction: column !important; gap: 2px; margin-bottom: 14px; text-align: left !important; }
       .pricing-row span:first-child { font-size: 14px; font-weight: 600; color: #1a1a1a; }
       .pricing-row span:last-child { font-size: 13px; color: #888; }
-      .pricing-amount { flex-direction: row !important; align-items: flex-start !important; justify-content: space-between !important; gap: 0 !important; padding-left: 0 !important; }
-      .pricing-amount > div { padding-left: 0 !important; }
-      .pricing-amount .discount-badge { align-self: center; }
+      .pricing-amount { flex-direction: column !important; align-items: flex-start !important; gap: 12px !important; padding-left: 0 !important; }
+      .pricing-amount > div { padding-left: 0 !important; text-align: left !important; }
+      .pricing-amount .discount-badge { align-self: flex-start; margin-top: 4px; }
+      .pricing-amount > div > div { padding-left: 0 !important; }
 
       /* 메시지 섹션 모바일 줄바꿈 */
       .mobile-br { display: inline; }
