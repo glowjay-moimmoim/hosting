@@ -381,13 +381,13 @@
       .cal-month-label-row { font-size: 14px; padding: 12px 16px 6px; }
 
       /* 프라이싱 — 모바일 */
-      .pricing-section { padding: 20px !important; }
+      .pricing-section { padding: 20px !important; text-align: center !important; }
       .pricing-indent { padding: 0 !important; }
-      .pricing-row { flex-direction: column !important; gap: 2px; margin-bottom: 12px; }
+      .pricing-row { flex-direction: column !important; gap: 2px; margin-bottom: 12px; align-items: center !important; }
       .pricing-row:last-child { margin-bottom: 0; }
       .pricing-row span:first-child { font-size: 14px; font-weight: 600; color: #1a1a1a; }
       .pricing-row span:last-child { font-size: 13px; color: #888; }
-      .pricing-amount { flex-direction: row !important; align-items: center !important; justify-content: space-between !important; }
+      .pricing-amount { flex-direction: column !important; align-items: center !important; gap: 12px !important; }
       .discount-badge { align-self: center; }
 
       /* 메시지 섹션 모바일 줄바꿈 */
@@ -644,7 +644,7 @@
     <div style="height:48px;"></div>
 
     <!-- PRICING -->
-    <div style="background:#fff; border:1px solid #e5e5e5; border-radius:16px; overflow:hidden; text-align:left;">
+    <div style="background:#fff; border:1px solid #e5e5e5; border-radius:16px; overflow:hidden; text-align:left;" class="pricing-card">
 
       <!-- 투입 인원 -->
       <div class="pricing-section" style="padding: 28px; border-bottom: 1px solid #f0f0f0;">
