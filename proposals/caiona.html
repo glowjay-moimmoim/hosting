@@ -139,90 +139,6 @@
     margin-bottom: 32px;
   }
 
-  /* ── SITUATION ── */
-  .situation-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-top: 32px;
-  }
-  .situation-card {
-    background: var(--gray-light);
-    border: 1px solid var(--gray-border);
-    border-radius: 16px;
-    padding: 24px;
-  }
-  .situation-card .s-label {
-    font-size: var(--fs-xs);
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--orange);
-    margin-bottom: 10px;
-  }
-  .situation-card .s-title {
-    font-size: var(--fs-md);
-    font-weight: 700;
-    margin-bottom: 12px;
-  }
-  .situation-card ul {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-  .situation-card ul li {
-    font-size: var(--fs-sm);
-    color: #555;
-    padding-left: 14px;
-    position: relative;
-  }
-  .situation-card ul li::before {
-    content: '·';
-    position: absolute;
-    left: 0;
-    color: var(--orange);
-    font-weight: 700;
-  }
-
-  /* ── PROBLEM ── */
-  .problem-list {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    margin-top: 8px;
-  }
-  .problem-item {
-    display: flex;
-    gap: 20px;
-    align-items: flex-start;
-    padding: 24px;
-    border: 1px solid var(--gray-border);
-    border-radius: 16px;
-  }
-  .problem-num {
-    flex-shrink: 0;
-    width: 36px; height: 36px;
-    border-radius: 50%;
-    background: var(--black);
-    color: var(--white);
-    font-size: var(--fs-sm);
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .problem-content .p-title {
-    font-size: var(--fs-body);
-    font-weight: 700;
-    margin-bottom: 4px;
-  }
-  .problem-content .p-desc {
-    font-size: var(--fs-sm);
-    color: var(--gray-text);
-    line-height: 1.6;
-  }
-
   /* ── WEEK CARDS ── */
   .week-list {
     display: flex;
@@ -345,97 +261,147 @@
   }
   .week-card.accent .week-output-text { color: #aaa; }
 
-  /* ── DELIVERABLE ── */
-  .deliverable-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin-top: 8px;
+  /* ── RAW CONTENT ── */
+  .raw-section {
+    padding: 64px 60px;
+    border-bottom: 1px solid var(--gray-border);
+    background: var(--gray-light);
   }
-  .deliverable-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 14px;
-    padding: 20px;
-    border: 1px solid var(--gray-border);
-    border-radius: 14px;
+  .raw-section h2 {
+    font-size: var(--fs-xl);
+    font-weight: 800;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
   }
-  .deliverable-icon {
-    flex-shrink: 0;
-    width: 36px; height: 36px;
-    border-radius: 10px;
-    background: var(--gray-bg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-  }
-  .deliverable-name {
-    font-size: var(--fs-sm);
+  .raw-section h3 {
+    font-size: var(--fs-lg);
     font-weight: 700;
-    margin-bottom: 2px;
+    margin-top: 36px;
+    margin-bottom: 12px;
+    letter-spacing: -0.3px;
   }
-  .deliverable-desc {
+  .raw-section h4 {
+    font-size: var(--fs-body);
+    font-weight: 700;
+    margin-top: 24px;
+    margin-bottom: 8px;
+    color: var(--orange);
+  }
+  .raw-section p {
+    font-size: var(--fs-sm);
+    color: #444;
+    line-height: 1.8;
+    margin-bottom: 8px;
+  }
+  .raw-section ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+  .raw-section ul li {
+    font-size: var(--fs-sm);
+    color: #555;
+    padding-left: 16px;
+    position: relative;
+    line-height: 1.6;
+  }
+  .raw-section ul li::before {
+    content: '·';
+    position: absolute;
+    left: 0;
+    color: var(--orange);
+    font-weight: 700;
+  }
+  .raw-section table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 12px;
+    margin-bottom: 12px;
+  }
+  .raw-section th {
     font-size: var(--fs-xs);
-    color: var(--gray-text);
-    line-height: 1.5;
+    font-weight: 700;
+    text-align: left;
+    padding: 8px 12px;
+    background: var(--gray-border);
+    letter-spacing: 1px;
+  }
+  .raw-section td {
+    font-size: var(--fs-sm);
+    color: #444;
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--gray-border);
+    line-height: 1.6;
   }
 
-  /* ── PRICE ── */
-  .price-box {
+  /* ── CTA ── */
+  .cta-section {
+    padding: 72px 60px;
     background: var(--black);
-    border-radius: 20px;
-    padding: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 32px;
-    margin-top: 8px;
+    text-align: center;
   }
-  .price-left {}
-  .price-label {
+  .cta-label {
     font-size: var(--fs-xs);
     font-weight: 700;
     letter-spacing: 3px;
-    color: #aaa;
     text-transform: uppercase;
-    margin-bottom: 12px;
+    color: #666;
+    margin-bottom: 20px;
   }
-  .price-amount {
-    font-size: var(--fs-3xl);
+  .cta-title {
+    font-size: var(--fs-2xl);
     font-weight: 800;
     color: var(--white);
-    letter-spacing: -2px;
-    line-height: 1;
+    line-height: 1.2;
+    letter-spacing: -1px;
+    margin-bottom: 20px;
   }
-  .price-amount span {
-    font-size: var(--fs-lg);
-    font-weight: 400;
-    color: #666;
-    letter-spacing: 0;
-  }
-  .price-note {
-    font-size: var(--fs-sm);
-    color: #555;
-    margin-top: 10px;
-  }
-  .price-includes {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-  .price-includes li {
-    list-style: none;
-    font-size: var(--fs-sm);
-    color: #bbb;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .price-includes li::before {
-    content: '✓';
+  .cta-title em {
     color: var(--orange);
+    font-style: normal;
+  }
+  .cta-desc {
+    font-size: var(--fs-body);
+    color: #888;
+    line-height: 1.8;
+    max-width: 480px;
+    margin: 0 auto 40px;
+  }
+  .cta-box {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px;
+    padding: 36px 48px;
+    width: 100%;
+    max-width: 420px;
+  }
+  .cta-box-title {
+    font-size: var(--fs-md);
     font-weight: 700;
+    color: var(--white);
+  }
+  .cta-box-desc {
+    font-size: var(--fs-sm);
+    color: #888;
+    line-height: 1.6;
+    text-align: center;
+  }
+  .cta-badge {
+    display: inline-block;
+    background: var(--orange);
+    color: var(--white);
+    font-size: var(--fs-xs);
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 6px 16px;
+    border-radius: 20px;
+    margin-bottom: 8px;
   }
 
   /* ── FOOTER ── */
@@ -459,11 +425,11 @@
     .hero { padding: 80px 28px 60px; }
     .hero-name { font-size: var(--fs-2xl); }
     .section { padding: 48px 28px; }
-    .situation-grid,
-    .week-body,
-    .deliverable-grid { grid-template-columns: 1fr; }
-    .price-box { flex-direction: column; padding: 32px 28px; }
+    .week-body { grid-template-columns: 1fr; }
     .week-card { padding: 28px 24px; }
+    .raw-section { padding: 48px 28px; }
+    .cta-section { padding: 56px 28px; }
+    .cta-box { padding: 28px 24px; }
     .footer { padding: 40px 28px; }
   }
 </style>
@@ -480,66 +446,6 @@
     <div class="hero-date">
       <span>제안일 <strong>2026. 04. 11</strong></span>
       <span>담당 <strong>Jay (모임모임)</strong></span>
-    </div>
-  </div>
-
-  <!-- SITUATION -->
-  <div class="section">
-    <p class="section-label">Current Status</p>
-    <h2 class="section-title">지금 이 상황,<br>이미 꽤 많이 와 있습니다.</h2>
-    <p class="section-desc">유튜브 채널, 필라테스 센터, 스마트스토어, 리뷰까지. 대부분의 초기 브랜드가 갖고 싶어 하는 것들을 희진쌤은 이미 갖고 있습니다. 부족한 건 이것들을 하나로 연결하는 구조입니다.</p>
-    <div class="situation-grid">
-      <div class="situation-card">
-        <div class="s-label">강점</div>
-        <div class="s-title">이미 가진 것들</div>
-        <ul>
-          <li>유튜브 개인채널 (운동복 구매 전환 경험)</li>
-          <li>필라테스 센터 · 액티브 회원 100명</li>
-          <li>기존 회원 DB 보유</li>
-          <li>스마트스토어 + 리뷰 20개↑</li>
-          <li>디자인 · 상세페이지 직접 제작 가능</li>
-        </ul>
-      </div>
-      <div class="situation-card">
-        <div class="s-label">Context</div>
-        <div class="s-title">지금 이 시점의 숙제</div>
-        <ul>
-          <li>SS 시즌 촬영 5월 초 확정</li>
-          <li>예약 판매 예정 · 확보된 고객 없음</li>
-          <li>마케팅 예산 400~500만 원</li>
-          <li>러닝 메인 · 필라테스/요가 겸용 라인업</li>
-          <li>모든 업무를 혼자 처리 중</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <!-- PROBLEM -->
-  <div class="section" style="background: var(--gray-light);">
-    <p class="section-label">Problems</p>
-    <h2 class="section-title">해결해야 할<br>세 가지 문제</h2>
-    <div class="problem-list">
-      <div class="problem-item">
-        <div class="problem-num">1</div>
-        <div class="problem-content">
-          <div class="p-title">방향이 없다</div>
-          <div class="p-desc">인플루언서 방식은 싫고, 안 하면 안 팔릴 것 같고. 남편은 '제대로 된 브랜드'를 원하고 대표님은 팬 기반 판매를 원하는데 — 둘 다 맞습니다. 절충이 아니라 순서가 필요합니다.</div>
-        </div>
-      </div>
-      <div class="problem-item">
-        <div class="problem-num">2</div>
-        <div class="problem-content">
-          <div class="p-title">팔 곳이 없다</div>
-          <div class="p-desc">유튜브, 스마트스토어, 인스타가 따로 놉니다. 사람을 한 곳에 모아두고 관계를 쌓는 공간이 없으면, 광고비를 계속 태워야만 팔 수 있습니다.</div>
-        </div>
-      </div>
-      <div class="problem-item">
-        <div class="problem-num">3</div>
-        <div class="problem-content">
-          <div class="p-title">혼자서는 지속이 안 된다</div>
-          <div class="p-desc">기획·디자인·운영·콘텐츠까지 1인이 전부 하는 구조는 브랜드가 커질수록 무너집니다. 적게 일하고 더 많이 돌아가는 시스템이 필요합니다.</div>
-        </div>
-      </div>
     </div>
   </div>
 
@@ -601,7 +507,7 @@
             <ul class="week-items">
               <li>School 플랫폼 계정 개설 · 결제 연동 세팅</li>
               <li>무료 공간 vs 멤버십 전용 공간 구조 설계</li>
-              <li>방 구성: 운동일지 · Q&A · 러닝챌린지 · 비하인드</li>
+              <li>방 구성: 운동일지 · Q&amp;A · 러닝챌린지 · 비하인드</li>
               <li>월간/연간 멤버십 가격 · 레퍼럴 40% 세팅</li>
               <li>기존 회원 초대 메시지 문안 작성</li>
             </ul>
@@ -695,74 +601,106 @@
     </div>
   </div>
 
-  <!-- DELIVERABLES -->
-  <div class="section" style="background:var(--gray-light);">
-    <p class="section-label">Deliverables</p>
-    <h2 class="section-title">4주 후<br>손에 쥐는 것들</h2>
-    <div class="deliverable-grid">
-      <div class="deliverable-item">
-        <div class="deliverable-icon">📄</div>
-        <div>
-          <div class="deliverable-name">브랜드 정의 문서</div>
-          <div class="deliverable-desc">페르소나 · 톤앤매너 · 포지셔닝 · AI 활용 기반</div>
-        </div>
-      </div>
-      <div class="deliverable-item">
-        <div class="deliverable-icon">🏠</div>
-        <div>
-          <div class="deliverable-name">School 커뮤니티</div>
-          <div class="deliverable-desc">멤버십 · 결제 · 레퍼럴 세팅 완료, 즉시 운영 가능</div>
-        </div>
-      </div>
-      <div class="deliverable-item">
-        <div class="deliverable-icon">📅</div>
-        <div>
-          <div class="deliverable-name">콘텐츠 캘린더</div>
-          <div class="deliverable-desc">5~7월 유튜브 · 커뮤니티 · 인스타 역할 분리 계획</div>
-        </div>
-      </div>
-      <div class="deliverable-item">
-        <div class="deliverable-icon">🚀</div>
-        <div>
-          <div class="deliverable-name">SS 런칭 시나리오</div>
-          <div class="deliverable-desc">D-21 티저 → D-7 선공개 → D-0 예약 판매 플로우</div>
-        </div>
-      </div>
-      <div class="deliverable-item">
-        <div class="deliverable-icon">🗺️</div>
-        <div>
-          <div class="deliverable-name">3개월 실행 로드맵</div>
-          <div class="deliverable-desc">5 · 6 · 7월 마일스톤 단위 계획, 혼자 따라갈 수 있게</div>
-        </div>
-      </div>
-      <div class="deliverable-item">
-        <div class="deliverable-icon">🤖</div>
-        <div>
-          <div class="deliverable-name">AI 업무 세팅</div>
-          <div class="deliverable-desc">브랜드 문서 기반 콘텐츠 초안 자동 생성 환경</div>
-        </div>
-      </div>
-    </div>
+  <!-- RAW CONTENT -->
+  <div class="raw-section">
+    <p style="font-size:var(--fs-xs);font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--orange);margin-bottom:12px;">Details</p>
+    <h2>클라이언트 현황</h2>
+
+    <h3>필라테스 센터</h3>
+    <ul>
+      <li>운영 경력 7~8년차</li>
+      <li>현재 액티브 회원 약 100명</li>
+      <li>센터 확장 이력 있음</li>
+      <li>기존 회원 DB 보유 (스쳐간 회원 포함)</li>
+    </ul>
+
+    <h3>운동복 브랜드 (카이오나)</h3>
+    <ul>
+      <li>2년 전 런칭했으나 둘째 임신/출산으로 중단</li>
+      <li>FW 시즌 1회 진행, 이번이 두 번째 SS 시즌 준비 중</li>
+      <li>이번 SS 포지션: 러닝 메인 (러닝 기반 + 필라테스/요가 겸용)</li>
+      <li>촬영 5월 초 예정, 이후 예약 판매 진행 예정</li>
+      <li>디자인·기획·상세페이지 모두 대표님 직접 제작</li>
+    </ul>
+
+    <h3>기존 마케팅 채널</h3>
+    <ul>
+      <li>유튜브 (개인채널: 필라테스 희진쌤) → 운동복 노출 → 일부 구매로 이어짐</li>
+      <li>스마트스토어 → 검색 유입 + 리뷰 20개↑ 확보</li>
+      <li>유튜브에 쇼핑 탭 미연동 (예정)</li>
+      <li>인스타 광고는 아직 없음</li>
+    </ul>
+
+    <h3>핵심 고민 / 페인포인트</h3>
+
+    <h4>마케팅 방향성 혼란</h4>
+    <ul>
+      <li>인스타 인플루언서 방식은 따라가기 싫은데, 안 하면 안 팔릴 것 같은 딜레마</li>
+      <li>남편은 '제대로 된 브랜드'를 원하고, 대표님은 유튜브 팬 기반 소수 타깃 판매를 원했으나 절충점을 못 찾은 상태</li>
+    </ul>
+
+    <h4>혼자서 전부 다 함</h4>
+    <ul>
+      <li>기획, 디자인, 상세페이지, 운영 모두 1인 처리 → 소진 위험</li>
+    </ul>
+
+    <h4>예약 판매 계획 있으나 고객 확보 없음</h4>
+    <ul>
+      <li>5월 초 촬영 → 예약 판매 예정이나 구매 확정된 고객 없음</li>
+    </ul>
+
+    <h4>마케팅 예산 400~500만 원 (제작비 제외)</h4>
+    <ul>
+      <li>상세페이지 등 제작은 본인이 직접 해결</li>
+    </ul>
+
+    <h3>모임모임 제안 방향</h3>
+
+    <h4>제안 골자</h4>
+    <ul>
+      <li>커뮤니티 브랜딩 전략 설계 + 실행 로드맵 4주 패키지</li>
+      <li>금액: 150만 원 (기반이 잘 잡혀 있어서 리터치 수준으로 가능 판단)</li>
+    </ul>
+
+    <h4>제안 근거 — 강점</h4>
+    <table>
+      <tr><th>강점</th><th>내용</th></tr>
+      <tr><td>유튜브 채널</td><td>이미 운영 중, 운동복 노출로 구매 전환 경험 있음</td></tr>
+      <tr><td>오프라인 거점</td><td>필라테스 센터 = 즉각 유입 가능한 실물 고객 존재</td></tr>
+      <tr><td>기존 DB</td><td>과거 센터 회원 DB 보유</td></tr>
+      <tr><td>콘텐츠 역량</td><td>디자인·기획 직접 가능</td></tr>
+      <tr><td>도메인 명확성</td><td>임산부·필라테스·러닝 등 타깃 뚜렷함</td></tr>
+    </table>
+
+    <h4>활용 도구</h4>
+    <ul>
+      <li>School 플랫폼: 커뮤니티 + 구독 멤버십 + 클래스룸 통합</li>
+      <li>결제: 스트라이프 (월간/연간 자동결제)</li>
+      <li>레퍼럴 40% 설정 → 회원이 회원을 데려오는 구조</li>
+      <li>뉴스 발행 → 전체 이메일/푸시 자동 발송</li>
+      <li>AI 운영체계: 브랜드 문서화 → AI 기반 콘텐츠 제작 효율화</li>
+      <li>로드맵 문서화: 3개월 단위 마일스톤 설계</li>
+    </ul>
+
+    <h3>추천 전략 스케치</h3>
+    <ul>
+      <li>유튜브 바이오에 School 커뮤니티 링크 연결 → 구독자 → 커뮤니티 유입 선순환 구조 (그린코끼리 케이스 참고)</li>
+      <li>필라테스 기존 회원 → 커뮤니티 무료 초대 → 초기 커뮤니티 활성화 + 운동복 테스트 그룹 확보</li>
+      <li>임산부 운동/전문가 과정 등 클래스룸 강의 상품화</li>
+      <li>한강 러닝, 힐링 캠프 등 오프라인 이벤트 단발 유료 판매</li>
+      <li>SS 예약 판매 → 커뮤니티 내에서 선공개 + 와디즈 병행 검토</li>
+    </ul>
   </div>
 
-  <!-- PRICE -->
-  <div class="section">
-    <p class="section-label">Investment</p>
-    <h2 class="section-title">투자 금액</h2>
-    <div class="price-box">
-      <div class="price-left">
-        <div class="price-label">4 Week Program</div>
-        <div class="price-amount">150<span>만원</span></div>
-        <div class="price-note" style="color:#555;">VAT 별도 · 4주 완료 후 잔금 정산</div>
-      </div>
-      <ul class="price-includes">
-        <li>주 1회 Jay와 1:1 세션 (화상/대면)</li>
-        <li>세션 외 채팅 질문 무제한</li>
-        <li>School 플랫폼 세팅 대행</li>
-        <li>브랜드 문서 + 로드맵 전달</li>
-        <li>AI 업무 툴 세팅 포함</li>
-        <li>SS 런칭 플랜 포함</li>
-      </ul>
+  <!-- CTA -->
+  <div class="cta-section">
+    <p class="cta-label">Next Step</p>
+    <h2 class="cta-title">4주를 시작하기 전,<br><em>함께 계획을 짭니다.</em></h2>
+    <p class="cta-desc">본 프로그램에 앞서 사전 미팅을 진행합니다.<br>4주 동안 무엇을 어떻게 할지, 희진쌤의 상황에 맞게 함께 조율하는 시간입니다.</p>
+    <div class="cta-box">
+      <span class="cta-badge">사전 미팅 · 무료</span>
+      <div class="cta-box-title">4주 플랜 조율 미팅</div>
+      <div class="cta-box-desc">SS 촬영 일정, 현재 채널 상태, 우선순위를 확인하고<br>4주 커리큘럼을 희진쌤 상황에 맞게 조정합니다.<br><br>관심 있으시면 편하게 연락 주세요.</div>
     </div>
   </div>
 
