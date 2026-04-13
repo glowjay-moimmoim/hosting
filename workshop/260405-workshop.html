@@ -627,22 +627,21 @@
       btn.textContent = '신청 중...';
       btn.disabled = true;
 
-      fetch('https://script.google.com/macros/s/AKfycbwXFJxSAiqSSrfXknFgRFKgqlbCifjWR3o-EBbRHFky2lkXl8meY3C7yY69VCz8O6_Ysg/exec', {
-        method: 'POST',
-        body: JSON.stringify({
-          workshop: '정부지원 사업 크롤링 + 대시보드 제작하기',
-          name: name,
-          phone: phone,
-          email: email
-        })
+      var params = new URLSearchParams({
+        workshop: '정부지원 사업 크롤링 + 대시보드 제작하기',
+        name: name,
+        phone: phone,
+        email: email
+      });
+
+      fetch('https://script.google.com/macros/s/AKfycbwXFJxSAiqSSrfXknFgRFKgqlbCifjWR3o-EBbRHFky2lkXl8meY3C7yY69VCz8O6_Ysg/exec?' + params.toString(), {
+        method: 'GET'
       })
-      .then(function(res) { return res.json(); })
-      .then(function(data) {
+      .then(function() {
         document.getElementById('form-wrap').style.display = 'none';
         document.getElementById('form-success').style.display = 'block';
       })
       .catch(function() {
-        // 네트워크 에러여도 CORS 이슈일 수 있어 성공 처리
         document.getElementById('form-wrap').style.display = 'none';
         document.getElementById('form-success').style.display = 'block';
       });
