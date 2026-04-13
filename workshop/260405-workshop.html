@@ -76,7 +76,10 @@
     .hero {
       max-width: 800px;
       margin: 0 auto;
-      padding: 64px 40px 56px;
+      padding: 80px 40px;
+    }
+    .section-balanced {
+      padding: 80px 40px;
     }
     .hero .label {
       display: inline-block;
@@ -111,7 +114,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin-bottom: 32px;
+      margin-bottom: 0;
     }
     .hero-meta .chip {
       display: flex;
@@ -392,7 +395,10 @@
 
     /* ── MOBILE ───────────────────────────────── */
     @media (max-width: 600px) {
-      .hero { padding: 48px 24px 40px; }
+      .hero { padding: 40px 24px; }
+      .section-balanced {
+        padding: 40px 24px;
+      }
       .hero h1 { font-size: 30px; }
       .hero .sub { font-size: 16px; }
       section { padding: 40px 24px; }
@@ -414,7 +420,7 @@
   <!-- HERO -->
   <div class="hero">
     <p class="label">SecretAI · Offline Workshop</p>
-    <h1>대표님,<br>일하는 방식이<br><span>오늘부터 달라집니다</span></h1>
+    <h1>대표님,<br>일하는 방식이<br><span>이제부터 달라집니다</span></h1>
     <p class="sub">AI로 내 업무를 시스템화하는 실습 워크샵.<br>머릿속에 있던 일들이 눈에 보이는 구조로 바뀝니다.</p>
     <div class="hero-meta">
       <span class="chip">📅 2026년 4월 5일 (일)</span>
@@ -422,13 +428,12 @@
       <span class="chip">💰 무료</span>
       <span class="chip">📍 선릉역 10번출구 인근</span>
     </div>
-    <a class="hero-apply-btn" href="#apply">지금 신청하기 →</a>
   </div>
 
   <hr class="divider" />
 
   <!-- 이런 분께 -->
-  <section>
+  <section class="section-balanced">
     <h2>For Who</h2>
     <div class="for-whom-list">
       <div class="for-whom-item">
@@ -440,26 +445,53 @@
         <p>AI 툴에 관심은 있지만, 실무에 제대로 붙이지 못한 분</p>
       </div>
     </div>
-    <p style="margin-top: 28px; font-size: 22px; color: #1a1a1a; line-height: 1.6;">아무것도 몰라도 괜찮습니다.<br><span style="background: #fde68a; padding: 0 4px;">처음부터 차근차근,</span><br><span style="background: #fde68a; padding: 0 4px;">누구든 따라올 수 있도록 함께할게요!</span></p>
+    <p style="margin-top: 48px; font-size: 22px; color: #1a1a1a; line-height: 1.6;">아무것도 몰라도 괜찮습니다.<br><span style="background: #fde68a; padding: 0 4px;">처음부터 차근차근,</span><br><span style="background: #fde68a; padding: 0 4px;">누구든 따라올 수 있도록 함께할게요!</span></p>
   </section>
 
   <hr class="divider" />
 
-  <!-- Takeaway -->
-  <section>
-    <h2>Takeaway</h2>
-    <div class="takeaway-grid">
-      <div class="takeaway-card">
-        <div class="icon">🧠</div>
-        <p>머릿속 업무를 AI가 읽을 수 있는 문서로 정리하는 경험</p>
+  <!-- 준비물 -->
+  <section class="section-balanced">
+    <h2>Preparation</h2>
+    <div class="checklist">
+      <div class="checklist-item required" style="background: #fffdf5; border-color: #fde68a;">
+        <span class="badge">필수</span>
+        <div class="item-body">
+          <p>💻 노트북</p>
+          <span>실습 중심 워크샵입니다. 반드시 지참해 주세요.</span>
+        </div>
       </div>
-      <div class="takeaway-card">
-        <div class="icon">🏗</div>
-        <p>내 회사에 맞는 업무 시스템의 첫 번째 뼈대 구축</p>
+      <div class="checklist-item optional" style="flex-direction: column; align-items: stretch; background: #fffdf5; border-color: #fde68a;">
+        <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 16px;">
+          <div style="display: flex; align-items: flex-start; gap: 12px;">
+            <span class="badge" style="margin-top: 2px;">권장</span>
+            <div class="item-body" style="padding: 0;">
+              <p style="margin: 0;">⚡ VSCode 또는 Antigravity 설치 및 세팅</p>
+              <span style="display: block; margin-top: 4px;">미리 설치하면 실습 시간이 더 넉넉해집니다.</span>
+            </div>
+          </div>
+          <button class="prep-toggle" onclick="togglePrep(this)" style="margin-top: 0; flex-shrink: 0; white-space: nowrap;">설치 가이드 보기 ▾</button>
+        </div>
+        <div class="prep-box" id="prep-box">
+          <div class="prep-image-grid">
+            <div>
+              <img src="../images/classroom_setting.png" alt="클래스룸" />
+            </div>
+            <div style="display: flex; flex-direction: column; justify-content: space-between;">
+              <img src="../images/classroom_settingguide.png" alt="설치 가이드" />
+              <div style="text-align: right; margin-top: auto; padding-top: 16px;">
+                <a href="https://www.skool.com/moimmoim/about?ref=58fd31433f5d4811995c0ed21b4e40b5" target="_blank" style="font-size: 17px; font-weight: 700; color: #f97316; text-decoration: underline; text-underline-offset: 3px;">커뮤니티 가입하고, 가이드 보러가기 →</a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="takeaway-card">
-        <div class="icon">📊</div>
-        <p>정부지원사업 일정을 자동으로 관리하는 대시보드</p>
+      <div class="checklist-item optional" style="background: #fffdf5; border-color: #fde68a;">
+        <span class="badge">선택</span>
+        <div class="item-body">
+          <p>🔋 보조배터리 또는 충전기</p>
+          <span>2시간 실습이라 배터리 여유가 있으면 좋습니다.</span>
+        </div>
       </div>
     </div>
   </section>
@@ -467,8 +499,10 @@
   <hr class="divider" />
 
   <!-- 타임테이블 -->
-  <section>
+  <section class="section-balanced">
     <h2>Timetable</h2>
+    <p style="font-size: 15px; color: #888; margin-bottom: 6px;">📅 2026년 4월 5일 (일) · 오전 11시 – 오후 1시</p>
+    <p style="font-size: 16px; font-weight: 700; color: #1a1a1a; margin-bottom: 20px;">이번주 주제: 정부지원 사업 크롤링 + 대시보드 제작하기</p>
     <div class="timetable">
       <div class="timetable-row">
         <div class="timetable-time">11:00</div>
@@ -512,156 +546,6 @@
           <p class="t-desc">시크릿AI 커뮤니티 소개 · 다음 단계 안내</p>
         </div>
       </div>
-    </div>
-  </section>
-
-  <hr class="divider" />
-
-  <!-- 준비물 -->
-  <section>
-    <h2>Preparation</h2>
-    <div class="checklist">
-      <div class="checklist-item required">
-        <span class="badge">필수</span>
-        <div class="item-body">
-          <p>💻 노트북</p>
-          <span>실습 중심 워크샵입니다. 반드시 지참해 주세요.</span>
-        </div>
-      </div>
-      <div class="checklist-item optional">
-        <span class="badge">권장</span>
-        <div class="item-body">
-          <p>⚡ VSCode 또는 Antigravity 설치 및 세팅</p>
-          <div style="display: flex; justify-content: space-between; align-items: baseline; margin-top: 4px;">
-            <span>미리 설치하면 실습 시간이 더 넉넉해집니다.</span>
-            <button class="prep-toggle" onclick="togglePrep(this)" style="margin-top: 0; flex-shrink: 0; margin-left: 16px; white-space: nowrap;">설치 가이드 보기 ▾</button>
-          </div>
-          <div class="prep-box" id="prep-box">
-            <div class="prep-image-grid">
-              <div>
-                <img src="../images/classroom_setting.png" alt="클래스룸" />
-              </div>
-              <div>
-                <img src="../images/classroom_settingguide.png" alt="설치 가이드" />
-                <div style="text-align: right; margin-top: 8px;">
-                  <a href="https://www.skool.com/moimmoim/about?ref=58fd31433f5d4811995c0ed21b4e40b5" target="_blank" style="font-size: 13px; font-weight: 700; color: #1a1a1a; text-decoration: underline; text-underline-offset: 2px;">가이드 보러가기 →</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="checklist-item optional">
-        <span class="badge">선택</span>
-        <div class="item-body">
-          <p>🔋 보조배터리 또는 충전기</p>
-          <span>2시간 실습이라 배터리 여유가 있으면 좋습니다.</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <hr class="divider" />
-
-  <!-- 세션 흐름 -->
-  <section>
-    <h2>Session</h2>
-    <div class="session-list">
-      <div class="session-row">
-        <div class="session-num">1</div>
-        <div class="session-card">
-          <p class="session-title">JAY 사례 소개</p>
-          <p class="session-desc">업무 시스템화 실제 사례</p>
-        </div>
-      </div>
-      <div class="session-row">
-        <div class="session-num">2</div>
-        <div class="session-card">
-          <p class="session-title">툴 소개</p>
-          <p class="session-desc">오늘 사용할 도구들 &nbsp;·&nbsp; <a href="https://www.skool.com/moimmoim/classroom" target="_blank" style="color:#1a1a1a; font-weight:600;">스쿨 클래스룸 →</a></p>
-        </div>
-      </div>
-      <div class="session-row">
-        <div class="session-num">3</div>
-        <div class="session-card">
-          <p class="session-title">Antigravity 설치</p>
-          <p class="session-desc">구글에서 직접 검색 → 다운로드</p>
-        </div>
-      </div>
-      <div class="session-row">
-        <div class="session-num">4</div>
-        <div class="session-card">
-          <p class="session-title">Skool 자기소개 작성</p>
-          <p class="session-desc">설치되는 동안 커뮤니티 자기소개 작성</p>
-        </div>
-      </div>
-      <div class="session-row">
-        <div class="session-num">5</div>
-        <div class="session-card">
-          <p class="session-title">자기소개 발표</p>
-          <p class="session-desc">돌아가며 말로 소개</p>
-        </div>
-      </div>
-      <div class="session-row">
-        <div class="session-num">6</div>
-        <div class="session-card">
-          <p class="session-title">스킬 사용법 소개 + 선물 지급</p>
-          <p class="session-desc">스킬 개요 설명 후 파일 전달</p>
-        </div>
-      </div>
-      <div class="session-row">
-        <div class="session-num">7</div>
-        <div class="session-card">
-          <p class="session-title">실습</p>
-          <p class="session-desc">Skill 적용 → 정부지원사업 검색 → 대시보드 완성</p>
-        </div>
-      </div>
-      <div class="session-row">
-        <div class="session-num">8</div>
-        <div class="session-card">
-          <p class="session-title">시크릿AI 프로그램 소개</p>
-          <p class="session-desc">커뮤니티 및 다음 단계 안내</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <hr class="divider" />
-
-  <!-- Gift -->
-  <section>
-    <h2>Gift</h2>
-    <div class="gift-card">
-      <p class="gift-title">🎁 후기 작성하면 Skill 선물 증정</p>
-      <p class="gift-sub">오늘 현장 모습 또는 업무에 적용한 모습을 찍어서<br>스쿨 커뮤니티에 올려주시면 드립니다.</p>
-      <ul class="gift-steps">
-        <li><span class="arrow">→</span><span>스쿨 커뮤니티에 인증 글 + 사진 업로드</span></li>
-        <li><span class="arrow">→</span><span>올려주신 분께 <strong>스쿨 DM</strong>으로 Skill 파일 전달</span></li>
-      </ul>
-      <p class="gift-note">선물은 실습 시작 전에 먼저 드립니다 — 오늘 실습에서 바로 사용하실 거예요.</p>
-      <button class="qr-toggle" onclick="toggleQR(this)">📱 스쿨 커뮤니티 QR 보기</button>
-      <div class="qr-box" id="qr-box">
-        <p>카메라로 찍어서 가입하세요</p>
-        <div id="qrcode"></div>
-      </div>
-    </div>
-  </section>
-
-  <hr class="divider" />
-
-  <!-- 다음 단계 -->
-  <section>
-    <h2>Next Step</h2>
-    <div class="gift-card">
-      <p class="gift-title">🚀 시크릿AI 커뮤니티에서 계속해요</p>
-      <p class="gift-sub">오늘 배운 것을 혼자 이어가지 않아도 됩니다.<br>스쿨 커뮤니티에서 함께 성장하세요.</p>
-      <ul class="gift-steps">
-        <li><span class="arrow">→</span><span>강의 자료 및 스킬 아카이브 상시 열람</span></li>
-        <li><span class="arrow">→</span><span>다음 워크샵 및 이벤트 우선 안내</span></li>
-      </ul>
-      <p class="gift-note" style="padding-top:18px; border-top:1px solid #e5e5e5; margin-top:20px;">
-        <a href="https://www.skool.com/moimmoim/classroom" target="_blank" style="color:#1a1a1a; font-weight:700; font-size:16px;">📚 스쿨 클래스룸 바로가기 →</a>
-      </p>
     </div>
   </section>
 
