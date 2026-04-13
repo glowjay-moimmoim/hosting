@@ -308,7 +308,29 @@
     }
     .form-submit:hover { background: #fcd34d; }
     .form-submit:active { transform: scale(0.99); }
-    .form-notice { margin-top: 14px; font-size: 13px; color: #666; line-height: 1.6; }
+    .privacy-toggle {
+      margin-top: 14px;
+      font-size: 12px;
+      color: #666;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      padding: 0;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .privacy-box {
+      display: none;
+      margin-top: 10px;
+      padding: 14px 16px;
+      background: #2a2a2a;
+      border-radius: 8px;
+      font-size: 12px;
+      color: #888;
+      line-height: 1.8;
+    }
+    .privacy-box.open { display: block; }
     .form-success { display: none; text-align: center; padding: 40px 0 20px; }
     .form-success .success-icon { font-size: 48px; margin-bottom: 16px; }
     .form-success .success-title { font-size: 22px; font-weight: 700; margin-bottom: 8px; }
@@ -595,9 +617,9 @@
   <div class="form-section" id="apply">
     <div class="inner">
       <h2>Apply</h2>
-      <p class="form-title">지금 바로 신청하세요</p>
-      <p class="form-sub">신청 완료 후 오시는 길을 안내드립니다</p>
       <span class="capacity">🔥 선착순 30명 한정</span>
+      <p class="form-title">지금 바로 신청하세요</p>
+      <p class="form-sub">신청 완료 후, 오시는 길을 별도로 안내드립니다</p>
       <div id="form-wrap">
         <div class="form-fields">
           <input type="text" id="f-name" placeholder="이름" />
@@ -605,7 +627,13 @@
           <input type="tel" id="f-phone" placeholder="전화번호" />
         </div>
         <button class="form-submit" onclick="submitForm()">무료 신청하기 →</button>
-        <p class="form-notice">개인정보는 워크샵 운영 목적으로만 사용되며 외부에 제공되지 않습니다.</p>
+        <button class="privacy-toggle" onclick="togglePrivacy(this)">개인정보 수집 및 이용 안내 보기 ▾</button>
+        <div class="privacy-box" id="privacy-box">
+          제출하신 정보는 프로그램 참여 안내 발송 및 운영 관련 소식 전달 목적으로만 사용되며, 목적 달성 후 안전하게 파기됩니다. 제출 시 동의로 간주됩니다.<br><br>
+          ✔️ 수집 항목: 이름, 이메일 주소, 전화번호<br>
+          ✔️ 수집 목적: 프로그램 참여 안내 발송 및 관련 안내<br>
+          ✔️ 보관 기간: 1년 이내 파기
+        </div>
       </div>
       <div class="form-success" id="form-success">
         <div class="success-icon">✅</div>
@@ -616,7 +644,7 @@
   </div>
 
   <footer>
-    <p>© Glownova | SecretAI</p>
+    <p>Copyright © Glownova | SecretAI</p>
   </footer>
 
   <script>
@@ -638,6 +666,14 @@
       } else {
         btn.textContent = '📱 스쿨 커뮤니티 QR 보기';
       }
+    }
+
+    function togglePrivacy(btn) {
+      var box = document.getElementById('privacy-box');
+      box.classList.toggle('open');
+      btn.textContent = box.classList.contains('open')
+        ? '개인정보 수집 및 이용 안내 닫기 ▴'
+        : '개인정보 수집 및 이용 안내 보기 ▾';
     }
 
     function submitForm() {
