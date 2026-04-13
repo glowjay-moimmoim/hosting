@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SecretAI 오프라인 워크샵 — 2026.04.05</title>
+  <title>시크릿AI 오프라인 워크샵 — 2026.04.05</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <style>
     @font-face {
@@ -36,43 +36,6 @@
       line-height: 1.6;
     }
 
-    /* ── HERO ─────────────────────────────────── */
-    .hero {
-      padding: 72px 40px 60px;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    .hero .label {
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      color: #888;
-      text-transform: uppercase;
-      margin-bottom: 20px;
-    }
-    .hero h1 {
-      font-size: 40px;
-      font-weight: 700;
-      line-height: 1.25;
-      margin-bottom: 20px;
-    }
-    .hero h1 span {
-      background: #fde68a;
-      padding: 0 4px;
-    }
-    .hero .sub {
-      font-size: 18px;
-      color: #555;
-      max-width: 520px;
-      line-height: 1.7;
-      margin-bottom: 28px;
-    }
-    .hero .meta {
-      font-size: 14px;
-      color: #aaa;
-      font-weight: 500;
-    }
-
     /* ── DIVIDER ──────────────────────────────── */
     .divider {
       border: none;
@@ -96,58 +59,187 @@
       margin-bottom: 28px;
     }
 
-    /* ── WIFI CARD ────────────────────────────── */
-    .wifi-card {
+    /* ── HERO ─────────────────────────────────── */
+    .hero {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 72px 40px 60px;
+    }
+    .hero .label {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      color: #fff;
+      background: #1a1a1a;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 999px;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: 42px;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .hero h1 span {
+      background: #fde68a;
+      padding: 0 4px;
+    }
+    .hero .sub {
+      font-size: 18px;
+      color: #555;
+      max-width: 500px;
+      line-height: 1.75;
+      margin-bottom: 32px;
+    }
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .hero-meta .chip {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #444;
       background: #fff;
       border: 1px solid #e5e5e5;
-      border-radius: 16px;
-      padding: 28px 32px;
+      border-radius: 999px;
+      padding: 7px 14px;
     }
-    .wifi-card .wifi-title {
-      font-size: 22px;
+
+    /* ── 신청 폼 ──────────────────────────────── */
+    .form-section {
+      background: #1a1a1a;
+      color: #fff;
+    }
+    .form-section .inner {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 56px 40px;
+    }
+    .form-section h2 {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 8px;
+    }
+    .form-section .form-title {
+      font-size: 26px;
       font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .form-section .form-sub {
+      font-size: 15px;
+      color: #aaa;
+      margin-bottom: 32px;
+      line-height: 1.6;
+    }
+    .form-section .capacity {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #fde68a;
+      background: rgba(253,230,138,0.12);
+      border: 1px solid rgba(253,230,138,0.3);
+      border-radius: 999px;
+      padding: 5px 14px;
+      margin-bottom: 28px;
+    }
+    .form-fields {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
       margin-bottom: 20px;
     }
-    .wifi-steps {
-      list-style: none;
+    .form-fields input {
+      width: 100%;
+      background: #2a2a2a;
+      border: 1px solid #333;
+      border-radius: 10px;
+      padding: 14px 18px;
+      font-family: inherit;
+      font-size: 16px;
+      color: #fff;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-fields input::placeholder { color: #666; }
+    .form-fields input:focus { border-color: #fde68a; }
+    .form-submit {
+      width: 100%;
+      background: #fde68a;
+      color: #1a1a1a;
+      border: none;
+      border-radius: 10px;
+      padding: 16px;
+      font-family: inherit;
+      font-size: 17px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .form-submit:hover { background: #fcd34d; }
+    .form-submit:active { transform: scale(0.99); }
+    .form-notice {
+      margin-top: 14px;
+      font-size: 13px;
+      color: #666;
+      line-height: 1.6;
+    }
+    /* 제출 완료 상태 */
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 40px 0 20px;
+    }
+    .form-success .success-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+    .form-success .success-title {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .form-success .success-sub {
+      font-size: 16px;
+      color: #aaa;
+      line-height: 1.7;
+    }
+
+    /* ── 이런 분께 ────────────────────────────── */
+    .for-whom-list {
       display: flex;
       flex-direction: column;
       gap: 12px;
     }
-    .wifi-steps li {
+    .for-whom-item {
       display: flex;
       align-items: flex-start;
       gap: 14px;
-      font-size: 19px;
+      background: #fff;
+      border: 1px solid #e5e5e5;
+      border-radius: 12px;
+      padding: 18px 22px;
+    }
+    .for-whom-item .check {
+      font-size: 18px;
+      margin-top: 1px;
+      flex-shrink: 0;
+    }
+    .for-whom-item p {
+      font-size: 17px;
       color: #333;
       line-height: 1.6;
-    }
-    .wifi-steps li .step-num {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 28px;
-      height: 28px;
-      min-width: 28px;
-      background: #1a1a1a;
-      color: #fff;
-      font-size: 13px;
-      font-weight: 700;
-      border-radius: 50%;
-      margin-top: 2px;
-    }
-    .wifi-notice {
-      margin-top: 24px;
-      background: #fef9c3;
-      border: 1px solid #fde68a;
-      border-radius: 10px;
-      padding: 16px 20px;
-      font-size: 17px;
-      color: #555;
-      line-height: 1.7;
-    }
-    .wifi-notice strong {
-      color: #1a1a1a;
     }
 
     /* ── TAKEAWAY ─────────────────────────────── */
@@ -175,6 +267,151 @@
       font-size: 17px;
       color: #333;
       line-height: 1.65;
+    }
+
+    /* ── 타임테이블 ──────────────────────────── */
+    .timetable {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border: 1px solid #e5e5e5;
+      border-radius: 14px;
+      overflow: hidden;
+      background: #fff;
+    }
+    .timetable-row {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .timetable-row:last-child { border-bottom: none; }
+    .timetable-time {
+      padding: 16px 20px;
+      font-size: 14px;
+      font-weight: 700;
+      color: #888;
+      background: #fafaf8;
+      border-right: 1px solid #f0f0f0;
+      display: flex;
+      align-items: center;
+    }
+    .timetable-content {
+      padding: 16px 22px;
+      display: flex;
+      align-items: center;
+    }
+    .timetable-content .t-title {
+      font-size: 17px;
+      font-weight: 600;
+      color: #1a1a1a;
+    }
+    .timetable-content .t-desc {
+      font-size: 14px;
+      color: #888;
+      margin-top: 2px;
+    }
+    .timetable-row.highlight .timetable-time {
+      background: #fef9c3;
+    }
+    .timetable-row.highlight .timetable-content {
+      background: #fffdf0;
+    }
+
+    /* ── 준비물 ──────────────────────────────── */
+    .checklist {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .checklist-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      background: #fff;
+      border: 1px solid #e5e5e5;
+      border-radius: 12px;
+      padding: 18px 22px;
+    }
+    .checklist-item.required {
+      border-color: #fde68a;
+      background: #fffdf5;
+    }
+    .checklist-item .badge {
+      display: inline-flex;
+      align-items: center;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      padding: 3px 8px;
+      border-radius: 999px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .checklist-item.required .badge {
+      background: #fde68a;
+      color: #7a5000;
+    }
+    .checklist-item.optional .badge {
+      background: #f0f0f0;
+      color: #888;
+    }
+    .checklist-item .item-body p {
+      font-size: 17px;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 2px;
+    }
+    .checklist-item .item-body span {
+      font-size: 14px;
+      color: #888;
+      line-height: 1.6;
+    }
+    .checklist-item .item-body a {
+      color: #1a1a1a;
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* ── 세션 흐름 ────────────────────────────── */
+    .session-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .session-row {
+      display: grid;
+      grid-template-columns: 36px 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+    .session-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      background: #f5f5f3;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 700;
+      color: #888;
+      margin-top: 2px;
+    }
+    .session-card {
+      background: #fff;
+      border: 1px solid #e5e5e5;
+      border-radius: 12px;
+      padding: 18px 22px;
+    }
+    .session-card .session-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .session-card .session-desc {
+      font-size: 15px;
+      color: #777;
     }
 
     /* ── GIFT ─────────────────────────────────── */
@@ -222,89 +459,6 @@
       border-top: 1px solid #e5e5e5;
     }
 
-    /* ── SESSION FLOW ─────────────────────────── */
-    .session-list {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .session-row {
-      display: grid;
-      grid-template-columns: 36px 1fr;
-      gap: 16px;
-      align-items: start;
-    }
-    .session-num {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 36px;
-      height: 36px;
-      background: #f5f5f3;
-      border-radius: 10px;
-      font-size: 14px;
-      font-weight: 700;
-      color: #888;
-      margin-top: 2px;
-    }
-    .session-card {
-      background: #fef9c3;
-      border: 1px solid #fde68a;
-      border-radius: 12px;
-      padding: 20px 24px;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-    .session-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.07);
-      border-color: #f9a8d4;
-    }
-    .session-card .session-title {
-      font-size: 22px;
-      font-weight: 600;
-      margin-bottom: 6px;
-    }
-    .session-card .session-desc {
-      font-size: 17px;
-      color: #555;
-    }
-
-    /* ── PRACTICE ─────────────────────────────── */
-    .practice-list {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .practice-item {
-      display: grid;
-      grid-template-columns: 40px 1fr;
-      gap: 16px;
-      align-items: center;
-      background: #fff;
-      border: 1px solid #e5e5e5;
-      border-radius: 12px;
-      padding: 20px 22px;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-    .practice-item:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.07);
-    }
-    .practice-step {
-      font-size: 22px;
-      font-weight: 700;
-      color: #e5e5e5;
-    }
-    .practice-content .practice-title {
-      font-size: 22px;
-      font-weight: 600;
-      margin-bottom: 6px;
-    }
-    .practice-content .practice-desc {
-      font-size: 17px;
-      color: #555;
-    }
-
     /* ── QR TOGGLE ───────────────────────────── */
     .qr-toggle {
       display: flex;
@@ -322,10 +476,7 @@
       color: #1a1a1a;
       transition: background 0.2s, color 0.2s;
     }
-    .qr-toggle:hover {
-      background: #1a1a1a;
-      color: #fff;
-    }
+    .qr-toggle:hover { background: #1a1a1a; color: #fff; }
     .qr-box {
       display: none;
       margin-top: 20px;
@@ -334,17 +485,9 @@
       text-align: center;
     }
     .qr-box.open { display: block; }
-    .qr-box p {
-      font-size: 15px;
-      color: #888;
-      margin-bottom: 16px;
-    }
-    #qrcode {
-      display: inline-block;
-    }
-    #qrcode img, #qrcode canvas {
-      border-radius: 12px;
-    }
+    .qr-box p { font-size: 15px; color: #888; margin-bottom: 16px; }
+    #qrcode { display: inline-block; }
+    #qrcode img, #qrcode canvas { border-radius: 12px; }
 
     /* ── FOOTER ───────────────────────────────── */
     footer {
@@ -352,18 +495,18 @@
       margin: 0 auto;
       padding: 40px 40px 64px;
     }
-    footer p {
-      font-size: 13px;
-      color: #bbb;
-    }
+    footer p { font-size: 13px; color: #bbb; }
 
     /* ── MOBILE ───────────────────────────────── */
     @media (max-width: 600px) {
       .hero { padding: 48px 24px 40px; }
-      .hero h1 { font-size: 28px; }
+      .hero h1 { font-size: 30px; }
       .hero .sub { font-size: 16px; }
       section { padding: 40px 24px; }
+      .form-section .inner { padding: 40px 24px; }
       .takeaway-grid { grid-template-columns: 1fr; }
+      .timetable-row { grid-template-columns: 80px 1fr; }
+      .timetable-time { font-size: 12px; padding: 14px 12px; }
       footer { padding: 32px 24px 48px; }
     }
   </style>
@@ -372,36 +515,64 @@
 
   <!-- HERO -->
   <div class="hero">
-    <p class="label">SecretAI Offline Workshop · April 5, 2026</p>
+    <p class="label">SecretAI · Offline Workshop</p>
     <h1>일하는 방식이<br><span>오늘부터 달라집니다</span></h1>
-    <p class="sub">내 회사만의 업무 시스템, AI와 함께 처음으로 잡아봅니다</p>
-    <p class="meta">Sunday, April 5th &nbsp;·&nbsp; 11am – 2pm &nbsp;·&nbsp; Seoul time</p>
+    <p class="sub">AI로 내 업무를 시스템화하는 첫 번째 실습.<br>머릿속에 있던 일들이 눈에 보이는 구조로 바뀝니다.</p>
+    <div class="hero-meta">
+      <span class="chip">📅 2026년 4월 5일 (일)</span>
+      <span class="chip">🕙 오전 11시 – 오후 2시</span>
+      <span class="chip">📍 선릉역 10번출구 인근</span>
+      <span class="chip">💰 무료</span>
+    </div>
   </div>
 
   <hr class="divider" />
 
-  <!-- 와이파이 -->
+  <!-- 신청 폼 -->
+  <div class="form-section">
+    <div class="inner">
+      <h2>Apply</h2>
+      <p class="form-title">지금 바로 신청하세요</p>
+      <p class="form-sub">선착순 30명 마감 · 신청 완료 후 오시는 길 안내 드립니다</p>
+      <span class="capacity">🔥 선착순 30명 한정</span>
+      <div id="form-wrap">
+        <div class="form-fields">
+          <input type="text" id="f-name" placeholder="이름" />
+          <input type="email" id="f-email" placeholder="이메일" />
+          <input type="tel" id="f-phone" placeholder="전화번호" />
+        </div>
+        <button class="form-submit" onclick="submitForm()">무료 신청하기 →</button>
+        <p class="form-notice">개인정보는 워크샵 운영 목적으로만 사용되며 외부에 제공되지 않습니다.</p>
+      </div>
+      <div class="form-success" id="form-success">
+        <div class="success-icon">✅</div>
+        <p class="success-title">신청 완료!</p>
+        <p class="success-sub">곧 오시는 길과 준비사항을 안내드릴게요.<br>당일 뵙겠습니다 😊</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- 이런 분께 -->
   <section>
-    <h2>Wi-Fi</h2>
-    <div class="wifi-card">
-      <p class="wifi-title">📶 인터넷 연결 방법</p>
-      <ul class="wifi-steps">
-        <li>
-          <span class="step-num">1</span>
-          <span>Wi-Fi 목록에서 <strong>WeWork Guest</strong> 선택</span>
-        </li>
-        <li>
-          <span class="step-num">2</span>
-          <span>브라우저가 자동으로 위워크 페이지를 엽니다</span>
-        </li>
-        <li>
-          <span class="step-num">3</span>
-          <span>이메일 주소 입력 후 연결 완료</span>
-        </li>
-      </ul>
-      <div class="wifi-notice">
-        💡 <strong>핫스팟 권장:</strong> 참여자 전원이 같은 네트워크를 쓰면 속도가 느려질 수 있습니다.<br>
-        가능하면 <strong>개인 핫스팟</strong>을 사용해 주세요.
+    <h2>For Who</h2>
+    <div class="for-whom-list">
+      <div class="for-whom-item">
+        <span class="check">✔️</span>
+        <p>AI 툴에 관심은 있지만 어디서부터 시작할지 모르겠는 분</p>
+      </div>
+      <div class="for-whom-item">
+        <span class="check">✔️</span>
+        <p>업무가 머릿속에만 있고 체계가 없다고 느끼는 대표 · 팀장</p>
+      </div>
+      <div class="for-whom-item">
+        <span class="check">✔️</span>
+        <p>ChatGPT는 써봤지만 실무에 제대로 붙이지 못한 분</p>
+      </div>
+      <div class="for-whom-item">
+        <span class="check">✔️</span>
+        <p>나 없이도 돌아가는 업무 구조를 만들고 싶은 분</p>
       </div>
     </div>
   </section>
@@ -410,26 +581,185 @@
 
   <!-- 오늘 얻어가는 것 -->
   <section>
-    <h2>오늘 손에 들고 나갈 것</h2>
+    <h2>Takeaway</h2>
     <div class="takeaway-grid">
       <div class="takeaway-card">
         <div class="icon">🧠</div>
-        <p>머릿속에 있던 업무가 AI가 읽을 수 있는 형태로 정리된 경험</p>
+        <p>머릿속 업무를 AI가 읽을 수 있는 구조로 정리한 경험</p>
       </div>
       <div class="takeaway-card">
         <div class="icon">🏗</div>
-        <p>체계적인 업무 시스템을 잡는 첫발</p>
+        <p>내 회사에 맞는 업무 시스템의 첫 번째 뼈대</p>
       </div>
       <div class="takeaway-card">
         <div class="icon">📊</div>
-        <p>내 회사에 맞게 커스터마이징된 정부지원사업 일정 대시보드</p>
+        <p>정부지원사업 일정을 자동으로 관리하는 대시보드</p>
       </div>
     </div>
   </section>
 
   <hr class="divider" />
 
-  <!-- 후기 선물 -->
+  <!-- 타임테이블 -->
+  <section>
+    <h2>Timetable</h2>
+    <div class="timetable">
+      <div class="timetable-row">
+        <div class="timetable-time">11:00</div>
+        <div class="timetable-content">
+          <div>
+            <p class="t-title">입장 및 네트워킹</p>
+            <p class="t-desc">자리 세팅 · Wi-Fi 연결 · 자기소개</p>
+          </div>
+        </div>
+      </div>
+      <div class="timetable-row">
+        <div class="timetable-time">11:20</div>
+        <div class="timetable-content">
+          <div>
+            <p class="t-title">JAY 사례 소개</p>
+            <p class="t-desc">AI로 업무 시스템화한 실제 사례</p>
+          </div>
+        </div>
+      </div>
+      <div class="timetable-row">
+        <div class="timetable-time">11:40</div>
+        <div class="timetable-content">
+          <div>
+            <p class="t-title">툴 소개 + 설치</p>
+            <p class="t-desc">오늘 사용할 도구 안내 · Antigravity 설치</p>
+          </div>
+        </div>
+      </div>
+      <div class="timetable-row highlight">
+        <div class="timetable-time">12:10</div>
+        <div class="timetable-content">
+          <div>
+            <p class="t-title">🔑 실습</p>
+            <p class="t-desc">Skill 적용 → 정부지원사업 검색 → 대시보드 완성</p>
+          </div>
+        </div>
+      </div>
+      <div class="timetable-row">
+        <div class="timetable-time">13:30</div>
+        <div class="timetable-content">
+          <div>
+            <p class="t-title">결과 공유 + Q&A</p>
+            <p class="t-desc">각자 완성한 대시보드 공유 · 질의응답</p>
+          </div>
+        </div>
+      </div>
+      <div class="timetable-row">
+        <div class="timetable-time">14:00</div>
+        <div class="timetable-content">
+          <div>
+            <p class="t-title">마무리</p>
+            <p class="t-desc">시크릿AI 커뮤니티 소개 · 다음 단계 안내</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- 준비물 -->
+  <section>
+    <h2>Preparation</h2>
+    <div class="checklist">
+      <div class="checklist-item required">
+        <span class="badge">필수</span>
+        <div class="item-body">
+          <p>💻 노트북</p>
+          <span>실습 중심 워크샵입니다. 반드시 지참해 주세요.</span>
+        </div>
+      </div>
+      <div class="checklist-item optional">
+        <span class="badge">권장</span>
+        <div class="item-body">
+          <p>⚡ VSCode 또는 Antigravity 사전 설치</p>
+          <span>현장에서 설치해도 되지만 미리 설치하면 실습 시간이 더 넉넉해집니다.<br>
+          <a href="#" target="_blank">→ 설치 가이드 보기</a></span>
+        </div>
+      </div>
+      <div class="checklist-item optional">
+        <span class="badge">선택</span>
+        <div class="item-body">
+          <p>🔋 보조배터리 또는 충전기</p>
+          <span>3시간 실습이라 배터리 여유가 있으면 좋습니다.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- 세션 흐름 -->
+  <section>
+    <h2>Session</h2>
+    <div class="session-list">
+      <div class="session-row">
+        <div class="session-num">1</div>
+        <div class="session-card">
+          <p class="session-title">JAY 사례 소개</p>
+          <p class="session-desc">업무 시스템화 실제 사례</p>
+        </div>
+      </div>
+      <div class="session-row">
+        <div class="session-num">2</div>
+        <div class="session-card">
+          <p class="session-title">툴 소개</p>
+          <p class="session-desc">오늘 사용할 도구들 &nbsp;·&nbsp; <a href="https://www.skool.com/moimmoim/classroom" target="_blank" style="color:#1a1a1a; font-weight:600;">스쿨 클래스룸 →</a></p>
+        </div>
+      </div>
+      <div class="session-row">
+        <div class="session-num">3</div>
+        <div class="session-card">
+          <p class="session-title">Antigravity 설치</p>
+          <p class="session-desc">구글에서 직접 검색 → 다운로드</p>
+        </div>
+      </div>
+      <div class="session-row">
+        <div class="session-num">4</div>
+        <div class="session-card">
+          <p class="session-title">Skool 자기소개 작성</p>
+          <p class="session-desc">설치되는 동안 커뮤니티 자기소개 작성</p>
+        </div>
+      </div>
+      <div class="session-row">
+        <div class="session-num">5</div>
+        <div class="session-card">
+          <p class="session-title">자기소개 발표</p>
+          <p class="session-desc">돌아가며 말로 소개</p>
+        </div>
+      </div>
+      <div class="session-row">
+        <div class="session-num">6</div>
+        <div class="session-card">
+          <p class="session-title">스킬 사용법 소개 + 선물 지급</p>
+          <p class="session-desc">스킬 개요 설명 후 파일 전달</p>
+        </div>
+      </div>
+      <div class="session-row">
+        <div class="session-num">7</div>
+        <div class="session-card">
+          <p class="session-title">실습</p>
+          <p class="session-desc">Skill 적용 → 정부지원사업 검색 → 대시보드 완성</p>
+        </div>
+      </div>
+      <div class="session-row">
+        <div class="session-num">8</div>
+        <div class="session-card">
+          <p class="session-title">시크릿AI 프로그램 소개</p>
+          <p class="session-desc">커뮤니티 및 다음 단계 안내</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- Gift -->
   <section>
     <h2>Gift</h2>
     <div class="gift-card">
@@ -456,95 +786,15 @@
 
   <hr class="divider" />
 
-  <!-- 세션 흐름 -->
+  <!-- 다음 단계 -->
   <section>
-    <h2>세션 흐름</h2>
-    <div class="session-list">
-
-      <div class="session-row">
-        <div class="session-num">1</div>
-        <div class="session-card">
-          <p class="session-title">JAY 사례 소개</p>
-          <p class="session-desc">업무 시스템화 실제 사례</p>
-        </div>
-      </div>
-
-      <div class="session-row">
-        <div class="session-num">2</div>
-        <div class="session-card">
-          <p class="session-title">툴 소개</p>
-          <p class="session-desc">오늘 사용할 도구들 &nbsp;·&nbsp; <a href="https://www.skool.com/moimmoim/classroom" target="_blank" style="color:#1a1a1a; font-weight:600;">스쿨 클래스룸 바로가기 →</a></p>
-        </div>
-      </div>
-
-      <div class="session-row">
-        <div class="session-num">3</div>
-        <div class="session-card">
-          <p class="session-title">안티그래비티 설치</p>
-          <p class="session-desc">구글에서 직접 검색 → 다운로드 시작</p>
-        </div>
-      </div>
-
-      <div class="session-row">
-        <div class="session-num">4</div>
-        <div class="session-card">
-          <p class="session-title">Skool 자기소개 작성</p>
-          <p class="session-desc">설치되는 동안 커뮤니티 자기소개 란에 글 작성</p>
-        </div>
-      </div>
-
-      <div class="session-row">
-        <div class="session-num">5</div>
-        <div class="session-card">
-          <p class="session-title">자기소개 발표</p>
-          <p class="session-desc">돌아가며 말로 소개</p>
-        </div>
-      </div>
-
-      <div class="session-row">
-        <div class="session-num">6</div>
-        <div class="session-card highlight">
-          <p class="session-title">스킬 사용법 소개 + 선물 지급</p>
-          <p class="session-desc">스킬 개요 설명 후 파일 전달 — 실습 전에 미리 드립니다</p>
-        </div>
-      </div>
-
-      <div class="session-row">
-        <div class="session-num">7</div>
-        <div class="session-card">
-          <p class="session-title">실습</p>
-          <p class="session-desc">Skill 적용 → 정부지원사업 검색 → 일정 대시보드 완성</p>
-        </div>
-      </div>
-
-      <div class="session-row">
-        <div class="session-num">8</div>
-        <div class="session-card">
-          <p class="session-title">시크릿AI 프로그램 소개</p>
-          <p class="session-desc">커뮤니티 및 다음 단계 안내</p>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <hr class="divider" />
-
-  <!-- 다음 단계 안내 -->
-  <section>
-    <h2>다음 단계 안내</h2>
+    <h2>Next Step</h2>
     <div class="gift-card">
       <p class="gift-title">🚀 시크릿AI 커뮤니티에서 계속해요</p>
       <p class="gift-sub">오늘 배운 것을 혼자 이어가지 않아도 됩니다.<br>스쿨 커뮤니티에서 함께 성장하세요.</p>
       <ul class="gift-steps">
-        <li>
-          <span class="arrow">→</span>
-          <span>강의 자료 및 스킬 아카이브 상시 열람</span>
-        </li>
-        <li>
-          <span class="arrow">→</span>
-          <span>다음 워크샵 및 이벤트 우선 안내</span>
-        </li>
+        <li><span class="arrow">→</span><span>강의 자료 및 스킬 아카이브 상시 열람</span></li>
+        <li><span class="arrow">→</span><span>다음 워크샵 및 이벤트 우선 안내</span></li>
       </ul>
       <p class="gift-note" style="padding-top:18px; border-top:1px solid #e5e5e5; margin-top:20px;">
         <a href="https://www.skool.com/moimmoim/classroom" target="_blank" style="color:#1a1a1a; font-weight:700; font-size:16px;">📚 스쿨 클래스룸 바로가기 →</a>
@@ -559,6 +809,7 @@
   </footer>
 
   <script>
+    // QR 코드
     var qrGenerated = false;
     function toggleQR(btn) {
       var box = document.getElementById('qr-box');
@@ -579,6 +830,24 @@
       } else {
         btn.textContent = '📱 스쿨 커뮤니티 QR 보기';
       }
+    }
+
+    // 신청 폼 (구글 앱스크립트 연결 전 더미)
+    function submitForm() {
+      var name = document.getElementById('f-name').value.trim();
+      var email = document.getElementById('f-email').value.trim();
+      var phone = document.getElementById('f-phone').value.trim();
+
+      if (!name || !email || !phone) {
+        alert('이름, 이메일, 전화번호를 모두 입력해 주세요.');
+        return;
+      }
+
+      // TODO: 구글 앱스크립트 URL 연결
+      // fetch('APPS_SCRIPT_URL', { method: 'POST', body: JSON.stringify({name, email, phone}) })
+
+      document.getElementById('form-wrap').style.display = 'none';
+      document.getElementById('form-success').style.display = 'block';
     }
   </script>
 </body>
