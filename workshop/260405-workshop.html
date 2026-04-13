@@ -36,6 +36,19 @@
       line-height: 1.6;
     }
 
+    /* ── TOP BANNER ───────────────────────────── */
+    .top-banner {
+      width: 100%;
+      display: block;
+      line-height: 0;
+    }
+    .top-banner img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
     /* ── DIVIDER ──────────────────────────────── */
     .divider {
       border: none;
@@ -63,7 +76,7 @@
     .hero {
       max-width: 800px;
       margin: 0 auto;
-      padding: 72px 40px 60px;
+      padding: 64px 40px 56px;
     }
     .hero .label {
       display: inline-block;
@@ -97,7 +110,8 @@
     .hero-meta {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 10px;
+      margin-bottom: 32px;
     }
     .hero-meta .chip {
       display: flex;
@@ -111,110 +125,24 @@
       border-radius: 999px;
       padding: 7px 14px;
     }
-
-    /* ── 신청 폼 ──────────────────────────────── */
-    .form-section {
-      background: #1a1a1a;
-      color: #fff;
-    }
-    .form-section .inner {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 56px 40px;
-    }
-    .form-section h2 {
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #888;
-      margin-bottom: 8px;
-    }
-    .form-section .form-title {
-      font-size: 26px;
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
-    .form-section .form-sub {
-      font-size: 15px;
-      color: #aaa;
-      margin-bottom: 32px;
-      line-height: 1.6;
-    }
-    .form-section .capacity {
+    .hero-apply-btn {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      font-size: 13px;
-      font-weight: 700;
-      color: #fde68a;
-      background: rgba(253,230,138,0.12);
-      border: 1px solid rgba(253,230,138,0.3);
-      border-radius: 999px;
-      padding: 5px 14px;
-      margin-bottom: 28px;
-    }
-    .form-fields {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      margin-bottom: 20px;
-    }
-    .form-fields input {
-      width: 100%;
-      background: #2a2a2a;
-      border: 1px solid #333;
-      border-radius: 10px;
-      padding: 14px 18px;
-      font-family: inherit;
-      font-size: 16px;
+      gap: 8px;
+      background: #1a1a1a;
       color: #fff;
-      outline: none;
-      transition: border-color 0.2s;
-    }
-    .form-fields input::placeholder { color: #666; }
-    .form-fields input:focus { border-color: #fde68a; }
-    .form-submit {
-      width: 100%;
-      background: #fde68a;
-      color: #1a1a1a;
       border: none;
-      border-radius: 10px;
-      padding: 16px;
+      border-radius: 12px;
+      padding: 16px 32px;
       font-family: inherit;
       font-size: 17px;
       font-weight: 700;
       cursor: pointer;
+      text-decoration: none;
       transition: background 0.2s, transform 0.1s;
     }
-    .form-submit:hover { background: #fcd34d; }
-    .form-submit:active { transform: scale(0.99); }
-    .form-notice {
-      margin-top: 14px;
-      font-size: 13px;
-      color: #666;
-      line-height: 1.6;
-    }
-    /* 제출 완료 상태 */
-    .form-success {
-      display: none;
-      text-align: center;
-      padding: 40px 0 20px;
-    }
-    .form-success .success-icon {
-      font-size: 48px;
-      margin-bottom: 16px;
-    }
-    .form-success .success-title {
-      font-size: 22px;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-    .form-success .success-sub {
-      font-size: 16px;
-      color: #aaa;
-      line-height: 1.7;
-    }
+    .hero-apply-btn:hover { background: #333; }
+    .hero-apply-btn:active { transform: scale(0.98); }
 
     /* ── 이런 분께 ────────────────────────────── */
     .for-whom-list {
@@ -231,16 +159,8 @@
       border-radius: 12px;
       padding: 18px 22px;
     }
-    .for-whom-item .check {
-      font-size: 18px;
-      margin-top: 1px;
-      flex-shrink: 0;
-    }
-    .for-whom-item p {
-      font-size: 17px;
-      color: #333;
-      line-height: 1.6;
-    }
+    .for-whom-item .check { font-size: 18px; margin-top: 1px; flex-shrink: 0; }
+    .for-whom-item p { font-size: 17px; color: #333; line-height: 1.6; }
 
     /* ── TAKEAWAY ─────────────────────────────── */
     .takeaway-grid {
@@ -255,25 +175,14 @@
       padding: 22px 20px;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
-    .takeaway-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.07);
-    }
-    .takeaway-card .icon {
-      font-size: 28px;
-      margin-bottom: 12px;
-    }
-    .takeaway-card p {
-      font-size: 17px;
-      color: #333;
-      line-height: 1.65;
-    }
+    .takeaway-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.07); }
+    .takeaway-card .icon { font-size: 28px; margin-bottom: 12px; }
+    .takeaway-card p { font-size: 17px; color: #333; line-height: 1.65; }
 
     /* ── 타임테이블 ──────────────────────────── */
     .timetable {
       display: flex;
       flex-direction: column;
-      gap: 0;
       border: 1px solid #e5e5e5;
       border-radius: 14px;
       overflow: hidden;
@@ -295,34 +204,14 @@
       display: flex;
       align-items: center;
     }
-    .timetable-content {
-      padding: 16px 22px;
-      display: flex;
-      align-items: center;
-    }
-    .timetable-content .t-title {
-      font-size: 17px;
-      font-weight: 600;
-      color: #1a1a1a;
-    }
-    .timetable-content .t-desc {
-      font-size: 14px;
-      color: #888;
-      margin-top: 2px;
-    }
-    .timetable-row.highlight .timetable-time {
-      background: #fef9c3;
-    }
-    .timetable-row.highlight .timetable-content {
-      background: #fffdf0;
-    }
+    .timetable-content { padding: 16px 22px; }
+    .timetable-content .t-title { font-size: 17px; font-weight: 600; color: #1a1a1a; }
+    .timetable-content .t-desc { font-size: 14px; color: #888; margin-top: 2px; }
+    .timetable-row.highlight .timetable-time { background: #fef9c3; }
+    .timetable-row.highlight .timetable-content { background: #fffdf0; }
 
     /* ── 준비물 ──────────────────────────────── */
-    .checklist {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
+    .checklist { display: flex; flex-direction: column; gap: 12px; }
     .checklist-item {
       display: flex;
       align-items: flex-start;
@@ -332,10 +221,7 @@
       border-radius: 12px;
       padding: 18px 22px;
     }
-    .checklist-item.required {
-      border-color: #fde68a;
-      background: #fffdf5;
-    }
+    .checklist-item.required { border-color: #fde68a; background: #fffdf5; }
     .checklist-item .badge {
       display: inline-flex;
       align-items: center;
@@ -347,44 +233,15 @@
       flex-shrink: 0;
       margin-top: 2px;
     }
-    .checklist-item.required .badge {
-      background: #fde68a;
-      color: #7a5000;
-    }
-    .checklist-item.optional .badge {
-      background: #f0f0f0;
-      color: #888;
-    }
-    .checklist-item .item-body p {
-      font-size: 17px;
-      font-weight: 600;
-      color: #1a1a1a;
-      margin-bottom: 2px;
-    }
-    .checklist-item .item-body span {
-      font-size: 14px;
-      color: #888;
-      line-height: 1.6;
-    }
-    .checklist-item .item-body a {
-      color: #1a1a1a;
-      font-weight: 600;
-      text-decoration: underline;
-      text-underline-offset: 3px;
-    }
+    .checklist-item.required .badge { background: #fde68a; color: #7a5000; }
+    .checklist-item.optional .badge { background: #f0f0f0; color: #888; }
+    .checklist-item .item-body p { font-size: 17px; font-weight: 600; color: #1a1a1a; margin-bottom: 2px; }
+    .checklist-item .item-body span { font-size: 14px; color: #888; line-height: 1.6; }
+    .checklist-item .item-body a { color: #1a1a1a; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
 
     /* ── 세션 흐름 ────────────────────────────── */
-    .session-list {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .session-row {
-      display: grid;
-      grid-template-columns: 36px 1fr;
-      gap: 16px;
-      align-items: start;
-    }
+    .session-list { display: flex; flex-direction: column; gap: 10px; }
+    .session-row { display: grid; grid-template-columns: 36px 1fr; gap: 16px; align-items: start; }
     .session-num {
       display: inline-flex;
       align-items: center;
@@ -398,103 +255,67 @@
       color: #888;
       margin-top: 2px;
     }
-    .session-card {
-      background: #fff;
-      border: 1px solid #e5e5e5;
-      border-radius: 12px;
-      padding: 18px 22px;
-    }
-    .session-card .session-title {
-      font-size: 18px;
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
-    .session-card .session-desc {
-      font-size: 15px;
-      color: #777;
-    }
+    .session-card { background: #fff; border: 1px solid #e5e5e5; border-radius: 12px; padding: 18px 22px; }
+    .session-card .session-title { font-size: 18px; font-weight: 600; margin-bottom: 4px; }
+    .session-card .session-desc { font-size: 15px; color: #777; }
 
     /* ── GIFT ─────────────────────────────────── */
-    .gift-card {
-      background: #fff;
-      border: 2px solid #1a1a1a;
-      border-radius: 16px;
-      padding: 28px 32px;
-    }
-    .gift-card .gift-title {
-      font-size: 22px;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-    .gift-card .gift-sub {
-      font-size: 17px;
-      color: #666;
-      margin-bottom: 24px;
-      line-height: 1.7;
-    }
-    .gift-steps {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .gift-steps li {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      font-size: 17px;
-      color: #333;
-      line-height: 1.6;
-    }
-    .gift-steps li .arrow {
-      color: #aaa;
-      font-size: 16px;
-      margin-top: 2px;
-    }
-    .gift-note {
-      margin-top: 20px;
-      font-size: 15px;
-      color: #888;
-      padding-top: 18px;
-      border-top: 1px solid #e5e5e5;
-    }
+    .gift-card { background: #fff; border: 2px solid #1a1a1a; border-radius: 16px; padding: 28px 32px; }
+    .gift-card .gift-title { font-size: 22px; font-weight: 700; margin-bottom: 8px; }
+    .gift-card .gift-sub { font-size: 17px; color: #666; margin-bottom: 24px; line-height: 1.7; }
+    .gift-steps { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .gift-steps li { display: flex; align-items: flex-start; gap: 14px; font-size: 17px; color: #333; line-height: 1.6; }
+    .gift-steps li .arrow { color: #aaa; font-size: 16px; margin-top: 2px; }
+    .gift-note { margin-top: 20px; font-size: 15px; color: #888; padding-top: 18px; border-top: 1px solid #e5e5e5; }
 
     /* ── QR TOGGLE ───────────────────────────── */
     .qr-toggle {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 20px;
-      background: none;
-      border: 1px solid #1a1a1a;
-      border-radius: 999px;
-      padding: 10px 20px;
-      font-family: inherit;
-      font-size: 15px;
-      font-weight: 600;
-      cursor: pointer;
-      color: #1a1a1a;
-      transition: background 0.2s, color 0.2s;
+      display: flex; align-items: center; gap: 8px; margin-top: 20px;
+      background: none; border: 1px solid #1a1a1a; border-radius: 999px;
+      padding: 10px 20px; font-family: inherit; font-size: 15px; font-weight: 600;
+      cursor: pointer; color: #1a1a1a; transition: background 0.2s, color 0.2s;
     }
     .qr-toggle:hover { background: #1a1a1a; color: #fff; }
-    .qr-box {
-      display: none;
-      margin-top: 20px;
-      padding-top: 20px;
-      border-top: 1px solid #e5e5e5;
-      text-align: center;
-    }
+    .qr-box { display: none; margin-top: 20px; padding-top: 20px; border-top: 1px solid #e5e5e5; text-align: center; }
     .qr-box.open { display: block; }
     .qr-box p { font-size: 15px; color: #888; margin-bottom: 16px; }
     #qrcode { display: inline-block; }
     #qrcode img, #qrcode canvas { border-radius: 12px; }
 
-    /* ── FOOTER ───────────────────────────────── */
-    footer {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 40px 40px 64px;
+    /* ── 신청 폼 ──────────────────────────────── */
+    .form-section { background: #1a1a1a; color: #fff; }
+    .form-section .inner { max-width: 800px; margin: 0 auto; padding: 56px 40px; }
+    .form-section h2 { font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #888; margin-bottom: 8px; }
+    .form-section .form-title { font-size: 26px; font-weight: 700; margin-bottom: 6px; }
+    .form-section .form-sub { font-size: 15px; color: #aaa; margin-bottom: 24px; line-height: 1.6; }
+    .capacity {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 13px; font-weight: 700; color: #fde68a;
+      background: rgba(253,230,138,0.12); border: 1px solid rgba(253,230,138,0.3);
+      border-radius: 999px; padding: 5px 14px; margin-bottom: 28px;
     }
+    .form-fields { display: flex; flex-direction: column; gap: 14px; margin-bottom: 20px; }
+    .form-fields input {
+      width: 100%; background: #2a2a2a; border: 1px solid #333; border-radius: 10px;
+      padding: 14px 18px; font-family: inherit; font-size: 16px; color: #fff; outline: none; transition: border-color 0.2s;
+    }
+    .form-fields input::placeholder { color: #666; }
+    .form-fields input:focus { border-color: #fde68a; }
+    .form-submit {
+      width: 100%; background: #fde68a; color: #1a1a1a; border: none; border-radius: 10px;
+      padding: 16px; font-family: inherit; font-size: 17px; font-weight: 700;
+      cursor: pointer; transition: background 0.2s, transform 0.1s;
+    }
+    .form-submit:hover { background: #fcd34d; }
+    .form-submit:active { transform: scale(0.99); }
+    .form-notice { margin-top: 14px; font-size: 13px; color: #666; line-height: 1.6; }
+    .form-success { display: none; text-align: center; padding: 40px 0 20px; }
+    .form-success .success-icon { font-size: 48px; margin-bottom: 16px; }
+    .form-success .success-title { font-size: 22px; font-weight: 700; margin-bottom: 8px; }
+    .form-success .success-sub { font-size: 16px; color: #aaa; line-height: 1.7; }
+
+    /* ── FOOTER ───────────────────────────────── */
+    footer { max-width: 800px; margin: 0 auto; padding: 40px 40px 64px; }
     footer p { font-size: 13px; color: #bbb; }
 
     /* ── MOBILE ───────────────────────────────── */
@@ -513,43 +334,23 @@
 </head>
 <body>
 
+  <!-- TOP BANNER -->
+  <div class="top-banner">
+    <img src="../images/secretai_full_topbanner.png" alt="시크릿AI 워크샵" />
+  </div>
+
   <!-- HERO -->
   <div class="hero">
     <p class="label">SecretAI · Offline Workshop</p>
     <h1>일하는 방식이<br><span>오늘부터 달라집니다</span></h1>
-    <p class="sub">AI로 내 업무를 시스템화하는 첫 번째 실습.<br>머릿속에 있던 일들이 눈에 보이는 구조로 바뀝니다.</p>
+    <p class="sub">AI로 내 업무를 시스템화하는 실습 워크샵.<br>머릿속에 있던 일들이 눈에 보이는 구조로 바뀝니다.</p>
     <div class="hero-meta">
       <span class="chip">📅 2026년 4월 5일 (일)</span>
-      <span class="chip">🕙 오전 11시 – 오후 2시</span>
+      <span class="chip">🕙 오전 11시 – 오후 1시</span>
       <span class="chip">📍 선릉역 10번출구 인근</span>
       <span class="chip">💰 무료</span>
     </div>
-  </div>
-
-  <hr class="divider" />
-
-  <!-- 신청 폼 -->
-  <div class="form-section">
-    <div class="inner">
-      <h2>Apply</h2>
-      <p class="form-title">지금 바로 신청하세요</p>
-      <p class="form-sub">선착순 30명 마감 · 신청 완료 후 오시는 길 안내 드립니다</p>
-      <span class="capacity">🔥 선착순 30명 한정</span>
-      <div id="form-wrap">
-        <div class="form-fields">
-          <input type="text" id="f-name" placeholder="이름" />
-          <input type="email" id="f-email" placeholder="이메일" />
-          <input type="tel" id="f-phone" placeholder="전화번호" />
-        </div>
-        <button class="form-submit" onclick="submitForm()">무료 신청하기 →</button>
-        <p class="form-notice">개인정보는 워크샵 운영 목적으로만 사용되며 외부에 제공되지 않습니다.</p>
-      </div>
-      <div class="form-success" id="form-success">
-        <div class="success-icon">✅</div>
-        <p class="success-title">신청 완료!</p>
-        <p class="success-sub">곧 오시는 길과 준비사항을 안내드릴게요.<br>당일 뵙겠습니다 😊</p>
-      </div>
-    </div>
+    <a class="hero-apply-btn" href="#apply">지금 신청하기 →</a>
   </div>
 
   <hr class="divider" />
@@ -579,7 +380,7 @@
 
   <hr class="divider" />
 
-  <!-- 오늘 얻어가는 것 -->
+  <!-- Takeaway -->
   <section>
     <h2>Takeaway</h2>
     <div class="takeaway-grid">
@@ -607,55 +408,43 @@
       <div class="timetable-row">
         <div class="timetable-time">11:00</div>
         <div class="timetable-content">
-          <div>
-            <p class="t-title">입장 및 네트워킹</p>
-            <p class="t-desc">자리 세팅 · Wi-Fi 연결 · 자기소개</p>
-          </div>
+          <p class="t-title">입장 및 네트워킹</p>
+          <p class="t-desc">자리 세팅 · Wi-Fi 연결 · 자기소개</p>
         </div>
       </div>
       <div class="timetable-row">
         <div class="timetable-time">11:20</div>
         <div class="timetable-content">
-          <div>
-            <p class="t-title">JAY 사례 소개</p>
-            <p class="t-desc">AI로 업무 시스템화한 실제 사례</p>
-          </div>
+          <p class="t-title">JAY 사례 소개</p>
+          <p class="t-desc">AI로 업무 시스템화한 실제 사례</p>
         </div>
       </div>
       <div class="timetable-row">
         <div class="timetable-time">11:40</div>
         <div class="timetable-content">
-          <div>
-            <p class="t-title">툴 소개 + 설치</p>
-            <p class="t-desc">오늘 사용할 도구 안내 · Antigravity 설치</p>
-          </div>
+          <p class="t-title">툴 소개 + 설치</p>
+          <p class="t-desc">오늘 사용할 도구 안내 · Antigravity 설치</p>
         </div>
       </div>
       <div class="timetable-row highlight">
         <div class="timetable-time">12:10</div>
         <div class="timetable-content">
-          <div>
-            <p class="t-title">🔑 실습</p>
-            <p class="t-desc">Skill 적용 → 정부지원사업 검색 → 대시보드 완성</p>
-          </div>
+          <p class="t-title">🔑 실습</p>
+          <p class="t-desc">Skill 적용 → 정부지원사업 검색 → 대시보드 완성</p>
         </div>
       </div>
       <div class="timetable-row">
-        <div class="timetable-time">13:30</div>
+        <div class="timetable-time">12:40</div>
         <div class="timetable-content">
-          <div>
-            <p class="t-title">결과 공유 + Q&A</p>
-            <p class="t-desc">각자 완성한 대시보드 공유 · 질의응답</p>
-          </div>
+          <p class="t-title">결과 공유 + Q&A</p>
+          <p class="t-desc">각자 완성한 대시보드 공유 · 질의응답</p>
         </div>
       </div>
       <div class="timetable-row">
-        <div class="timetable-time">14:00</div>
+        <div class="timetable-time">13:00</div>
         <div class="timetable-content">
-          <div>
-            <p class="t-title">마무리</p>
-            <p class="t-desc">시크릿AI 커뮤니티 소개 · 다음 단계 안내</p>
-          </div>
+          <p class="t-title">마무리</p>
+          <p class="t-desc">시크릿AI 커뮤니티 소개 · 다음 단계 안내</p>
         </div>
       </div>
     </div>
@@ -686,7 +475,7 @@
         <span class="badge">선택</span>
         <div class="item-body">
           <p>🔋 보조배터리 또는 충전기</p>
-          <span>3시간 실습이라 배터리 여유가 있으면 좋습니다.</span>
+          <span>2시간 실습이라 배터리 여유가 있으면 좋습니다.</span>
         </div>
       </div>
     </div>
@@ -766,14 +555,8 @@
       <p class="gift-title">🎁 후기 작성하면 Skill 선물 증정</p>
       <p class="gift-sub">오늘 현장 모습 또는 업무에 적용한 모습을 찍어서<br>스쿨 커뮤니티에 올려주시면 드립니다.</p>
       <ul class="gift-steps">
-        <li>
-          <span class="arrow">→</span>
-          <span>스쿨 커뮤니티에 인증 글 + 사진 업로드</span>
-        </li>
-        <li>
-          <span class="arrow">→</span>
-          <span>올려주신 분께 <strong>스쿨 DM</strong>으로 Skill 파일 전달</span>
-        </li>
+        <li><span class="arrow">→</span><span>스쿨 커뮤니티에 인증 글 + 사진 업로드</span></li>
+        <li><span class="arrow">→</span><span>올려주신 분께 <strong>스쿨 DM</strong>으로 Skill 파일 전달</span></li>
       </ul>
       <p class="gift-note">선물은 실습 시작 전에 먼저 드립니다 — 오늘 실습에서 바로 사용하실 거예요.</p>
       <button class="qr-toggle" onclick="toggleQR(this)">📱 스쿨 커뮤니티 QR 보기</button>
@@ -804,12 +587,35 @@
 
   <hr class="divider" />
 
+  <!-- 신청 폼 (최하단) -->
+  <div class="form-section" id="apply">
+    <div class="inner">
+      <h2>Apply</h2>
+      <p class="form-title">지금 바로 신청하세요</p>
+      <p class="form-sub">신청 완료 후 오시는 길을 안내드립니다</p>
+      <span class="capacity">🔥 선착순 30명 한정</span>
+      <div id="form-wrap">
+        <div class="form-fields">
+          <input type="text" id="f-name" placeholder="이름" />
+          <input type="email" id="f-email" placeholder="이메일" />
+          <input type="tel" id="f-phone" placeholder="전화번호" />
+        </div>
+        <button class="form-submit" onclick="submitForm()">무료 신청하기 →</button>
+        <p class="form-notice">개인정보는 워크샵 운영 목적으로만 사용되며 외부에 제공되지 않습니다.</p>
+      </div>
+      <div class="form-success" id="form-success">
+        <div class="success-icon">✅</div>
+        <p class="success-title">신청 완료!</p>
+        <p class="success-sub">곧 오시는 길과 준비사항을 안내드릴게요.<br>당일 뵙겠습니다 😊</p>
+      </div>
+    </div>
+  </div>
+
   <footer>
     <p>SecretAI · 2026.04.05</p>
   </footer>
 
   <script>
-    // QR 코드
     var qrGenerated = false;
     function toggleQR(btn) {
       var box = document.getElementById('qr-box');
@@ -819,10 +625,8 @@
         if (!qrGenerated) {
           new QRCode(document.getElementById('qrcode'), {
             text: 'https://www.skool.com/moimmoim/about?ref=58fd31433f5d4811995c0ed21b4e40b5',
-            width: 220,
-            height: 220,
-            colorDark: '#1a1a1a',
-            colorLight: '#ffffff',
+            width: 220, height: 220,
+            colorDark: '#1a1a1a', colorLight: '#ffffff',
             correctLevel: QRCode.CorrectLevel.H
           });
           qrGenerated = true;
@@ -832,20 +636,16 @@
       }
     }
 
-    // 신청 폼 (구글 앱스크립트 연결 전 더미)
     function submitForm() {
       var name = document.getElementById('f-name').value.trim();
       var email = document.getElementById('f-email').value.trim();
       var phone = document.getElementById('f-phone').value.trim();
-
       if (!name || !email || !phone) {
         alert('이름, 이메일, 전화번호를 모두 입력해 주세요.');
         return;
       }
-
       // TODO: 구글 앱스크립트 URL 연결
       // fetch('APPS_SCRIPT_URL', { method: 'POST', body: JSON.stringify({name, email, phone}) })
-
       document.getElementById('form-wrap').style.display = 'none';
       document.getElementById('form-success').style.display = 'block';
     }
