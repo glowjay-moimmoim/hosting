@@ -556,7 +556,7 @@
         <div class="form-fields">
           <input type="text" id="f-name" placeholder="이름" />
           <input type="email" id="f-email" placeholder="이메일" />
-          <input type="tel" id="f-phone" placeholder="전화번호" />
+          <input type="tel" id="f-phone" placeholder="전화번호" oninput="formatPhone(this)" maxlength="13" />
         </div>
         <button class="form-submit" onclick="submitForm()">무료 신청하기 →</button>
         <button class="privacy-toggle" onclick="togglePrivacy(this)">개인정보 수집 및 이용 안내 보기 ▾</button>
@@ -597,6 +597,17 @@
         }
       } else {
         btn.textContent = '📱 스쿨 커뮤니티 QR 보기';
+      }
+    }
+
+    function formatPhone(input) {
+      var v = input.value.replace(/\D/g, '');
+      if (v.length <= 3) {
+        input.value = v;
+      } else if (v.length <= 7) {
+        input.value = v.slice(0, 3) + '-' + v.slice(3);
+      } else {
+        input.value = v.slice(0, 3) + '-' + v.slice(3, 7) + '-' + v.slice(7, 11);
       }
     }
 
