@@ -553,6 +553,7 @@
       <p class="form-title">지금 바로 신청하세요</p>
       <p class="form-sub">신청 완료 후, 오시는 길을 별도로 안내드립니다</p>
       <div id="form-wrap">
+        <input type="hidden" id="f-date" value="2026년 4월 5일 (일) 오전 11시" />
         <div class="form-fields">
           <input type="text" id="f-name" placeholder="이름" />
           <input type="email" id="f-email" placeholder="이메일" />
@@ -638,11 +639,13 @@
       btn.textContent = '신청 중...';
       btn.disabled = true;
 
+      var date = document.getElementById('f-date').value;
       var params = new URLSearchParams({
         workshop: '정부지원 사업 크롤링 + 대시보드 제작하기',
         name: name,
         phone: phone,
-        email: email
+        email: email,
+        date: date
       });
 
       fetch('https://script.google.com/macros/s/AKfycbzhmnX6bzDe_jxF9ggKOOIhqghs-0_-i9Xtwqvqh7_5rYEbfcgAJptYMrmsm4igps7Bgg/exec?' + params.toString(), {
