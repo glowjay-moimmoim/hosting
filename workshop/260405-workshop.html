@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SecretAI 오프라인 워크샵 — 2026.04.05</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <style>
+    @font-face {
+      font-family: 'Paperlogy';
+      src: url('../Paperlogy-1.000/Paperlogy-4Regular.ttf') format('truetype');
+      font-weight: 400;
+    }
+    @font-face {
+      font-family: 'Paperlogy';
+      src: url('../Paperlogy-1.000/Paperlogy-5Medium.ttf') format('truetype');
+      font-weight: 500;
+    }
+    @font-face {
+      font-family: 'Paperlogy';
+      src: url('../Paperlogy-1.000/Paperlogy-6SemiBold.ttf') format('truetype');
+      font-weight: 600;
+    }
+    @font-face {
+      font-family: 'Paperlogy';
+      src: url('../Paperlogy-1.000/Paperlogy-7Bold.ttf') format('truetype');
+      font-weight: 700;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Paperlogy', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #fafaf8;
+      color: #1a1a1a;
+      line-height: 1.6;
+    }
+
+    /* ── HERO ─────────────────────────────────── */
+    .hero {
+      padding: 72px 40px 60px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .hero .label {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: #888;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: 40px;
+      font-weight: 700;
+      line-height: 1.25;
+      margin-bottom: 20px;
+    }
+    .hero h1 span {
+      background: #fde68a;
+      padding: 0 4px;
+    }
+    .hero .sub {
+      font-size: 18px;
+      color: #555;
+      max-width: 520px;
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+    .hero .meta {
+      font-size: 14px;
+      color: #aaa;
+      font-weight: 500;
+    }
+
+    /* ── DIVIDER ──────────────────────────────── */
+    .divider {
+      border: none;
+      border-top: 1px solid #e5e5e5;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* ── SECTION ─────────────────────────────── */
+    section {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 56px 40px;
+    }
+    section > h2 {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 28px;
+    }
+
+    /* ── WIFI CARD ────────────────────────────── */
+    .wifi-card {
+      background: #fff;
+      border: 1px solid #e5e5e5;
+      border-radius: 16px;
+      padding: 28px 32px;
+    }
+    .wifi-card .wifi-title {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    .wifi-steps {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .wifi-steps li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      font-size: 19px;
+      color: #333;
+      line-height: 1.6;
+    }
+    .wifi-steps li .step-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      min-width: 28px;
+      background: #1a1a1a;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      border-radius: 50%;
+      margin-top: 2px;
+    }
+    .wifi-notice {
+      margin-top: 24px;
+      background: #fef9c3;
+      border: 1px solid #fde68a;
+      border-radius: 10px;
+      padding: 16px 20px;
+      font-size: 17px;
+      color: #555;
+      line-height: 1.7;
+    }
+    .wifi-notice strong {
+      color: #1a1a1a;
+    }
+
+    /* ── TAKEAWAY ─────────────────────────────── */
+    .takeaway-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 14px;
+    }
+    .takeaway-card {
+      background: #fff;
+      border: 1px solid #e5e5e5;
+      border-radius: 12px;
+      padding: 22px 20px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .takeaway-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.07);
+    }
+    .takeaway-card .icon {
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+    .takeaway-card p {
+      font-size: 17px;
+      color: #333;
+      line-height: 1.65;
+    }
+
+    /* ── GIFT ─────────────────────────────────── */
+    .gift-card {
+      background: #fff;
+      border: 2px solid #1a1a1a;
+      border-radius: 16px;
+      padding: 28px 32px;
+    }
+    .gift-card .gift-title {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .gift-card .gift-sub {
+      font-size: 17px;
+      color: #666;
+      margin-bottom: 24px;
+      line-height: 1.7;
+    }
+    .gift-steps {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .gift-steps li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      font-size: 17px;
+      color: #333;
+      line-height: 1.6;
+    }
+    .gift-steps li .arrow {
+      color: #aaa;
+      font-size: 16px;
+      margin-top: 2px;
+    }
+    .gift-note {
+      margin-top: 20px;
+      font-size: 15px;
+      color: #888;
+      padding-top: 18px;
+      border-top: 1px solid #e5e5e5;
+    }
+
+    /* ── SESSION FLOW ─────────────────────────── */
+    .session-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .session-row {
+      display: grid;
+      grid-template-columns: 36px 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+    .session-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      background: #f5f5f3;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 700;
+      color: #888;
+      margin-top: 2px;
+    }
+    .session-card {
+      background: #fef9c3;
+      border: 1px solid #fde68a;
+      border-radius: 12px;
+      padding: 20px 24px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .session-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.07);
+      border-color: #f9a8d4;
+    }
+    .session-card .session-title {
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .session-card .session-desc {
+      font-size: 17px;
+      color: #555;
+    }
+
+    /* ── PRACTICE ─────────────────────────────── */
+    .practice-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .practice-item {
+      display: grid;
+      grid-template-columns: 40px 1fr;
+      gap: 16px;
+      align-items: center;
+      background: #fff;
+      border: 1px solid #e5e5e5;
+      border-radius: 12px;
+      padding: 20px 22px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .practice-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.07);
+    }
+    .practice-step {
+      font-size: 22px;
+      font-weight: 700;
+      color: #e5e5e5;
+    }
+    .practice-content .practice-title {
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .practice-content .practice-desc {
+      font-size: 17px;
+      color: #555;
+    }
+
+    /* ── QR TOGGLE ───────────────────────────── */
+    .qr-toggle {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 20px;
+      background: none;
+      border: 1px solid #1a1a1a;
+      border-radius: 999px;
+      padding: 10px 20px;
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      color: #1a1a1a;
+      transition: background 0.2s, color 0.2s;
+    }
+    .qr-toggle:hover {
+      background: #1a1a1a;
+      color: #fff;
+    }
+    .qr-box {
+      display: none;
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid #e5e5e5;
+      text-align: center;
+    }
+    .qr-box.open { display: block; }
+    .qr-box p {
+      font-size: 15px;
+      color: #888;
+      margin-bottom: 16px;
+    }
+    #qrcode {
+      display: inline-block;
+    }
+    #qrcode img, #qrcode canvas {
+      border-radius: 12px;
+    }
+
+    /* ── FOOTER ───────────────────────────────── */
+    footer {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 40px 64px;
+    }
+    footer p {
+      font-size: 13px;
+      color: #bbb;
+    }
+
+    /* ── MOBILE ───────────────────────────────── */
+    @media (max-width: 600px) {
+      .hero { padding: 48px 24px 40px; }
+      .hero h1 { font-size: 28px; }
+      .hero .sub { font-size: 16px; }
+      section { padding: 40px 24px; }
+      .takeaway-grid { grid-template-columns: 1fr; }
+      footer { padding: 32px 24px 48px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <div class="hero">
+    <p class="label">SecretAI Offline Workshop · April 5, 2026</p>
+    <h1>일하는 방식이<br><span>오늘부터 달라집니다</span></h1>
+    <p class="sub">내 회사만의 업무 시스템, AI와 함께 처음으로 잡아봅니다</p>
+    <p class="meta">Sunday, April 5th &nbsp;·&nbsp; 11am – 2pm &nbsp;·&nbsp; Seoul time</p>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- 와이파이 -->
+  <section>
+    <h2>Wi-Fi</h2>
+    <div class="wifi-card">
+      <p class="wifi-title">📶 인터넷 연결 방법</p>
+      <ul class="wifi-steps">
+        <li>
+          <span class="step-num">1</span>
+          <span>Wi-Fi 목록에서 <strong>WeWork Guest</strong> 선택</span>
+        </li>
+        <li>
+          <span class="step-num">2</span>
+          <span>브라우저가 자동으로 위워크 페이지를 엽니다</span>
+        </li>
+        <li>
+          <span class="step-num">3</span>
+          <span>이메일 주소 입력 후 연결 완료</span>
+        </li>
+      </ul>
+      <div class="wifi-notice">
+        💡 <strong>핫스팟 권장:</strong> 참여자 전원이 같은 네트워크를 쓰면 속도가 느려질 수 있습니다.<br>
+        가능하면 <strong>개인 핫스팟</strong>을 사용해 주세요.
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- 오늘 얻어가는 것 -->
+  <section>
+    <h2>오늘 손에 들고 나갈 것</h2>
+    <div class="takeaway-grid">
+      <div class="takeaway-card">
+        <div class="icon">🧠</div>
+        <p>머릿속에 있던 업무가 AI가 읽을 수 있는 형태로 정리된 경험</p>
+      </div>
+      <div class="takeaway-card">
+        <div class="icon">🏗</div>
+        <p>체계적인 업무 시스템을 잡는 첫발</p>
+      </div>
+      <div class="takeaway-card">
+        <div class="icon">📊</div>
+        <p>내 회사에 맞게 커스터마이징된 정부지원사업 일정 대시보드</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- 후기 선물 -->
+  <section>
+    <h2>Gift</h2>
+    <div class="gift-card">
+      <p class="gift-title">🎁 후기 작성하면 Skill 선물 증정</p>
+      <p class="gift-sub">오늘 현장 모습 또는 업무에 적용한 모습을 찍어서<br>스쿨 커뮤니티에 올려주시면 드립니다.</p>
+      <ul class="gift-steps">
+        <li>
+          <span class="arrow">→</span>
+          <span>스쿨 커뮤니티에 인증 글 + 사진 업로드</span>
+        </li>
+        <li>
+          <span class="arrow">→</span>
+          <span>올려주신 분께 <strong>스쿨 DM</strong>으로 Skill 파일 전달</span>
+        </li>
+      </ul>
+      <p class="gift-note">선물은 실습 시작 전에 먼저 드립니다 — 오늘 실습에서 바로 사용하실 거예요.</p>
+      <button class="qr-toggle" onclick="toggleQR(this)">📱 스쿨 커뮤니티 QR 보기</button>
+      <div class="qr-box" id="qr-box">
+        <p>카메라로 찍어서 가입하세요</p>
+        <div id="qrcode"></div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- 세션 흐름 -->
+  <section>
+    <h2>세션 흐름</h2>
+    <div class="session-list">
+
+      <div class="session-row">
+        <div class="session-num">1</div>
+        <div class="session-card">
+          <p class="session-title">JAY 사례 소개</p>
+          <p class="session-desc">업무 시스템화 실제 사례</p>
+        </div>
+      </div>
+
+      <div class="session-row">
+        <div class="session-num">2</div>
+        <div class="session-card">
+          <p class="session-title">툴 소개</p>
+          <p class="session-desc">오늘 사용할 도구들 &nbsp;·&nbsp; <a href="https://www.skool.com/moimmoim/classroom" target="_blank" style="color:#1a1a1a; font-weight:600;">스쿨 클래스룸 바로가기 →</a></p>
+        </div>
+      </div>
+
+      <div class="session-row">
+        <div class="session-num">3</div>
+        <div class="session-card">
+          <p class="session-title">안티그래비티 설치</p>
+          <p class="session-desc">구글에서 직접 검색 → 다운로드 시작</p>
+        </div>
+      </div>
+
+      <div class="session-row">
+        <div class="session-num">4</div>
+        <div class="session-card">
+          <p class="session-title">Skool 자기소개 작성</p>
+          <p class="session-desc">설치되는 동안 커뮤니티 자기소개 란에 글 작성</p>
+        </div>
+      </div>
+
+      <div class="session-row">
+        <div class="session-num">5</div>
+        <div class="session-card">
+          <p class="session-title">자기소개 발표</p>
+          <p class="session-desc">돌아가며 말로 소개</p>
+        </div>
+      </div>
+
+      <div class="session-row">
+        <div class="session-num">6</div>
+        <div class="session-card highlight">
+          <p class="session-title">스킬 사용법 소개 + 선물 지급</p>
+          <p class="session-desc">스킬 개요 설명 후 파일 전달 — 실습 전에 미리 드립니다</p>
+        </div>
+      </div>
+
+      <div class="session-row">
+        <div class="session-num">7</div>
+        <div class="session-card">
+          <p class="session-title">실습</p>
+          <p class="session-desc">Skill 적용 → 정부지원사업 검색 → 일정 대시보드 완성</p>
+        </div>
+      </div>
+
+      <div class="session-row">
+        <div class="session-num">8</div>
+        <div class="session-card">
+          <p class="session-title">시크릿AI 프로그램 소개</p>
+          <p class="session-desc">커뮤니티 및 다음 단계 안내</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- 다음 단계 안내 -->
+  <section>
+    <h2>다음 단계 안내</h2>
+    <div class="gift-card">
+      <p class="gift-title">🚀 시크릿AI 커뮤니티에서 계속해요</p>
+      <p class="gift-sub">오늘 배운 것을 혼자 이어가지 않아도 됩니다.<br>스쿨 커뮤니티에서 함께 성장하세요.</p>
+      <ul class="gift-steps">
+        <li>
+          <span class="arrow">→</span>
+          <span>강의 자료 및 스킬 아카이브 상시 열람</span>
+        </li>
+        <li>
+          <span class="arrow">→</span>
+          <span>다음 워크샵 및 이벤트 우선 안내</span>
+        </li>
+      </ul>
+      <p class="gift-note" style="padding-top:18px; border-top:1px solid #e5e5e5; margin-top:20px;">
+        <a href="https://www.skool.com/moimmoim/classroom" target="_blank" style="color:#1a1a1a; font-weight:700; font-size:16px;">📚 스쿨 클래스룸 바로가기 →</a>
+      </p>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <footer>
+    <p>SecretAI · 2026.04.05</p>
+  </footer>
+
+  <script>
+    var qrGenerated = false;
+    function toggleQR(btn) {
+      var box = document.getElementById('qr-box');
+      box.classList.toggle('open');
+      if (box.classList.contains('open')) {
+        btn.textContent = '📱 QR 닫기';
+        if (!qrGenerated) {
+          new QRCode(document.getElementById('qrcode'), {
+            text: 'https://www.skool.com/moimmoim/about?ref=58fd31433f5d4811995c0ed21b4e40b5',
+            width: 220,
+            height: 220,
+            colorDark: '#1a1a1a',
+            colorLight: '#ffffff',
+            correctLevel: QRCode.CorrectLevel.H
+          });
+          qrGenerated = true;
+        }
+      } else {
+        btn.textContent = '📱 스쿨 커뮤니티 QR 보기';
+      }
+    }
+  </script>
+</body>
+</html>
