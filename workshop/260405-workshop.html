@@ -532,9 +532,9 @@
         <span class="badge">권장</span>
         <div class="item-body">
           <p>⚡ VSCode 또는 Antigravity 설치 및 세팅</p>
-          <span>미리 설치하면 실습 시간이 더 넉넉해집니다.</span>
-          <div style="text-align: right; margin-top: 8px;">
-            <button class="prep-toggle" onclick="togglePrep(this)" style="margin-top: 0;">설치 가이드 보기 ▾</button>
+          <div style="display: flex; justify-content: space-between; align-items: baseline; margin-top: 4px;">
+            <span>미리 설치하면 실습 시간이 더 넉넉해집니다.</span>
+            <button class="prep-toggle" onclick="togglePrep(this)" style="margin-top: 0; flex-shrink: 0; margin-left: 16px; white-space: nowrap;">설치 가이드 보기 ▾</button>
           </div>
           <div class="prep-box" id="prep-box">
             <div class="prep-image-grid">
@@ -725,7 +725,7 @@
     function togglePrep(btn) {
       var box = document.getElementById('prep-box');
       box.classList.toggle('open');
-      btn.textContent = box.classList.contains('open') ? '설치 가이드 닫기 ▴' : '설치 가이드 보기 ▾';
+      btn.textContent = box.classList.contains('open') ? '설치 가이드 보기 ▴' : '설치 가이드 보기 ▾';
     }
 
     function togglePrivacy(btn) {
