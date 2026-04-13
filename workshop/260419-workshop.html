@@ -572,6 +572,11 @@
         <p class="success-title">신청 완료!</p>
         <p class="success-sub">곧 오시는 길과 준비사항을 안내드릴게요.<br>당일 뵙겠습니다 😊</p>
       </div>
+      <div class="form-success" id="form-full">
+        <div class="success-icon">🔒</div>
+        <p class="success-title">신청이 마감되었습니다</p>
+        <p class="success-sub">이번 워크샵 신청이 모두 완료되었습니다.<br>다음 워크샵에서 뵙겠습니다!</p>
+      </div>
     </div>
   </div>
 
@@ -627,12 +632,17 @@
         date: date
       });
 
-      fetch('https://script.google.com/macros/s/AKfycbwYGligyNVhKLRxPzuEJnVE2TMsKzmeABEDAbAsEQA0ExQmR_9Qa0tCCuC0O7XmqHXnuw/exec?' + params.toString(), {
+      fetch('https://script.google.com/macros/s/AKfycbz_nVbBZ6iS9mXaYp8kSzvq7sb-OhBDaJDiAqHq5ZCxrX3FQdaCBFH1Az8g42wgpXtwBA/exec?' + params.toString(), {
         method: 'GET'
       })
-      .then(function() {
+      .then(function(res) { return res.json(); })
+      .then(function(data) {
         document.getElementById('form-wrap').style.display = 'none';
-        document.getElementById('form-success').style.display = 'block';
+        if (data.result === 'full') {
+          document.getElementById('form-full').style.display = 'block';
+        } else {
+          document.getElementById('form-success').style.display = 'block';
+        }
       })
       .catch(function() {
         document.getElementById('form-wrap').style.display = 'none';
