@@ -129,8 +129,8 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: #1a1a1a;
-      color: #fff;
+      background: #fde68a;
+      color: #1a1a1a;
       border: none;
       border-radius: 12px;
       padding: 16px 32px;
@@ -141,7 +141,7 @@
       text-decoration: none;
       transition: background 0.2s, transform 0.1s;
     }
-    .hero-apply-btn:hover { background: #333; }
+    .hero-apply-btn:hover { background: #fcd34d; }
     .hero-apply-btn:active { transform: scale(0.98); }
 
     /* ── 이런 분께 ────────────────────────────── */
@@ -315,8 +315,12 @@
     .form-success .success-sub { font-size: 16px; color: #aaa; line-height: 1.7; }
 
     /* ── FOOTER ───────────────────────────────── */
-    footer { max-width: 800px; margin: 0 auto; padding: 40px 40px 64px; }
-    footer p { font-size: 13px; color: #bbb; }
+    footer {
+      background: #1a1a1a;
+      padding: 24px 40px;
+      text-align: center;
+    }
+    footer p { font-size: 13px; color: #666; }
 
     /* ── MOBILE ───────────────────────────────── */
     @media (max-width: 600px) {
@@ -342,13 +346,13 @@
   <!-- HERO -->
   <div class="hero">
     <p class="label">SecretAI · Offline Workshop</p>
-    <h1>일하는 방식이<br><span>오늘부터 달라집니다</span></h1>
+    <h1>대표님,<br>일하는 방식이<br><span>오늘부터 달라집니다</span></h1>
     <p class="sub">AI로 내 업무를 시스템화하는 실습 워크샵.<br>머릿속에 있던 일들이 눈에 보이는 구조로 바뀝니다.</p>
     <div class="hero-meta">
       <span class="chip">📅 2026년 4월 5일 (일)</span>
       <span class="chip">🕙 오전 11시 – 오후 1시</span>
-      <span class="chip">📍 선릉역 10번출구 인근</span>
       <span class="chip">💰 무료</span>
+      <span class="chip">📍 선릉역 10번출구 인근</span>
     </div>
     <a class="hero-apply-btn" href="#apply">지금 신청하기 →</a>
   </div>
@@ -612,7 +616,7 @@
   </div>
 
   <footer>
-    <p>SecretAI · 2026.04.05</p>
+    <p>© Glownova | SecretAI</p>
   </footer>
 
   <script>
