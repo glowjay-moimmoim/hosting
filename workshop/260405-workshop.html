@@ -236,8 +236,54 @@
     .checklist-item.required .badge { background: #fde68a; color: #7a5000; }
     .checklist-item.optional .badge { background: #f0f0f0; color: #888; }
     .checklist-item .item-body p { font-size: 17px; font-weight: 600; color: #1a1a1a; margin-bottom: 2px; }
-    .checklist-item .item-body span { font-size: 14px; color: #888; line-height: 1.6; }
+    .checklist-item .item-body span { font-size: 15px; color: #888; line-height: 1.6; }
     .checklist-item .item-body a { color: #1a1a1a; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+    .prep-toggle {
+      display: inline-block;
+      margin-top: 10px;
+      background: none;
+      border: none;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 600;
+      color: #555;
+      cursor: pointer;
+      padding: 0;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .prep-box {
+      display: none;
+      margin-top: 14px;
+    }
+    .prep-box.open { display: block; }
+    .prep-image-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .prep-image-grid a {
+      text-decoration: none;
+      display: block;
+    }
+    .prep-image-grid img {
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid #e5e5e5;
+      display: block;
+      transition: opacity 0.2s;
+    }
+    .prep-image-grid a:hover img { opacity: 0.85; }
+    .prep-image-grid p {
+      font-size: 13px;
+      color: #555;
+      font-weight: 600;
+      margin-top: 6px;
+      text-align: center;
+    }
+    @media (max-width: 600px) {
+      .prep-image-grid { grid-template-columns: 1fr; }
+    }
 
     /* ── 세션 흐름 ────────────────────────────── */
     .session-list { display: flex; flex-direction: column; gap: 10px; }
@@ -394,7 +440,7 @@
         <p>AI 툴에 관심은 있지만, 실무에 제대로 붙이지 못한 분</p>
       </div>
     </div>
-    <p style="margin-top: 28px; font-size: 22px; color: #1a1a1a; line-height: 1.6;">아무것도 몰라도 괜찮습니다.<br><span style="background: #fde68a; padding: 0 4px;">처음부터 차근차근, 누구든 따라올 수 있도록 함께할게요.</span></p>
+    <p style="margin-top: 28px; font-size: 22px; color: #1a1a1a; line-height: 1.6;">아무것도 몰라도 괜찮습니다.<br><span style="background: #fde68a; padding: 0 4px;">처음부터 차근차근,</span><br><span style="background: #fde68a; padding: 0 4px;">누구든 따라올 수 있도록 함께할게요!</span></p>
   </section>
 
   <hr class="divider" />
@@ -485,9 +531,21 @@
       <div class="checklist-item optional">
         <span class="badge">권장</span>
         <div class="item-body">
-          <p>⚡ VSCode 또는 Antigravity 사전 설치</p>
-          <span>현장에서 설치해도 되지만 미리 설치하면 실습 시간이 더 넉넉해집니다.<br>
-          <a href="#" target="_blank">→ 설치 가이드 보기</a></span>
+          <p>⚡ VSCode 또는 Antigravity 설치 및 세팅</p>
+          <span>현장에서 설치해도 되지만 미리 설치하면 실습 시간이 더 넉넉해집니다.</span>
+          <button class="prep-toggle" onclick="togglePrep(this)">설치 가이드 보기 ▾</button>
+          <div class="prep-box" id="prep-box">
+            <div class="prep-image-grid">
+              <a href="https://www.skool.com/moimmoim/about?ref=58fd31433f5d4811995c0ed21b4e40b5" target="_blank">
+                <img src="../images/classroom_setting.png" alt="클래스룸" />
+                <p>스쿨 클래스룸 바로가기 →</p>
+              </a>
+              <a href="https://www.skool.com/moimmoim/about?ref=58fd31433f5d4811995c0ed21b4e40b5" target="_blank">
+                <img src="../images/classroom_settingguide.png" alt="설치 가이드" />
+                <p>설치 가이드 보기 →</p>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
       <div class="checklist-item optional">
@@ -659,6 +717,12 @@
       } else {
         btn.textContent = '📱 스쿨 커뮤니티 QR 보기';
       }
+    }
+
+    function togglePrep(btn) {
+      var box = document.getElementById('prep-box');
+      box.classList.toggle('open');
+      btn.textContent = box.classList.contains('open') ? '설치 가이드 닫기 ▴' : '설치 가이드 보기 ▾';
     }
 
     function togglePrivacy(btn) {
