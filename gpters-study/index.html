@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>사례글 & OT 과제 안내 — 지피터스 22기 문서자동화</title>
+  <style>
+    @font-face {
+      font-family: 'Paperlogy';
+      src: url('https://raw.githubusercontent.com/glowjay-moimmoim/hosting/main/Paperlogy-1.000/Paperlogy-4Regular.ttf') format('truetype');
+      font-weight: 400;
+    }
+    @font-face {
+      font-family: 'Paperlogy';
+      src: url('https://raw.githubusercontent.com/glowjay-moimmoim/hosting/main/Paperlogy-1.000/Paperlogy-5Medium.ttf') format('truetype');
+      font-weight: 500;
+    }
+    @font-face {
+      font-family: 'Paperlogy';
+      src: url('https://raw.githubusercontent.com/glowjay-moimmoim/hosting/main/Paperlogy-1.000/Paperlogy-6SemiBold.ttf') format('truetype');
+      font-weight: 600;
+    }
+    @font-face {
+      font-family: 'Paperlogy';
+      src: url('https://raw.githubusercontent.com/glowjay-moimmoim/hosting/main/Paperlogy-1.000/Paperlogy-7Bold.ttf') format('truetype');
+      font-weight: 700;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Paperlogy', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #fafaf8;
+      color: #1a1a1a;
+      line-height: 1.6;
+    }
+
+    /* ── HERO ─────────────────────────────────── */
+    .hero {
+      padding: 72px 40px 60px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .hero .label {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: #888;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: 40px;
+      font-weight: 700;
+      line-height: 1.25;
+      margin-bottom: 20px;
+    }
+    .hero h1 span {
+      background: #fde68a;
+      padding: 0 4px;
+    }
+    .hero .sub {
+      font-size: 18px;
+      color: #555;
+      max-width: 560px;
+      line-height: 1.7;
+    }
+
+    /* ── DIVIDER ──────────────────────────────── */
+    .divider {
+      border: none;
+      border-top: 1px solid #e5e5e5;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* ── SECTION ─────────────────────────────── */
+    section {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 56px 40px;
+    }
+    section > h2 {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 28px;
+    }
+
+    /* ── CHOICE CARDS ────────────────────────── */
+    .choice-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .choice-card {
+      background: #fff;
+      border: 1px solid #e5e5e5;
+      border-radius: 16px;
+      padding: 28px 28px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .choice-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.07);
+    }
+    .choice-card.highlight {
+      border: 2px solid #eb5a0f;
+    }
+    .choice-card .choice-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #aaa;
+      margin-bottom: 10px;
+    }
+    .choice-card .choice-title {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .choice-card .choice-desc {
+      font-size: 16px;
+      color: #555;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+    .choice-card .tag-box {
+      background: #f5f5f3;
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-size: 15px;
+      color: #333;
+      font-weight: 500;
+    }
+    .choice-card .tag-box code {
+      background: #e5e5e5;
+      border-radius: 4px;
+      padding: 2px 8px;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .benefit-list {
+      list-style: none;
+      margin-top: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .benefit-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 15px;
+      color: #444;
+      line-height: 1.6;
+    }
+    .benefit-list li::before {
+      content: '→';
+      color: #aaa;
+      font-size: 14px;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+    .choice-card .who-for {
+      margin-top: 16px;
+      font-size: 14px;
+      color: #888;
+      line-height: 1.8;
+      border-top: 1px solid #e5e5e5;
+      padding-top: 16px;
+    }
+
+    /* ── REPLAY CARD ─────────────────────────── */
+    .replay-card {
+      background: #fff;
+      border: 1px solid #e5e5e5;
+      border-radius: 16px;
+      padding: 28px 32px;
+    }
+    .replay-card .replay-title {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .replay-rows {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .replay-row {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 16px;
+      align-items: start;
+      background: #f5f5f3;
+      border-radius: 10px;
+      padding: 16px 18px;
+    }
+    .replay-row .week-label {
+      font-size: 13px;
+      font-weight: 700;
+      color: #888;
+      padding-top: 2px;
+    }
+    .replay-row .week-desc {
+      font-size: 16px;
+      color: #333;
+      line-height: 1.6;
+    }
+    .replay-notice {
+      margin-top: 20px;
+      background: #fef9c3;
+      border: 1px solid #fde68a;
+      border-radius: 10px;
+      padding: 16px 20px;
+      font-size: 15px;
+      color: #555;
+      line-height: 1.7;
+    }
+
+    /* ── WHY CARD ────────────────────────────── */
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 14px;
+    }
+    .why-card {
+      background: #fff;
+      border: 1px solid #e5e5e5;
+      border-radius: 12px;
+      padding: 22px 20px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .why-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.07);
+    }
+    .why-card .icon {
+      font-size: 26px;
+      margin-bottom: 12px;
+    }
+    .why-card p {
+      font-size: 16px;
+      color: #333;
+      line-height: 1.65;
+    }
+
+    /* ── BEOEBE CARD ─────────────────────────── */
+    .beoebe-card {
+      background: #fff;
+      border: 2px solid #eb5a0f;
+      border-radius: 16px;
+      padding: 28px 32px;
+    }
+    .beoebe-card .beoebe-title {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .beoebe-card .beoebe-sub {
+      font-size: 16px;
+      color: #666;
+      margin-bottom: 24px;
+      line-height: 1.7;
+    }
+    .criteria-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .criteria-list li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 16px;
+      color: #333;
+    }
+    .criteria-list li .dot {
+      width: 6px;
+      height: 6px;
+      min-width: 6px;
+      background: #1a1a1a;
+      border-radius: 50%;
+    }
+    .reward-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      padding-top: 20px;
+      border-top: 1px solid #e5e5e5;
+    }
+    .reward-chip {
+      background: #fef9c3;
+      border: 1px solid #fde68a;
+      border-radius: 999px;
+      padding: 8px 18px;
+      font-size: 15px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    /* ── COMMUNITY CARD ──────────────────────── */
+    .community-card {
+      background: #fff;
+      border: 1px solid #e5e5e5;
+      border-radius: 16px;
+      padding: 28px 32px;
+    }
+    .community-card .community-title {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .community-card .community-desc {
+      font-size: 16px;
+      color: #555;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+    .share-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .share-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 16px;
+      color: #333;
+      line-height: 1.6;
+    }
+    .share-list li::before {
+      content: '→';
+      color: #aaa;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* ── FOOTER ───────────────────────────────── */
+    footer {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 40px 64px;
+    }
+    footer p {
+      font-size: 13px;
+      color: #bbb;
+    }
+
+    /* ── MOBILE ───────────────────────────────── */
+    @media (max-width: 600px) {
+      .hero { padding: 48px 24px 40px; }
+      .hero h1 { font-size: 28px; }
+      .hero .sub { font-size: 16px; }
+      section { padding: 40px 24px; }
+      .choice-grid { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr; }
+      .replay-row { grid-template-columns: 1fr; gap: 4px; }
+      footer { padding: 32px 24px 48px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP NAV -->
+  <div style="max-width: 800px; margin: 0 auto; padding: 20px 40px; display: flex; justify-content: flex-end;">
+    <img src="https://raw.githubusercontent.com/glowjay-moimmoim/hosting/main/gpters-study/gpters-logo.png" alt="지피터스 로고" style="height: 28px; opacity: 0.85;" />
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <p class="label">지피터스 22기 문서자동화 · 사례글 & OT 과제 안내</p>
+    <h1>내 이야기를 꺼내는 것,<br><span>그게 시작입니다</span></h1>
+    <p class="sub">완벽하게 쓸 필요 없어요.<br>지금 내 상황, 고민, 시도한 것들을 그대로 올려주시면 됩니다.<br>그게 가장 좋은 사례글입니다.</p>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- 두 가지 선택지 -->
+  <section>
+    <h2>1주차 선택지</h2>
+    <div class="choice-grid">
+
+      <div class="choice-card highlight" style="position: relative;">
+        <span style="position: absolute; top: 20px; right: 20px; background: #eb5a0f; color: #fff; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; padding: 4px 12px; border-radius: 999px;">추천</span>
+        <p class="choice-label">Option A</p>
+        <p class="choice-title">사례글 작성</p>
+        <p class="choice-desc">내 상황과 고민, 실행한 내용을 정리해서 올리는 글이에요. 2주차에서 발표하고 피드백받고 싶은 분께 맞습니다.</p>
+        <div class="tag-box">태그: <code>22기 문서자동화</code></div>
+        <ul class="benefit-list">
+          <li>2주차 발표 기회</li>
+          <li>스터디장 + 멤버 피드백</li>
+          <li>내 일을 자연스럽게 알리는 기회</li>
+        </ul>
+      </div>
+
+      <div class="choice-card">
+        <p class="choice-label">Option B</p>
+        <p class="choice-title">OT 과제글 작성</p>
+        <p class="choice-desc">발표보다는 글쓰기 흐름을 먼저 익히고 싶은 분을 위한 1주차 전용 연습 글이에요.</p>
+        <div class="tag-box">태그: <code>22기 문서자동화</code> + <code>OT과제</code></div>
+        <p class="who-for">
+          이런 분께 맞아요<br>
+          · 사례 정리가 아직 어려운 분<br>
+          · 발표가 부담스러운 분<br>
+          · 글쓰기 흐름부터 익히고 싶은 분
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- 다시보기 정책 -->
+  <section>
+    <h2>다시보기 정책</h2>
+    <div class="replay-card">
+      <p class="replay-title">📺 다시보기는 이렇게 열립니다</p>
+      <div class="replay-rows">
+        <div class="replay-row">
+          <p class="week-label">1주차</p>
+          <p class="week-desc">내 스터디 + 다른 스터디 다시보기, <strong>모두 조건 없이</strong> 제공됩니다.</p>
+        </div>
+        <div class="replay-row">
+          <p class="week-label">2~4주차</p>
+          <p class="week-desc"><strong>내 스터디</strong>는 그대로 열립니다.<br>다른 스터디 다시보기는 <strong>사례글을 작성해야</strong> 열립니다.</p>
+        </div>
+      </div>
+      <div class="replay-notice" style="display: flex; gap: 10px; align-items: flex-start;">
+        <span>💡</span>
+        <span>과제를 안 쓴다고 내 스터디 다시보기가 막히는 건 아니에요.<br><strong>다른 스터디를 더 보고 싶다면 사례글을 꾸준히 남겨두면 됩니다.</strong></span>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- 왜 사례글인가 -->
+  <section>
+    <h2>왜 사례글인가요?</h2>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="icon">🧠</div>
+        <p>머릿속에 있던 생각이 글로 나오면서 정리됩니다</p>
+      </div>
+      <div class="why-card">
+        <div class="icon">🔍</div>
+        <p>실행 흐름이 명확해지고, 문제를 구조적으로 보게 됩니다</p>
+      </div>
+      <div class="why-card">
+        <div class="icon">📣</div>
+        <p>내가 어떤 관점으로 일하는 사람인지 자연스럽게 알려지는 자산이 됩니다</p>
+      </div>
+    </div>
+    <blockquote style="margin-top: 28px; padding: 36px 40px; background: #fff8f5; border-radius: 12px; text-align: center;">
+      <p style="font-size: 16px; color: #444; line-height: 1.9;">
+        <span style="font-size: 22px; font-weight: 700; color: #eb5a0f; font-family: Georgia, serif; margin-right: 2px;">"</span>AI 시대에는 결과물을 빠르게 만드는 것도 중요하지만,<br>
+        자신의 생각과 실행 과정을 정리하고 공유할 수 있는 사람이 더 강해지고 있습니다.<br><br>
+        <strong>사례글은 그 능력을 키우는 가장 좋은 훈련이자,</strong><br>
+        내가 어떤 관점으로 일하는 사람인지 보여주는 기록입니다.<span style="font-size: 22px; font-weight: 700; color: #eb5a0f; font-family: Georgia, serif; margin-left: 2px;">"</span>
+      </p>
+    </blockquote>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- 베오베 -->
+  <section>
+    <h2>베오베 선발</h2>
+    <div class="beoebe-card">
+      <p class="beoebe-title">🏆 베오베 (Best of Best)</p>
+      <p class="beoebe-sub">4주 동안 가장 활발하게 참여한 분을 지피터스에서 직접 선발합니다.<br>사례글을 꾸준히 쓰고, 발표하고, 댓글로 기여한 분이 대상입니다. 선발 기준은 이렇습니다.</p>
+      <ul class="criteria-list">
+        <li><span class="dot"></span>사례글 작성 여부</li>
+        <li><span class="dot"></span>베스트 발표 여부</li>
+        <li><span class="dot"></span>댓글 기여도</li>
+        <li><span class="dot"></span>커뮤니티 활동</li>
+      </ul>
+      <div class="reward-row">
+        <span class="reward-chip">차기 무료 참여권</span>
+        <span class="reward-chip">멤버십 1기수 연장</span>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- 사례글이 연결을 만든다 -->
+  <section>
+    <h2>사례글이 연결을 만듭니다</h2>
+    <div class="community-card">
+      <p class="community-title">✍️ 내 이야기가 서로를 잇는 시작점입니다</p>
+      <div style="background: #fff8f5; border-radius: 10px; padding: 20px 24px; margin-top: 16px; margin-bottom: 16px;">
+        <p style="font-size: 16px; color: #555; line-height: 1.7; margin: 0;">오프라인에서는 서로를 직접 보며 자연스럽게 알아갑니다.<br>온라인이라고 불가능한 건 아니에요.<br>다만 내가 먼저 꺼내지 않으면, 서로를 알 기회가 쉽게 생기지 않을 뿐입니다.</p>
+        <p style="font-size: 16px; color: #555; line-height: 1.7; margin: 12px 0 0 0;">이 스터디에서 서로의 생각과 경험을 이어주는 가장 중요한 트리거가 바로 사례글입니다.<br><strong>사례글을 통해 우리는 서로를 알아갑니다.</strong></p>
+      </div>
+      <ul class="share-list" style="margin-top: 16px;">
+        <li>지금 어떤 고민을 하고 있는지</li>
+        <li>어떤 일을 하고 있는지</li>
+        <li>어떤 시행착오를 겪고 있는지</li>
+        <li>어떤 도움을 받고 싶은지</li>
+        <li>어떤 관점을 가진 사람인지</li>
+      </ul>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- CTA -->
+  <style>
+    .cta-btn {
+      display: inline-block;
+      background: #fde68a;
+      color: #1a1a1a;
+      font-size: 17px;
+      font-weight: 700;
+      padding: 18px 44px;
+      border-radius: 999px;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.15s;
+      box-shadow: 0 4px 14px rgba(235,90,15,0.15);
+    }
+    .cta-btn:hover {
+      background: #eb5a0f;
+      color: #fff;
+      transform: scale(1.04);
+      box-shadow: 0 6px 20px rgba(235,90,15,0.35);
+    }
+    .cta-btn:active {
+      transform: scale(0.97);
+      box-shadow: 0 2px 8px rgba(235,90,15,0.2);
+    }
+  </style>
+  <section style="text-align: center; padding: 64px 40px;">
+    <p style="font-size: 20px; color: #333; font-weight: 600; line-height: 1.7; margin-bottom: 28px;">완벽하게 쓰려고 하기보다,<br>내 이야기를 꺼내는 것부터 시작해보세요.</p>
+    <a href="https://www.gpters.org/new" target="_blank" class="cta-btn">지금 바로 사례글 쓰러 가기 →</a>
+  </section>
+
+  <hr class="divider" />
+
+  <footer>
+    <p>지피터스 22기 문서자동화 · 본 안내는 스터디원 전용 문서입니다</p>
+  </footer>
+
+</body>
+</html>
