@@ -378,7 +378,7 @@
 
   <!-- HERO -->
   <div class="hero">
-    <p class="label">지피터스 22기 문서자동화 · 사례글 & OT 과제 안내</p>
+    <p class="label" id="hero-label">지피터스 22기 문서자동화 · 사례글 & OT 과제 안내</p>
     <h1>내 이야기를 꺼내는 것,<br><span>그게 시작입니다</span></h1>
     <p class="sub">완벽하게 쓸 필요 없어요.<br>지금 내 상황, 고민, 시도한 것들을 그대로 올려주시면 됩니다.<br>그게 가장 좋은 사례글입니다.</p>
   </div>
@@ -395,7 +395,7 @@
         <p class="choice-label">Option A</p>
         <p class="choice-title">사례글 작성</p>
         <p class="choice-desc">내 상황과 고민, 실행한 내용을 정리해서 올리는 글이에요. 2주차에서 발표하고 피드백받고 싶은 분께 맞습니다.</p>
-        <div class="tag-box">태그: <code>22기 문서자동화</code></div>
+        <div class="tag-box">태그: <code id="tag-a">22기 문서자동화</code></div>
         <ul class="benefit-list">
           <li>2주차 발표 기회</li>
           <li>스터디장 + 멤버 피드백</li>
@@ -407,7 +407,7 @@
         <p class="choice-label">Option B</p>
         <p class="choice-title">OT 과제글 작성</p>
         <p class="choice-desc">발표보다는 글쓰기 흐름을 먼저 익히고 싶은 분을 위한 1주차 전용 연습 글이에요.</p>
-        <div class="tag-box">태그: <code>22기 문서자동화</code> + <code>OT과제</code></div>
+        <div class="tag-box">태그: <code id="tag-b">22기 문서자동화</code> + <code>OT과제</code></div>
         <p class="who-for">
           이런 분께 맞아요<br>
           · 사례 정리가 아직 어려운 분<br>
@@ -570,5 +570,15 @@
     <p>지피터스 22기 문서자동화 · 본 안내는 스터디원 전용 문서입니다</p>
   </footer>
 
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const tag = params.get('tag');
+    if (tag) {
+      const decoded = decodeURIComponent(tag);
+      document.getElementById('hero-label').textContent = '지피터스 ' + decoded + ' · 사례글 & OT 과제 안내';
+      document.getElementById('tag-a').textContent = decoded;
+      document.getElementById('tag-b').textContent = decoded;
+    }
+  </script>
 </body>
 </html>
