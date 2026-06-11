@@ -1,0 +1,637 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>해리온 ver.4 — 북클럽 커뮤니티</title>
+<style>
+@font-face { font-family:'Paperlogy'; src:url('file:///C:/Users/CJW/Desktop/main/00-system/design/font/paperlogy/Paperlogy-1Thin.ttf'); font-weight:100; }
+@font-face { font-family:'Paperlogy'; src:url('file:///C:/Users/CJW/Desktop/main/00-system/design/font/paperlogy/Paperlogy-4Regular.ttf'); font-weight:400; }
+@font-face { font-family:'Paperlogy'; src:url('file:///C:/Users/CJW/Desktop/main/00-system/design/font/paperlogy/Paperlogy-5Medium.ttf'); font-weight:500; }
+@font-face { font-family:'Paperlogy'; src:url('file:///C:/Users/CJW/Desktop/main/00-system/design/font/paperlogy/Paperlogy-6SemiBold.ttf'); font-weight:600; }
+@font-face { font-family:'Paperlogy'; src:url('file:///C:/Users/CJW/Desktop/main/00-system/design/font/paperlogy/Paperlogy-7Bold.ttf'); font-weight:700; }
+@font-face { font-family:'Paperlogy'; src:url('file:///C:/Users/CJW/Desktop/main/00-system/design/font/paperlogy/Paperlogy-8ExtraBold.ttf'); font-weight:800; }
+@font-face { font-family:'Paperlogy'; src:url('file:///C:/Users/CJW/Desktop/main/00-system/design/font/paperlogy/Paperlogy-9Black.ttf'); font-weight:900; }
+
+:root {
+  --ink: #1c2230;
+  --body: #414856;
+  --muted: #8b93a3;
+  --line: #e6eaf1;
+  --bg: #f3f5f9;
+  --card: #ffffff;
+  --blue: #3a6ee0;
+  --blue-key: #2f5fd0;
+  --blue-wash: #eaf1fd;
+  --blue-line: #cfe0fa;
+  --blue-soft: #f4f8ff;
+  --hl: #fff09e;
+  --hl-soft: #fffada;
+}
+
+*, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+body {
+  font-family:'Paperlogy', sans-serif;
+  font-weight:400;
+  background: var(--bg);
+  color: var(--body);
+  letter-spacing:-0.01em;
+  word-break:keep-all;
+  overflow-wrap:break-word;
+  overflow-x: hidden;
+}
+
+.slide {
+  scroll-snap-align: start;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 0;
+  position: relative;
+}
+.slide-inner {
+  max-width: 1080px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 64px;
+}
+.slide-num {
+  position: absolute; top: 40px; left: 64px;
+  font-size: 13px; font-weight: 700; color: var(--blue); letter-spacing: 0.05em;
+}
+.brandmark {
+  position: absolute; top: 40px; right: 64px;
+  font-size: 14px; font-weight: 600; color: var(--muted);
+}
+
+.eyebrow { font-size: 14px; font-weight: 800; color: var(--blue-key); margin-bottom: 18px; letter-spacing: 0.02em; }
+.slide-title { font-size: 44px; font-weight: 900; color: var(--ink); line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 40px; }
+.slide-lead { font-size: 20px; font-weight: 400; color: var(--body); line-height: 1.7; margin-bottom: 40px; }
+
+mark {
+  background: linear-gradient(transparent 8%, #fff09e 8%, #fff09e 92%, transparent 92%);
+  color: var(--ink); padding: 0 3px; font-weight: 700;
+  box-decoration-break: clone; -webkit-box-decoration-break: clone;
+}
+em.accent { font-style:normal; font-weight:800; color:var(--blue-key); }
+strong { font-weight: 800; color: var(--ink); }
+
+.card {
+  background: var(--card);
+  border: 1.5px solid var(--line);
+  border-radius: 24px;
+  padding: 36px 40px;
+  box-shadow: 0 2px 4px rgba(40,60,110,.03), 0 18px 40px -24px rgba(40,60,110,.16);
+}
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+
+.kv-line {
+  display: flex; align-items: flex-start; gap: 16px;
+  background: var(--blue-soft); border: 1.5px solid var(--blue-line);
+  border-radius: 14px; padding: 16px 20px; font-size: 16px;
+}
+.kv-line .k { min-width: 80px; font-weight: 800; color: var(--blue-key); flex-shrink: 0; }
+.kv-line .v { color: var(--body); line-height: 1.7; }
+
+.note {
+  background: var(--hl-soft); border: 1.5px solid var(--hl);
+  border-radius: 18px; padding: 22px 26px;
+  display: flex; align-items: flex-start; gap: 12px;
+  font-size: 16px; line-height: 1.75;
+}
+.note-icon { font-size: 18px; line-height: 1.85; flex-shrink: 0; }
+.blk { font-size: 13px; font-weight: 800; color: var(--blue-key); margin-bottom: 14px; letter-spacing: 0.02em; }
+
+.hold-card {
+  background: var(--card); border: 1.5px dashed var(--blue-line);
+  border-radius: 24px; padding: 36px 40px;
+}
+.hold-item { display: flex; gap: 18px; padding: 18px 0; border-bottom: 1px solid var(--line); }
+.hold-item:last-child { border-bottom: none; padding-bottom: 0; }
+.hold-num {
+  width: 30px; height: 30px; min-width: 30px; background: var(--muted);
+  border-radius: 9px; display: flex; align-items: center; justify-content: center;
+  font-size: 14px; font-weight: 800; color: #fff; margin-top: 2px;
+}
+.hold-title { font-size: 18px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
+.hold-desc { font-size: 15px; color: var(--body); line-height: 1.7; }
+
+.divider { height: 1px; background: var(--line); margin: 20px 0; }
+
+/* 네비 도트 */
+.nav {
+  position: fixed; right: 28px; top: 50%; transform: translateY(-50%);
+  display: flex; flex-direction: column; gap: 10px; z-index: 100;
+}
+.dot { width: 8px; height: 8px; border-radius: 999px; background: var(--blue-line); cursor: pointer; transition: all 0.2s; }
+.dot.active { background: var(--blue); height: 24px; }
+
+/* 트레바리 사례 카드 */
+.trev-card {
+  background: var(--card);
+  border: 1.5px solid var(--line);
+  border-radius: 16px;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: 0 1px 3px rgba(40,60,110,.04), 0 8px 20px -12px rgba(40,60,110,.12);
+  text-decoration: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.trev-card:hover {
+  border-color: var(--blue-line);
+  box-shadow: 0 2px 8px rgba(40,60,110,.08), 0 12px 28px -12px rgba(40,60,110,.2);
+}
+
+/* 참여자 타입 태그 */
+.member-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--blue-soft); border: 1.5px solid var(--blue-line);
+  border-radius: 999px; padding: 7px 14px;
+  font-size: 13px; font-weight: 700; color: var(--blue-key);
+}
+
+/* 흐름 단계 */
+.flow-step {
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+  flex: 1;
+}
+.flow-step-box {
+  background: var(--card); border: 1.5px solid var(--line);
+  border-radius: 14px; padding: 16px 12px; text-align: center;
+  width: 100%;
+  box-shadow: 0 1px 3px rgba(40,60,110,.04), 0 6px 16px -8px rgba(40,60,110,.1);
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="dot active" onclick="goTo(0)"></div>
+  <div class="dot" onclick="goTo(1)"></div>
+  <div class="dot" onclick="goTo(2)"></div>
+  <div class="dot" onclick="goTo(3)"></div>
+  <div class="dot" onclick="goTo(4)"></div>
+</nav>
+
+<!-- ════════════════════════════════
+  SLIDE 1 — CEO가 주가 되는 트레바리
+════════════════════════════════ -->
+<section class="slide" id="s0">
+  <span class="slide-num">01 / 05</span>
+  <span class="brandmark">MOIMMOIM</span>
+  <div class="slide-inner">
+    <p class="eyebrow">📚 북클럽 커뮤니티</p>
+    <h1 class="slide-title">CEO가 주가 되는 트레바리</h1>
+    <p class="slide-lead" style="margin-bottom:32px;">트레바리엔 사업가들이 꽤 있다. 하지만 <mark>사업가 특화 공간은 없었다.</mark></p>
+
+    <div class="grid-2" style="gap:24px;align-items:start;">
+
+      <!-- LEFT: 기획 배경 -->
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <div class="card" style="padding:28px 32px;">
+          <p class="blk">왜 북클럽인가</p>
+          <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:20px;">
+            <div style="display:flex;gap:12px;align-items:flex-start;background:var(--blue-soft);border:1.5px solid var(--blue-line);border-radius:12px;padding:14px 16px;">
+              <span style="font-size:20px;flex-shrink:0;">📍</span>
+              <p style="font-size:14px;color:var(--body);line-height:1.65;">트레바리에 <strong>동료를 구하는 사업가</strong>, 경영서를 나누고 싶은 창업가들이 이미 모이고 있다</p>
+            </div>
+            <div style="display:flex;gap:12px;align-items:flex-start;background:var(--blue-soft);border:1.5px solid var(--blue-line);border-radius:12px;padding:14px 16px;">
+              <span style="font-size:20px;flex-shrink:0;">📍</span>
+              <p style="font-size:14px;color:var(--body);line-height:1.65;">창업가들끼리 <strong>경영책을 나눌 공간이 없다</strong>는 니즈 발견 — 책 얘기를 나눌 곳이 없다</p>
+            </div>
+            <div style="display:flex;gap:12px;align-items:flex-start;background:var(--blue-soft);border:1.5px solid var(--blue-line);border-radius:12px;padding:14px 16px;">
+              <span style="font-size:20px;flex-shrink:0;">📍</span>
+              <p style="font-size:14px;color:var(--body);line-height:1.65;">ver.3의 교훈 — <strong>개인 브랜딩 없이도 작동하는 구조</strong>가 필요했다</p>
+            </div>
+          </div>
+          <div class="divider"></div>
+          <p class="blk">핵심 아이디어 — 사운드스포 클럽</p>
+          <p style="font-size:15px;line-height:1.8;">대표들이 직접 북클럽을 주최한다. 주최자는 <mark>입장 허들을 직접 설정</mark>할 수 있다.</p>
+        </div>
+      </div>
+
+      <!-- RIGHT: 핵심 구조 -->
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <div class="card" style="padding:28px 32px;">
+          <p class="blk">두 가지 역할</p>
+          <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:20px;">
+            <div style="background:var(--ink);border-radius:14px;padding:20px 22px;">
+              <p style="font-size:12px;font-weight:800;color:rgba(255,255,255,.45);margin-bottom:8px;letter-spacing:.05em;">주최자 (대표)</p>
+              <p style="font-size:16px;font-weight:800;color:#fff;margin-bottom:6px;">북클럽을 만들고 멤버를 직접 고른다</p>
+              <p style="font-size:13px;color:rgba(255,255,255,.55);line-height:1.65;">책 선정 · 주제 설정 · 입장 허들 설계<br>내가 원하는 대화 상대를 내가 결정한다</p>
+            </div>
+            <div style="background:var(--blue-soft);border:1.5px solid var(--blue-line);border-radius:14px;padding:20px 22px;">
+              <p style="font-size:12px;font-weight:800;color:var(--blue-key);margin-bottom:8px;letter-spacing:.05em;">참여자</p>
+              <p style="font-size:16px;font-weight:800;color:var(--ink);margin-bottom:6px;">조건에 맞으면 지원하고, 모임에서 배운다</p>
+              <p style="font-size:13px;color:var(--body);line-height:1.65;">CEO · C레벨 · 예비창업자 · 직장인 · 학생<br>같은 관심사를 가진 사람들이 책으로 모인다</p>
+            </div>
+          </div>
+          <div class="note" style="padding:16px 18px;">
+            <span class="note-icon">💡</span>
+            <p style="font-size:14px;line-height:1.7;"><strong>핵심:</strong> CEO가 퍼블릭에 노출되지 않아도 된다. 모임이 브랜드다.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════
+  SLIDE 2 — 입장 허들 시스템 + 실제 사례
+════════════════════════════════ -->
+<section class="slide" id="s1">
+  <span class="slide-num">02 / 05</span>
+  <span class="brandmark">MOIMMOIM</span>
+  <div class="slide-inner">
+    <p class="eyebrow">🔒 입장 허들 시스템</p>
+    <h1 class="slide-title">주최자가 멤버를 직접 설계한다</h1>
+    <p class="slide-lead" style="margin-bottom:28px;">폐쇄형도, 개방형도 가능하다. <mark>목적에 따라 입장 조건을 주최자가 직접 설정.</mark></p>
+
+    <div class="grid-2" style="gap:24px;align-items:start;">
+
+      <!-- LEFT: 입장 허들 예시 -->
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <div class="card" style="padding:28px 32px;">
+          <p class="blk">입장 허들 예시</p>
+          <div style="display:flex;flex-direction:column;gap:10px;">
+
+            <div style="border-radius:14px;overflow:hidden;border:1.5px solid var(--line);">
+              <div style="background:var(--ink);padding:12px 16px;">
+                <p style="font-size:12px;font-weight:800;color:rgba(255,255,255,.5);letter-spacing:.05em;">케이스 A · 폐쇄형</p>
+                <p style="font-size:14px;font-weight:800;color:#fff;margin-top:3px;">엑시트 창업가들끼리 다음 삶 기획</p>
+              </div>
+              <div style="background:var(--bg);padding:12px 16px;">
+                <p style="font-size:13px;color:var(--body);line-height:1.6;">입장 조건: <strong>엑시트 경험자만</strong></p>
+              </div>
+            </div>
+
+            <div style="border-radius:14px;overflow:hidden;border:1.5px solid var(--line);">
+              <div style="background:var(--blue);padding:12px 16px;">
+                <p style="font-size:12px;font-weight:800;color:rgba(255,255,255,.5);letter-spacing:.05em;">케이스 B · 개방형</p>
+                <p style="font-size:14px;font-weight:800;color:#fff;margin-top:3px;">웰니스 시장 분석 모임</p>
+              </div>
+              <div style="background:var(--bg);padding:12px 16px;">
+                <p style="font-size:13px;color:var(--body);line-height:1.6;">입장 조건: <strong>예비창업자, 직원, 학생 등 누구나</strong></p>
+              </div>
+            </div>
+
+            <div style="border-radius:14px;overflow:hidden;border:1.5px solid var(--line);">
+              <div style="background:var(--blue-key);padding:12px 16px;">
+                <p style="font-size:12px;font-weight:800;color:rgba(255,255,255,.5);letter-spacing:.05em;">케이스 C · 반개방형</p>
+                <p style="font-size:14px;font-weight:800;color:#fff;margin-top:3px;">인재 채용 관련 북클럽</p>
+              </div>
+              <div style="background:var(--bg);padding:12px 16px;">
+                <p style="font-size:13px;color:var(--body);line-height:1.6;">입장 조건: <strong>스타트업 특정 레벨 이상만</strong></p>
+              </div>
+            </div>
+
+          </div>
+          <div class="divider" style="margin:16px 0;"></div>
+          <p style="font-size:13px;color:var(--muted);line-height:1.7;">창업가끼리 폐쇄적으로 모일 수도, 다양한 객체를 오픈하게 모을 수도 있다. <strong>주최자가 목적을 결정한다.</strong></p>
+        </div>
+      </div>
+
+      <!-- RIGHT: 트레바리 실제 사례 -->
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <p class="blk" style="margin-bottom:4px;">트레바리 실제 사례 — 사업가들이 직접 여는 북클럽</p>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+
+          <a class="trev-card" href="https://m.trevari.co.kr/product/eb92e103-50b1-4b67-9ba3-4f4855855b2a" target="_blank">
+            <span style="font-size:11px;font-weight:800;color:var(--blue-key);background:var(--blue-wash);border-radius:6px;padding:2px 8px;display:inline-block;">CEO 성장</span>
+            <p style="font-size:14px;font-weight:800;color:var(--ink);line-height:1.4;">성장하는 CEO의 북클럽</p>
+            <p style="font-size:12px;color:var(--muted);line-height:1.5;">일의 원칙 · 리더십 · 비즈니스 전략 · CEO의 역할</p>
+            <p style="font-size:11px;font-weight:800;color:var(--blue-key);margin-top:2px;">→ 트레바리 바로가기</p>
+          </a>
+
+          <a class="trev-card" href="https://m.trevari.co.kr/product/72753ebe-5924-4ae8-baf9-bb0e01c5e50f" target="_blank">
+            <span style="font-size:11px;font-weight:800;color:var(--blue-key);background:var(--blue-wash);border-radius:6px;padding:2px 8px;display:inline-block;">외식업 사장</span>
+            <p style="font-size:14px;font-weight:800;color:var(--ink);line-height:1.4;">1,000개 매장을 굴리는 사업가의 사고법</p>
+            <p style="font-size:12px;color:var(--muted);line-height:1.5;">특급호텔 셰프 → 5년 만에 1,902개 매장 구조 설계</p>
+            <p style="font-size:11px;font-weight:800;color:var(--blue-key);margin-top:2px;">→ 트레바리 바로가기</p>
+          </a>
+
+          <a class="trev-card" href="https://m.trevari.co.kr/product/88699f82-6f2d-4bf2-bd51-8e9a7933de5d" target="_blank">
+            <span style="font-size:11px;font-weight:800;color:var(--blue-key);background:var(--blue-wash);border-radius:6px;padding:2px 8px;display:inline-block;">외식 아카데미</span>
+            <p style="font-size:14px;font-weight:800;color:var(--ink);line-height:1.4;">식의 세계, 먹고사는 세상을 만드는 사장님들</p>
+            <p style="font-size:12px;color:var(--muted);line-height:1.5;">외식업 사장들이 모이는 독서 + 인사이트 교류</p>
+            <p style="font-size:11px;font-weight:800;color:var(--blue-key);margin-top:2px;">→ 트레바리 바로가기</p>
+          </a>
+
+          <a class="trev-card" href="https://m.trevari.co.kr/product/acee03a4-6f1e-440e-b221-cfea76a801f1" target="_blank">
+            <span style="font-size:11px;font-weight:800;color:var(--blue-key);background:var(--blue-wash);border-radius:6px;padding:2px 8px;display:inline-block;">창업 탐색</span>
+            <p style="font-size:14px;font-weight:800;color:var(--ink);line-height:1.4;">이제 진짜 '창업'하실 분?</p>
+            <p style="font-size:12px;color:var(--muted);line-height:1.5;">뜬구름 노놉 — 창업을 진지하게 고민하는 사람들</p>
+            <p style="font-size:11px;font-weight:800;color:var(--blue-key);margin-top:2px;">→ 트레바리 바로가기</p>
+          </a>
+
+          <a class="trev-card" href="https://m.trevari.co.kr/product/b59943d2-1969-46b7-9f88-b711a6090b51" target="_blank">
+            <span style="font-size:11px;font-weight:800;color:var(--blue-key);background:var(--blue-wash);border-radius:6px;padding:2px 8px;display:inline-block;">브랜드 성장</span>
+            <p style="font-size:14px;font-weight:800;color:var(--ink);line-height:1.4;">빠르고 효율적으로 성장한 브랜드의 비결</p>
+            <p style="font-size:12px;color:var(--muted);line-height:1.5;">영보스 인사이트 — 성장 브랜드 운영자들의 모임</p>
+            <p style="font-size:11px;font-weight:800;color:var(--blue-key);margin-top:2px;">→ 트레바리 바로가기</p>
+          </a>
+
+          <a class="trev-card" href="https://m.trevari.co.kr/product/17bebf28-c98d-4288-bcb0-b71c384da68a" target="_blank">
+            <span style="font-size:11px;font-weight:800;color:var(--blue-key);background:var(--blue-wash);border-radius:6px;padding:2px 8px;display:inline-block;">M&amp;A · 엑싯</span>
+            <p style="font-size:14px;font-weight:800;color:var(--ink);line-height:1.4;">작게 시작해서 빠르게 매각!</p>
+            <p style="font-size:12px;color:var(--muted);line-height:1.5;">엑싯을 이끄는 브랜딩 — 매각 경험 중심 독서</p>
+            <p style="font-size:11px;font-weight:800;color:var(--blue-key);margin-top:2px;">→ 트레바리 바로가기</p>
+          </a>
+
+        </div>
+
+        <div class="note" style="padding:14px 18px;margin-top:4px;">
+          <span class="note-icon">📌</span>
+          <p style="font-size:13px;line-height:1.7;">이미 트레바리에서 사업가들이 스스로 이런 모임을 만들고 있다. 해리온은 이 흐름을 <strong>체계화하고 특화</strong>하는 것이다.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════
+  SLIDE 3 — 커뮤니티 구성 방식
+════════════════════════════════ -->
+<section class="slide" id="s2">
+  <span class="slide-num">03 / 05</span>
+  <span class="brandmark">MOIMMOIM</span>
+  <div class="slide-inner">
+    <p class="eyebrow">🏗 커뮤니티 구성 방식</p>
+    <h1 class="slide-title">어떻게 굴러가는가</h1>
+    <p class="slide-lead" style="margin-bottom:28px;"><mark>책이 매개다. 사람이 자산이다.</mark> 창업 키워드로 묶인 사람들이 내부에서 가치를 만들어낸다.</p>
+
+    <div class="grid-2" style="gap:24px;align-items:start;">
+
+      <!-- LEFT: 운영 흐름 + 참여자 구성 -->
+      <div style="display:flex;flex-direction:column;gap:16px;">
+
+        <!-- 운영 흐름 -->
+        <div class="card" style="padding:26px 30px;">
+          <p class="blk">운영 흐름</p>
+          <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+            <div class="flow-step-box" style="flex:1;min-width:80px;text-align:center;">
+              <p style="font-size:18px;margin-bottom:4px;">📖</p>
+              <p style="font-size:12px;font-weight:800;color:var(--ink);">북클럽 개설</p>
+              <p style="font-size:11px;color:var(--muted);margin-top:2px;line-height:1.4;">주최자(대표)가<br>책·주제·허들 설정</p>
+            </div>
+            <span style="font-size:14px;color:var(--muted);flex-shrink:0;">→</span>
+            <div class="flow-step-box" style="flex:1;min-width:80px;text-align:center;">
+              <p style="font-size:18px;margin-bottom:4px;">🙋</p>
+              <p style="font-size:12px;font-weight:800;color:var(--ink);">멤버 모집</p>
+              <p style="font-size:11px;color:var(--muted);margin-top:2px;line-height:1.4;">조건 맞는 사람이<br>지원·선별</p>
+            </div>
+            <span style="font-size:14px;color:var(--muted);flex-shrink:0;">→</span>
+            <div class="flow-step-box" style="flex:1;min-width:80px;text-align:center;">
+              <p style="font-size:18px;margin-bottom:4px;">💬</p>
+              <p style="font-size:12px;font-weight:800;color:var(--ink);">독서 + 토론</p>
+              <p style="font-size:11px;color:var(--muted);margin-top:2px;line-height:1.4;">정기 모임에서<br>인사이트 교류</p>
+            </div>
+            <span style="font-size:14px;color:var(--muted);flex-shrink:0;">→</span>
+            <div class="flow-step-box" style="flex:1;min-width:80px;text-align:center;">
+              <p style="font-size:18px;margin-bottom:4px;">🔗</p>
+              <p style="font-size:12px;font-weight:800;color:var(--ink);">관계 형성</p>
+              <p style="font-size:11px;color:var(--muted);margin-top:2px;line-height:1.4;">모임 후에도<br>이어지는 네트워크</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 참여자 스펙트럼 -->
+        <div class="card" style="padding:26px 30px;">
+          <p class="blk">참여자 스펙트럼 — 창업 키워드로 묶인다</p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;">
+            <span class="member-tag">👑 CEO · 대표</span>
+            <span class="member-tag">💼 C레벨 임원</span>
+            <span class="member-tag">🌱 예비창업자</span>
+            <span class="member-tag">📊 퇴사 준비 직장인</span>
+            <span class="member-tag">🎓 창업 관심 학생</span>
+            <span class="member-tag">🏢 스타트업 팀원</span>
+          </div>
+          <p style="font-size:13px;color:var(--muted);line-height:1.65;margin-top:14px;">북클럽 성격에 따라 누가 모이는지가 달라진다. 주최자가 설계하는 대로 커뮤니티가 만들어진다.</p>
+        </div>
+
+      </div>
+
+      <!-- RIGHT: 내부에서 발생하는 가치 + 확장 시나리오 -->
+      <div style="display:flex;flex-direction:column;gap:16px;">
+
+        <div class="card" style="padding:26px 30px;">
+          <p class="blk">내부에서 발생하는 가치</p>
+          <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px;">
+            <div style="display:flex;gap:10px;align-items:flex-start;background:var(--blue-soft);border:1.5px solid var(--blue-line);border-radius:10px;padding:13px 15px;">
+              <span style="font-size:16px;flex-shrink:0;">🤝</span>
+              <div>
+                <p style="font-size:13px;font-weight:800;color:var(--ink);margin-bottom:3px;">손발 · 공동창업자 탐색</p>
+                <p style="font-size:12px;color:var(--body);line-height:1.6;">같은 방향을 보는 사람을 찾을 수 있는 자연스러운 공간</p>
+              </div>
+            </div>
+            <div style="display:flex;gap:10px;align-items:flex-start;background:var(--blue-soft);border:1.5px solid var(--blue-line);border-radius:10px;padding:13px 15px;">
+              <span style="font-size:16px;flex-shrink:0;">🎯</span>
+              <div>
+                <p style="font-size:13px;font-weight:800;color:var(--ink);margin-bottom:3px;">고객사 · 파트너 연결</p>
+                <p style="font-size:12px;color:var(--body);line-height:1.6;">같은 시장에 관심 있는 C레벨들이 모이면 사업 협업이 생긴다</p>
+              </div>
+            </div>
+          </div>
+          <div class="divider" style="margin:14px 0;"></div>
+          <p class="blk">실제 레퍼런스 — 퓨처 플라이 대표</p>
+          <p style="font-size:14px;color:var(--body);line-height:1.75;">트레바리에서 웰니스 북클럽을 반복 개설 → 웰니스 시장 관심 사업가 + MBA 수료생 커뮤니티 구축 → <strong>기업 협업 · 강연으로 확장.</strong> 트레바리를 입구 창구로 활용한 케이스.</p>
+        </div>
+
+        <div class="note">
+          <span class="note-icon">💡</span>
+          <p style="font-size:15px;line-height:1.75;">창업에 관심 있는 모든 사람들이 <strong>책이라는 매개로</strong> 모이게 된다. 해리온은 그 생태계의 운영자다.</p>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════
+  SLIDE 4 — 확장되면 어떤 모습인가
+════════════════════════════════ -->
+<section class="slide" id="s3">
+  <span class="slide-num">04 / 05</span>
+  <span class="brandmark">MOIMMOIM</span>
+  <div class="slide-inner">
+    <p class="eyebrow">🌱 확장 시나리오</p>
+    <h1 class="slide-title">창업 키워드 하나로,<br>생태계가 된다</h1>
+    <p class="slide-lead" style="margin-bottom:28px;"><mark>북클럽은 입구다.</mark> 진짜 자산은 내부에서 쌓이는 관계와 거래다.</p>
+
+    <div class="grid-2" style="gap:24px;align-items:start;">
+
+      <!-- LEFT: Phase 단계 -->
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <div class="card" style="padding:26px 30px;">
+          <p class="blk">확장 단계</p>
+          <div style="display:flex;flex-direction:column;gap:0;">
+
+            <div style="display:flex;gap:16px;padding-bottom:20px;border-bottom:1px solid var(--line);">
+              <div style="width:36px;height:36px;min-width:36px;background:var(--ink);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;color:#fff;">1</div>
+              <div>
+                <p style="font-size:15px;font-weight:800;color:var(--ink);margin-bottom:5px;">북클럽들이 쌓인다</p>
+                <p style="font-size:13px;color:var(--body);line-height:1.65;">주제별·타겟별 북클럽 다수 운영 → 창업 관련 모든 사람이 집결. CEO, C레벨, 예비창업자, 직장인, 학생이 같은 생태계 안에 모인다.</p>
+              </div>
+            </div>
+
+            <div style="display:flex;gap:16px;padding:20px 0;border-bottom:1px solid var(--line);">
+              <div style="width:36px;height:36px;min-width:36px;background:var(--blue);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;color:#fff;">2</div>
+              <div>
+                <p style="font-size:15px;font-weight:800;color:var(--ink);margin-bottom:5px;">내부에서 거래가 생긴다</p>
+                <p style="font-size:13px;color:var(--body);line-height:1.65;">손발 구하기 · 공동창업자 탐색 · 고객사 연결 · 채용. 책 이야기를 나누다 같은 방향을 보는 사람을 자연스럽게 발견한다.</p>
+              </div>
+            </div>
+
+            <div style="display:flex;gap:16px;padding-top:20px;">
+              <div style="width:36px;height:36px;min-width:36px;background:var(--blue-key);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;color:#fff;">3</div>
+              <div>
+                <p style="font-size:15px;font-weight:800;color:var(--ink);margin-bottom:5px;">스폰서형 서클로 연결된다</p>
+                <p style="font-size:13px;color:var(--body);line-height:1.65;">다양한 주체가 모이면 헤더가 원하는 멤버를 큐레이션할 수 있는 환경이 된다. 해리온의 핵심 비즈니스 모델이 여기서 작동한다.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: 레퍼런스 + 이벤트 확장 -->
+      <div style="display:flex;flex-direction:column;gap:16px;">
+
+        <div class="card" style="padding:26px 30px;">
+          <p class="blk">해리온이 열 수 있는 이벤트</p>
+          <div style="display:flex;flex-direction:column;gap:7px;">
+            <div style="display:flex;gap:10px;align-items:center;background:var(--blue-soft);border:1.5px solid var(--blue-line);border-radius:10px;padding:11px 14px;">
+              <span style="font-size:15px;flex-shrink:0;">⚡</span>
+              <p style="font-size:13px;font-weight:700;color:var(--ink);">비즈니스 챌린지 프로젝트</p>
+            </div>
+            <div style="display:flex;gap:10px;align-items:center;background:var(--blue-soft);border:1.5px solid var(--blue-line);border-radius:10px;padding:11px 14px;">
+              <span style="font-size:15px;flex-shrink:0;">🏃</span>
+              <p style="font-size:13px;font-weight:700;color:var(--ink);">사업가 웰니스 · 오프라인 이벤트</p>
+            </div>
+            <div style="display:flex;gap:10px;align-items:center;background:var(--blue-soft);border:1.5px solid var(--blue-line);border-radius:10px;padding:11px 14px;">
+              <span style="font-size:15px;flex-shrink:0;">💰</span>
+              <p style="font-size:13px;font-weight:700;color:var(--ink);">투자자 · 파트너 연결 세션</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="note">
+          <span class="note-icon">💡</span>
+          <p style="font-size:15px;line-height:1.75;">북클럽이 커질수록 해리온의 <strong>큐레이션 권력</strong>이 커진다. 누가 들어오고 누가 만나는지를 해리온이 설계한다.</p>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════
+  SLIDE 5 — 왜 멈췄는가
+════════════════════════════════ -->
+<section class="slide" id="s4">
+  <span class="slide-num">05 / 05</span>
+  <span class="brandmark">MOIMMOIM</span>
+  <div class="slide-inner">
+    <p class="eyebrow">⏸ 보류 이유</p>
+    <h1 class="slide-title">왜 ver.4도 멈췄는가</h1>
+    <p class="slide-lead" style="margin-bottom:32px;"><mark>너무 먼 길을 돌아가는 것 아닌가.</mark> 비즈니스 모델이 구조적으로 연결되지 않았다.</p>
+
+    <div class="grid-2" style="gap:24px;align-items:start;">
+
+      <!-- LEFT: 보류 이유 -->
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <div class="hold-card">
+          <div class="hold-item">
+            <div class="hold-num">1</div>
+            <div>
+              <p class="hold-title">트레바리 대비 차별화 어려움</p>
+              <p class="hold-desc">다양한 사람을 짬뽕으로 모으면 트레바리(40만원)랑 비교된다. "왜 굳이 여기 와야 하냐"는 질문에 답하기 어렵다.</p>
+            </div>
+          </div>
+          <div class="hold-item">
+            <div class="hold-num">2</div>
+            <div>
+              <p class="hold-title">스폰서형 서클 비즈니스 모델 연결 안 됨</p>
+              <p class="hold-desc">북클럽이라는 맥락에서 1,500만원을 갑자기 청구할 수 없다. 책 모임 참여자에게 큰돈을 받는 구조가 작동하지 않는다.</p>
+            </div>
+          </div>
+          <div class="hold-item">
+            <div class="hold-num">3</div>
+            <div>
+              <p class="hold-title">실질적 교류·인사이트에 대한 의문</p>
+              <p class="hold-desc">책 읽고 7시에 모여 얘기 나누는 것이 진짜 사업적 교류로 이어지는가. 규칙과 규율만 많은 단순한 네트워킹 자리가 되지 않을까.</p>
+            </div>
+          </div>
+          <div class="hold-item">
+            <div class="hold-num">4</div>
+            <div>
+              <p class="hold-title">홍보·브랜드 구축까지 리소스 과다</p>
+              <p class="hold-desc">프라이빗하게 가려면 홍보가 필요하고, 대외적으로 알려지기까지 리소스가 너무 많이 든다. 홍보 비용을 누가 마련할 것인가.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: 남긴 것들 -->
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <div class="card" style="padding:28px 32px;">
+          <p class="blk">남긴 것들</p>
+          <p style="font-size:15px;line-height:1.8;margin-bottom:20px;">ver.4를 통해 확인한 것은 하나다. 해리온이 가야 할 방향에서 <strong>비즈니스 모델이 먼저</strong>여야 한다는 것.</p>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <div style="display:flex;gap:10px;align-items:flex-start;background:var(--blue-soft);border:1.5px solid var(--blue-line);border-radius:10px;padding:12px 14px;">
+              <span style="font-size:16px;flex-shrink:0;">✓</span>
+              <p style="font-size:14px;color:var(--body);line-height:1.65;">책이라는 매개로 사람들을 모으는 <strong>구조 자체는 유효</strong>하다</p>
+            </div>
+            <div style="display:flex;gap:10px;align-items:flex-start;background:var(--blue-soft);border:1.5px solid var(--blue-line);border-radius:10px;padding:12px 14px;">
+              <span style="font-size:16px;flex-shrink:0;">✓</span>
+              <p style="font-size:14px;color:var(--body);line-height:1.65;">트레바리에 이미 사업가들이 모이고 있다는 <strong>수요는 검증됐다</strong></p>
+            </div>
+            <div style="display:flex;gap:10px;align-items:flex-start;background:var(--blue-soft);border:1.5px solid var(--blue-line);border-radius:10px;padding:12px 14px;">
+              <span style="font-size:16px;flex-shrink:0;">✓</span>
+              <p style="font-size:14px;color:var(--body);line-height:1.65;">입장 허들 설계 개념 — <strong>이후 ver.5에서도 핵심 요소로 이어진다</strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+const dots = document.querySelectorAll('.dot');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const idx = Array.from(slides).indexOf(entry.target);
+      dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+    }
+  });
+}, { threshold: 0.5 });
+
+slides.forEach(s => observer.observe(s));
+
+function goTo(idx) {
+  slides[idx].scrollIntoView({ behavior: 'smooth' });
+}
+
+document.addEventListener('keydown', e => {
+  const cur = Array.from(dots).findIndex(d => d.classList.contains('active'));
+  if ((e.key === 'ArrowDown' || e.key === 'ArrowRight') && cur < slides.length - 1) goTo(cur + 1);
+  if ((e.key === 'ArrowUp' || e.key === 'ArrowLeft') && cur > 0) goTo(cur - 1);
+});
+</script>
+</body>
+</html>

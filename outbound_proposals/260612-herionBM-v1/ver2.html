@@ -1,0 +1,698 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>해리온 ver.2 — 확장 기획</title>
+<style>
+@font-face { font-family:'Paperlogy'; src:url('file:///C:/Users/CJW/Desktop/main/00-system/design/font/paperlogy/Paperlogy-1Thin.ttf'); font-weight:100; }
+@font-face { font-family:'Paperlogy'; src:url('file:///C:/Users/CJW/Desktop/main/00-system/design/font/paperlogy/Paperlogy-4Regular.ttf'); font-weight:400; }
+@font-face { font-family:'Paperlogy'; src:url('file:///C:/Users/CJW/Desktop/main/00-system/design/font/paperlogy/Paperlogy-5Medium.ttf'); font-weight:500; }
+@font-face { font-family:'Paperlogy'; src:url('file:///C:/Users/CJW/Desktop/main/00-system/design/font/paperlogy/Paperlogy-6SemiBold.ttf'); font-weight:600; }
+@font-face { font-family:'Paperlogy'; src:url('file:///C:/Users/CJW/Desktop/main/00-system/design/font/paperlogy/Paperlogy-7Bold.ttf'); font-weight:700; }
+@font-face { font-family:'Paperlogy'; src:url('file:///C:/Users/CJW/Desktop/main/00-system/design/font/paperlogy/Paperlogy-8ExtraBold.ttf'); font-weight:800; }
+@font-face { font-family:'Paperlogy'; src:url('file:///C:/Users/CJW/Desktop/main/00-system/design/font/paperlogy/Paperlogy-9Black.ttf'); font-weight:900; }
+
+:root {
+  --ink: #1c2230;
+  --body: #414856;
+  --muted: #8b93a3;
+  --line: #e6eaf1;
+  --bg: #f3f5f9;
+  --card: #ffffff;
+  --blue: #3a6ee0;
+  --blue-key: #2f5fd0;
+  --blue-wash: #eaf1fd;
+  --blue-line: #cfe0fa;
+  --blue-soft: #f4f8ff;
+  --hl: #fff09e;
+  --hl-soft: #fffada;
+}
+
+*, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+body {
+  font-family:'Paperlogy', sans-serif;
+  font-weight:400;
+  background: var(--bg);
+  color: var(--body);
+  letter-spacing:-0.01em;
+  word-break:keep-all;
+  overflow-wrap:break-word;
+  overflow-x: hidden;
+}
+
+.slide {
+  scroll-snap-align: start;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 0;
+  position: relative;
+}
+.slide-inner {
+  max-width: 1080px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 64px;
+}
+.slide-num {
+  position: absolute; top: 40px; left: 64px;
+  font-size: 13px; font-weight: 700; color: var(--blue); letter-spacing: 0.05em;
+}
+.brandmark {
+  position: absolute; top: 40px; right: 64px;
+  font-size: 14px; font-weight: 600; color: var(--muted);
+}
+
+.eyebrow { font-size: 14px; font-weight: 800; color: var(--blue-key); margin-bottom: 18px; letter-spacing: 0.02em; }
+.slide-title { font-size: 44px; font-weight: 900; color: var(--ink); line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 40px; white-space: nowrap; }
+.slide-lead { font-size: 20px; font-weight: 400; color: var(--body); line-height: 1.7; margin-bottom: 48px; }
+
+mark {
+  background: linear-gradient(transparent 8%, #fff09e 8%, #fff09e 92%, transparent 92%);
+  color: var(--ink); padding: 0 3px; font-weight: 700;
+  box-decoration-break: clone; -webkit-box-decoration-break: clone;
+}
+em.accent { font-style:normal; font-weight:800; color:var(--blue-key); }
+strong { font-weight: 800; color: var(--ink); }
+
+.card {
+  background: var(--card);
+  border: 1.5px solid var(--line);
+  border-radius: 24px;
+  padding: 36px 40px;
+  box-shadow: 0 2px 4px rgba(40,60,110,.03), 0 18px 40px -24px rgba(40,60,110,.16);
+}
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+
+.kv-list { display: flex; flex-direction: column; gap: 12px; }
+.kv-line {
+  display: flex; align-items: flex-start; gap: 16px;
+  background: var(--blue-soft); border: 1.5px solid var(--blue-line);
+  border-radius: 14px; padding: 16px 20px; font-size: 16px;
+}
+.kv-line .k { min-width: 80px; font-weight: 800; color: var(--blue-key); flex-shrink: 0; }
+.kv-line .v { color: var(--body); line-height: 1.7; }
+
+.note {
+  background: var(--hl-soft); border: 1.5px solid var(--hl);
+  border-radius: 18px; padding: 22px 26px;
+  display: flex; align-items: flex-start; gap: 12px;
+  font-size: 17px; line-height: 1.75;
+}
+.note-icon { font-size: 18px; line-height: 1.85; flex-shrink: 0; }
+.blk { font-size: 13px; font-weight: 800; color: var(--blue-key); margin-bottom: 14px; letter-spacing: 0.02em; }
+
+.hold-card {
+  background: var(--card); border: 1.5px dashed var(--blue-line);
+  border-radius: 24px; padding: 36px 40px;
+}
+.hold-item { display: flex; gap: 18px; padding: 18px 0; border-bottom: 1px solid var(--line); }
+.hold-item:last-child { border-bottom: none; padding-bottom: 0; }
+.hold-num {
+  width: 30px; height: 30px; min-width: 30px; background: var(--muted);
+  border-radius: 9px; display: flex; align-items: center; justify-content: center;
+  font-size: 14px; font-weight: 800; color: #fff; margin-top: 2px;
+}
+.hold-title { font-size: 18px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
+.hold-desc { font-size: 15px; color: var(--body); line-height: 1.7; }
+
+.divider { height: 1px; background: var(--line); margin: 24px 0; }
+
+/* 벤다이어그램 스타일 */
+.venn-wrap {
+  display: flex; align-items: center; justify-content: center; gap: 0;
+}
+.venn-circle {
+  width: 200px; height: 200px; border-radius: 50%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: 20px; position: relative;
+}
+.venn-a {
+  background: rgba(58,110,224,0.13); border: 2px solid rgba(58,110,224,0.4);
+  margin-right: -20px; z-index: 1;
+}
+.venn-b {
+  background: rgba(255,200,0,0.13); border: 2px solid rgba(255,200,0,0.4);
+  margin-left: -20px; z-index: 1;
+}
+.venn-label { font-size: 14px; font-weight: 800; color: var(--ink); line-height: 1.45; }
+.venn-sub { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+/* 구조 다이어그램 */
+.struct-flow {
+  display: flex; align-items: stretch; gap: 0;
+  background: var(--blue-soft); border: 1.5px solid var(--blue-line);
+  border-radius: 20px; overflow: hidden;
+}
+.struct-node {
+  flex: 1; padding: 24px 22px; text-align: center;
+  border-right: 1.5px solid var(--blue-line);
+}
+.struct-node:last-child { border-right: none; }
+.struct-node .s-tag {
+  font-size: 11px; font-weight: 800; color: var(--blue);
+  background: var(--blue-wash); border-radius: 999px; padding: 3px 10px;
+  display: inline-block; margin-bottom: 10px;
+}
+.struct-node .s-name { font-size: 17px; font-weight: 900; color: var(--ink); margin-bottom: 8px; }
+.struct-node .s-desc { font-size: 13px; color: var(--muted); line-height: 1.65; }
+
+/* 8주 타임라인 */
+.timeline { display: flex; gap: 0; }
+.tl-item {
+  flex: 1; text-align: center; position: relative;
+  padding: 0 8px;
+}
+.tl-item::after {
+  content: '→'; position: absolute; right: -8px; top: 18px;
+  font-size: 16px; color: var(--blue); z-index: 2;
+}
+.tl-item:last-child::after { display: none; }
+.tl-dot {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--blue); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 800;
+  margin: 0 auto 10px;
+}
+.tl-week { font-size: 12px; font-weight: 800; color: var(--blue-key); margin-bottom: 4px; }
+.tl-desc { font-size: 12px; color: var(--body); line-height: 1.55; }
+
+/* 네비 도트 */
+.nav {
+  position: fixed; right: 28px; top: 50%; transform: translateY(-50%);
+  display: flex; flex-direction: column; gap: 10px; z-index: 100;
+}
+.dot { width: 8px; height: 8px; border-radius: 999px; background: var(--blue-line); cursor: pointer; transition: all 0.2s; }
+.dot.active { background: var(--blue); height: 24px; }
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="dot active" onclick="goTo(0)"></div>
+  <div class="dot" onclick="goTo(1)"></div>
+  <div class="dot" onclick="goTo(2)"></div>
+  <div class="dot" onclick="goTo(3)"></div>
+  <div class="dot" onclick="goTo(4)"></div>
+  <div class="dot" onclick="goTo(5)"></div>
+</nav>
+
+<!-- ════════════════════════════════
+  SLIDE 1 — 타겟 재정의
+════════════════════════════════ -->
+<section class="slide" id="s0">
+  <span class="slide-num">01 / 05</span>
+  <span class="brandmark">MOIMMOIM</span>
+  <div class="slide-inner">
+    <p class="eyebrow">🎯 타겟 재정의</p>
+    <h1 class="slide-title">엑시트 창업가만으로는 부족했다</h1>
+    <div class="grid-2" style="gap:24px;align-items:start;">
+      <div style="display:flex;flex-direction:column;gap:20px;">
+        <div class="card">
+          <p class="blk">왜 타겟을 넓혔는가</p>
+          <p style="font-size:17px;line-height:1.8;margin-bottom:16px;">스폰서형 서클을 운영하려면, 다양한 분야의 <mark>고위급 리더들이 넉넉히 확보</mark>되어 있어야 한다.</p>
+          <p style="font-size:17px;line-height:1.8;margin-bottom:16px;">엑시트 창업가만으로는 인원이 너무 좁고, 도메인이 편중된다.</p>
+          <p style="font-size:17px;line-height:1.8;"><em class="accent">YPO도, World 50도</em> CEO만 받지 않는다. CMO, CFO, CTO — 임원진 전반을 포함한다.</p>
+        </div>
+        <div class="note">
+          <span class="note-icon">🌐</span>
+          <div><strong>레퍼런스 — World 50</strong><br>포춘 500대 기업 C레벨 임원들만 가입할 수 있는 글로벌 피어 커뮤니티. CEO에만 국한하지 않고 CMO · CFO · CTO · CHRO 등 전 직군 C레벨을 수용하는 구조로 운영된다.<br><a href="https://world50.com" target="_blank" style="font-size:13px;font-weight:800;color:var(--blue-key);text-decoration:none;display:inline-block;margin-top:8px;">→ world50.com</a></div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:20px;">
+        <div class="card">
+          <p class="blk">C레벨 임원진 — 입장 기준</p>
+          <div class="kv-list" style="margin-bottom:20px;">
+            <div class="kv-line">
+              <span class="k">상장사</span>
+              <span class="v">코스피 · 코스닥 상장사의 C레벨 임원</span>
+            </div>
+            <div class="kv-line">
+              <span class="k">비상장</span>
+              <span class="v">매출 500억+ 기업의 C레벨</span>
+            </div>
+            <div class="kv-line">
+              <span class="k">스타트업</span>
+              <span class="v">VC · PE 투자받은 기업의 C레벨</span>
+            </div>
+          </div>
+          <div class="divider"></div>
+          <p class="blk">대상 예시</p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;">
+            <span style="background:var(--blue-wash);color:var(--blue-key);font-size:12px;font-weight:800;border-radius:999px;padding:4px 12px;">삼성전자 마케팅본부장</span>
+            <span style="background:var(--blue-wash);color:var(--blue-key);font-size:12px;font-weight:800;border-radius:999px;padding:4px 12px;">카카오 CFO</span>
+            <span style="background:var(--blue-wash);color:var(--blue-key);font-size:12px;font-weight:800;border-radius:999px;padding:4px 12px;">현대차 디지털전략 CTO</span>
+            <span style="background:var(--blue-wash);color:var(--blue-key);font-size:12px;font-weight:800;border-radius:999px;padding:4px 12px;">카카오벤처스 파트너</span>
+            <span style="background:var(--blue-wash);color:var(--blue-key);font-size:12px;font-weight:800;border-radius:999px;padding:4px 12px;">롯데온 이커머스 사업부장</span>
+            <span style="background:var(--blue-wash);color:var(--blue-key);font-size:12px;font-weight:800;border-radius:999px;padding:4px 12px;">신세계 SSG 마케팅본부장</span>
+            <span style="background:var(--hl-soft);color:var(--ink);font-size:12px;font-weight:800;border-radius:999px;padding:4px 12px;border:1px solid var(--hl);">소프트뱅크벤처스 심사역</span>
+          </div>
+          <div class="divider"></div>
+          <div class="note" style="margin:0;">
+            <span class="note-icon">💡</span>
+            <div><strong>결론:</strong> 엑시트 창업가 + <strong>C레벨 임원진</strong>을 함께 모은다. 한마디로 — <mark>국내 고위 임원직 리더들의 성장 네트워크.</mark></div>
+          </div>
+        </div>
+      </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════
+  SLIDE 2 — C레벨 커뮤니티 서비스 구조
+════════════════════════════════ -->
+<section class="slide" id="s_c">
+  <span class="slide-num">02 / 05</span>
+  <span class="brandmark">MOIMMOIM</span>
+  <div class="slide-inner">
+    <p class="eyebrow">💼 C레벨 커뮤니티</p>
+    <h1 class="slide-title">세 가지 축으로 운영된다</h1>
+    <p class="slide-lead" style="margin-bottom:28px;">코어 그룹 · 직군별 이벤트 · 연간 행사 — 각 멤버는 <mark>세 층위에 동시에 속한다.</mark></p>
+
+    <div class="grid-2" style="gap:24px;align-items:start;">
+
+      <!-- ── LEFT ── -->
+      <div style="display:flex;flex-direction:column;gap:16px;">
+
+        <!-- 코어 그룹 -->
+        <div class="card" style="padding:26px 30px;">
+          <p class="blk">① 코어 그룹 (포럼)</p>
+          <div style="display:flex;gap:10px;margin-bottom:18px;">
+            <div style="background:var(--blue-soft);border:1.5px solid var(--blue-line);border-radius:12px;padding:14px 12px;flex:1;text-align:center;">
+              <p style="font-size:20px;font-weight:900;color:var(--blue);line-height:1;">8명</p>
+              <p style="font-size:11px;color:var(--muted);margin-top:4px;">+ 모더레이터 1명</p>
+            </div>
+            <div style="background:var(--blue-soft);border:1.5px solid var(--blue-line);border-radius:12px;padding:14px 12px;flex:1;text-align:center;">
+              <p style="font-size:20px;font-weight:900;color:var(--blue);line-height:1;">월 1회</p>
+              <p style="font-size:11px;color:var(--muted);margin-top:4px;">4~5시간</p>
+            </div>
+            <div style="background:var(--blue-soft);border:1.5px solid var(--blue-line);border-radius:12px;padding:14px 12px;flex:1;text-align:center;">
+              <p style="font-size:20px;font-weight:900;color:var(--blue);line-height:1;">8개월+</p>
+              <p style="font-size:11px;color:var(--muted);margin-top:4px;">장기 지속</p>
+            </div>
+          </div>
+          <div class="divider"></div>
+          <p class="blk" style="margin-bottom:10px;">포럼 4원칙</p>
+          <div style="display:flex;flex-direction:column;gap:7px;">
+            <div style="display:flex;gap:10px;align-items:baseline;">
+              <span style="font-size:10px;font-weight:800;color:#fff;background:var(--blue);border-radius:6px;padding:2px 7px;white-space:nowrap;flex-shrink:0;">신뢰</span>
+              <p style="font-size:13px;color:var(--body);line-height:1.6;">여기서 나온 말은 여기서만 머문다</p>
+            </div>
+            <div style="display:flex;gap:10px;align-items:baseline;">
+              <span style="font-size:10px;font-weight:800;color:#fff;background:var(--blue);border-radius:6px;padding:2px 7px;white-space:nowrap;flex-shrink:0;">불완전성</span>
+              <p style="font-size:13px;color:var(--body);line-height:1.6;">부족함을 드러낼수록 더 많이 얻어간다</p>
+            </div>
+            <div style="display:flex;gap:10px;align-items:baseline;">
+              <span style="font-size:10px;font-weight:800;color:#fff;background:var(--blue);border-radius:6px;padding:2px 7px;white-space:nowrap;flex-shrink:0;">비판 금지</span>
+              <p style="font-size:13px;color:var(--body);line-height:1.6;">"내 경험상 이랬다" 형식으로만 공유</p>
+            </div>
+            <div style="display:flex;gap:10px;align-items:baseline;">
+              <span style="font-size:10px;font-weight:800;color:#fff;background:var(--blue);border-radius:6px;padding:2px 7px;white-space:nowrap;flex-shrink:0;">마인드셋</span>
+              <p style="font-size:13px;color:var(--body);line-height:1.6;">경청할수록 더 많이 배우고 성장한다</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 연간 행사 -->
+        <div class="card" style="padding:22px 28px;">
+          <p class="blk">③ 연간 행사 (2회)</p>
+          <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:14px;">
+            <div style="display:flex;gap:12px;align-items:center;">
+              <div style="width:36px;height:36px;min-width:36px;background:var(--blue);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;flex-shrink:0;">1회</div>
+              <p style="font-size:14px;color:var(--body);line-height:1.65;"><strong>직군별 1박2일 글램핑</strong> — 같은 직군 안에서 관계 심화</p>
+            </div>
+            <div style="display:flex;gap:12px;align-items:center;">
+              <div style="width:36px;height:36px;min-width:36px;background:var(--blue-key);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;flex-shrink:0;">1회</div>
+              <p style="font-size:14px;color:var(--body);line-height:1.65;"><strong>PEF 합동 네트워킹</strong> — 디너 or 크루즈, 외부 그룹 교차 연결</p>
+            </div>
+          </div>
+          <div style="background:var(--hl-soft);border:1.5px solid var(--hl);border-radius:12px;padding:12px 14px;">
+            <p style="font-size:13px;line-height:1.7;">World 50도 소속 그룹끼리 + 외부 섞어 연간 행사 진행. 내부 결속과 외부 연결을 동시에.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ── RIGHT ── -->
+      <div style="display:flex;flex-direction:column;gap:16px;">
+
+        <!-- 직군별 이벤트 -->
+        <div class="card" style="padding:26px 30px;">
+          <p class="blk">② 직군별 이벤트 (매월)</p>
+          <div style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:16px;">
+            <span style="background:var(--blue-wash);color:var(--blue-key);font-size:11px;font-weight:800;border-radius:999px;padding:3px 11px;">오리엔테이션</span>
+            <span style="background:var(--blue-wash);color:var(--blue-key);font-size:11px;font-weight:800;border-radius:999px;padding:3px 11px;">연사 초청</span>
+            <span style="background:var(--blue-wash);color:var(--blue-key);font-size:11px;font-weight:800;border-radius:999px;padding:3px 11px;">액티비티</span>
+            <span style="background:var(--blue-wash);color:var(--blue-key);font-size:11px;font-weight:800;border-radius:999px;padding:3px 11px;">멤버 주도형</span>
+          </div>
+          <div class="divider"></div>
+          <p style="font-size:12px;font-weight:800;color:var(--muted);margin-bottom:10px;letter-spacing:.04em;">직군별 예시</p>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <div style="border:1.5px solid var(--line);border-radius:12px;padding:13px 16px;">
+              <p style="font-size:12px;font-weight:800;color:var(--blue-key);margin-bottom:6px;">CMO</p>
+              <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                <span style="font-size:12px;color:var(--body);">🎤 AI 마케팅 전문가 특강</span>
+                <span style="font-size:12px;color:var(--muted);">·</span>
+                <span style="font-size:12px;color:var(--body);">☕ 일요일 브런치 + 산책</span>
+                <span style="font-size:12px;color:var(--muted);">·</span>
+                <span style="font-size:12px;color:var(--body);">💡 멤버 제안 이벤트</span>
+              </div>
+            </div>
+            <div style="border:1.5px solid var(--line);border-radius:12px;padding:13px 16px;">
+              <p style="font-size:12px;font-weight:800;color:var(--blue-key);margin-bottom:6px;">CTO</p>
+              <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                <span style="font-size:12px;color:var(--body);">⛳ 골프 · 축구 액티비티</span>
+                <span style="font-size:12px;color:var(--muted);">·</span>
+                <span style="font-size:12px;color:var(--body);">🎤 기술 트렌드 연사 특강</span>
+                <span style="font-size:12px;color:var(--muted);">·</span>
+                <span style="font-size:12px;color:var(--body);">💡 멤버 제안 이벤트</span>
+              </div>
+            </div>
+            <div style="border:1.5px solid var(--line);border-radius:12px;padding:13px 16px;">
+              <p style="font-size:12px;font-weight:800;color:var(--blue-key);margin-bottom:6px;">CFO</p>
+              <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                <span style="font-size:12px;color:var(--body);">🎤 IPO · M&A 투자흐름 특강</span>
+                <span style="font-size:12px;color:var(--muted);">·</span>
+                <span style="font-size:12px;color:var(--body);">🧖 사우나 · 등산</span>
+                <span style="font-size:12px;color:var(--muted);">·</span>
+                <span style="font-size:12px;color:var(--body);">💡 멤버 제안 이벤트</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 국내 경쟁 현황 -->
+        <div class="card" style="padding:22px 28px;">
+          <p class="blk">국내 경쟁 현황 — 빈틈 분석</p>
+          <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:14px;">
+            <div style="display:flex;gap:10px;align-items:flex-start;background:var(--blue-soft);border:1.5px solid var(--blue-line);border-radius:10px;padding:11px 14px;">
+              <div style="min-width:110px;">
+                <p style="font-size:12px;font-weight:800;color:var(--ink);">with CTO</p>
+                <a href="https://event-us.kr/withcto/event" target="_blank" style="font-size:11px;font-weight:800;color:var(--blue-key);text-decoration:none;">→ 바로가기 (클릭)</a>
+              </div>
+              <p style="font-size:12px;color:var(--muted);line-height:1.6;">민간 비영리 · 5,000원 참가비 · 입장 허들 없음 · 시작 1년 · 규모 소규모</p>
+            </div>
+            <div style="display:flex;gap:10px;align-items:flex-start;background:var(--blue-soft);border:1.5px solid var(--blue-line);border-radius:10px;padding:11px 14px;">
+              <div style="min-width:110px;">
+                <p style="font-size:12px;font-weight:800;color:var(--ink);">상장사 CFO 포럼</p>
+                <a href="https://www.cfo.or.kr/" target="_blank" style="font-size:11px;font-weight:800;color:var(--blue-key);text-decoration:none;">→ 바로가기 (클릭)</a>
+              </div>
+              <p style="font-size:12px;color:var(--muted);line-height:1.6;">상장사 CFO 한정 · 조찬+체육 패턴 반복 · 분위기 올드하고 정장 문화</p>
+            </div>
+            <div style="display:flex;gap:10px;align-items:flex-start;background:var(--blue-soft);border:1.5px solid var(--blue-line);border-radius:10px;padding:11px 14px;">
+              <div style="min-width:110px;">
+                <p style="font-size:12px;font-weight:800;color:var(--ink);">서울대 CFO 아카데미</p>
+                <a href="https://mdc.snu.ac.kr/cfo" target="_blank" style="font-size:11px;font-weight:800;color:var(--blue-key);text-decoration:none;">→ 바로가기 (클릭)</a>
+              </div>
+              <p style="font-size:12px;color:var(--muted);line-height:1.6;">교육생 양성 중심 · 수료 후 커뮤니티 · 대등한 네트워킹 아님</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════
+  SLIDE 1.5 — 벤다이어그램
+════════════════════════════════ -->
+<section class="slide" id="s05" style="min-height:auto;padding:60px 0;">
+  <div class="venn-wrap">
+    <div class="venn-circle venn-a">
+      <p class="venn-label">타겟 : 엑싯을 해본 창업가</p>
+      <p class="venn-sub">(규모 상관 ✕)</p>
+    </div>
+    <div class="venn-circle venn-b">
+      <p class="venn-label">타겟 : C레벨 임원진들</p>
+      <p class="venn-sub">(규모 ○)</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════
+  SLIDE 2 — 세 구조가 함께 굴러간다
+════════════════════════════════ -->
+<section class="slide" id="s1">
+  <span class="slide-num">03 / 05</span>
+  <span class="brandmark">MOIMMOIM</span>
+  <div class="slide-inner">
+    <p class="eyebrow">🔗 멤버십 구조</p>
+    <h1 class="slide-title">세 구조가 함께 굴러간다</h1>
+    <p class="slide-lead" style="margin-bottom:32px;">두 그룹이 합쳐지면, 각 멤버에게 <mark>세 개의 소속</mark>이 생긴다.</p>
+
+    <!-- 구조 다이어그램 -->
+    <div class="struct-flow" style="margin-bottom:24px;">
+      <div class="struct-node">
+        <div class="s-tag">① 코어</div>
+        <div class="s-name">코어 그룹</div>
+        <div class="s-desc">엑시트 창업가끼리 / C레벨끼리<br>각자 별도 포럼 운영<br><br>월 1회 · 4~5시간 · 8개월+</div>
+      </div>
+      <div class="struct-node" style="background:var(--blue-wash);">
+        <div class="s-tag" style="background:var(--blue);color:#fff;">② 교차</div>
+        <div class="s-name">도메인 챕터</div>
+        <div class="s-desc">같은 산업/분야로 묶이는 교차 그룹<br>온라인 중심 (슬랙 · 스쿨)<br><br>인원 제한 없음</div>
+      </div>
+      <div class="struct-node">
+        <div class="s-tag">③ 교차</div>
+        <div class="s-name">지역별 챕터</div>
+        <div class="s-desc">거주 지역 기반 교차 그룹<br>멤버가 직접 이벤트를 만든다<br><br>이벤트 민주화</div>
+      </div>
+    </div>
+
+    <div class="grid-2" style="gap:20px;align-items:start;">
+      <div class="card">
+        <p class="blk">도메인 챕터 — 작동 방식</p>
+        <p style="font-size:15px;line-height:1.8;margin-bottom:16px;">같은 산업에 있는 사람들이 그룹으로 묶인다. 엑시트 창업가와 C레벨 임원진이 <mark>도메인으로 교차</mark>한다.</p>
+        <div style="background:var(--blue-soft);border:1.5px solid var(--blue-line);border-radius:14px;padding:18px 20px;">
+          <p style="font-size:13px;font-weight:800;color:var(--blue-key);margin-bottom:10px;">예시 — 패션 도메인 챕터</p>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <div style="display:flex;align-items:center;gap:10px;">
+              <span style="background:var(--blue);color:#fff;font-size:11px;font-weight:800;border-radius:6px;padding:2px 8px;">엑시트</span>
+              <span style="font-size:14px;color:var(--body);">패션 브랜드 창업 후 엑시트한 대표</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;">
+              <span style="background:var(--hl);color:var(--ink);font-size:11px;font-weight:800;border-radius:6px;padding:2px 8px;">C레벨</span>
+              <span style="font-size:14px;color:var(--body);">패션 쇼핑몰 CTO · 패션 잡지사 마케팅 디렉터</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <p class="blk">지역별 챕터 — 작동 방식</p>
+        <p style="font-size:15px;line-height:1.8;margin-bottom:16px;"><mark>YPO처럼</mark> 지부별 챕터가 생긴다. 서울 · 부산 · 제주 어디든, 같은 지역 멤버끼리 자연스럽게 묶인다.</p>
+        <div style="background:var(--hl-soft);border:1.5px solid var(--hl);border-radius:14px;padding:18px 20px;">
+          <p style="font-size:14px;font-weight:800;color:var(--ink);margin-bottom:8px;">이벤트 민주화</p>
+          <p style="font-size:14px;color:var(--body);line-height:1.7;">멤버가 직접 만들고, 직접 기획하고, 직접 실행한다.<br>운영진이 아닌 <strong>멤버가 챕터를 살아있게 한다.</strong></p>
+          <a href="https://www.ypopacificwest.com/" target="_blank" style="display:inline-block;margin-top:12px;font-size:13px;font-weight:800;color:var(--blue-key);text-decoration:none;">→ YPO 챕터 대표들의 이야기</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════
+  SLIDE 3 — 도메인 챕터 (챌린지형)
+════════════════════════════════ -->
+<section class="slide" id="s2">
+  <span class="slide-num">04 / 05</span>
+  <span class="brandmark">MOIMMOIM</span>
+  <div class="slide-inner" style="display:flex;flex-direction:column;overflow:hidden;">
+    <p class="eyebrow" style="margin-bottom:6px;">🚀 도메인 챕터</p>
+    <h1 class="slide-title" style="margin-bottom:24px;">두 가지 모델이 함께 굴러간다</h1>
+
+    <!-- 좌우 스크롤 패널 -->
+    <div style="display:flex;gap:0;overflow-x:auto;flex:1;padding-bottom:16px;scrollbar-width:thin;scrollbar-color:var(--blue-line) transparent;">
+
+      <!-- ── LEFT: 챌린지형 ── -->
+      <div style="min-width:880px;flex:2;display:flex;flex-direction:column;gap:14px;padding-right:40px;">
+        <div>
+          <p style="font-size:12px;font-weight:800;color:var(--blue-key);letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px;">챌린지형 — YC 모델</p>
+          <p style="font-size:15px;color:var(--body);line-height:1.7;">같은 도메인의 창업가들이 모여 <mark>8주 동안 KPI를 함께 달성한다.</mark></p>
+        </div>
+        <div style="display:flex;gap:16px;align-items:flex-start;flex:1;">
+          <!-- 그룹 구성 -->
+          <div class="card" style="padding:24px 28px;flex:1;min-width:0;">
+            <p class="blk">그룹 구성 — 7명+</p>
+            <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:18px;">
+              <div style="display:flex;align-items:center;gap:12px;background:var(--blue-soft);border:1.5px solid var(--blue-line);border-radius:12px;padding:12px 14px;">
+                <div style="width:7px;height:7px;border-radius:50%;background:var(--muted);flex-shrink:0;"></div>
+                <div style="flex:1;">
+                  <p style="font-size:13px;font-weight:800;color:var(--ink);margin-bottom:1px;">마이너 창업가 (초기)</p>
+                  <p style="font-size:12px;color:var(--muted);">아이디어 단계 ~ 초기 창업</p>
+                </div>
+                <span style="background:var(--blue-wash);color:var(--blue-key);font-size:10px;font-weight:800;border-radius:999px;padding:2px 9px;white-space:nowrap;flex-shrink:0;">C레벨 모집</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px;background:var(--blue-soft);border:1.5px solid var(--blue-line);border-radius:12px;padding:12px 14px;">
+                <div style="width:7px;height:7px;border-radius:50%;background:var(--blue);flex-shrink:0;"></div>
+                <div style="flex:1;">
+                  <p style="font-size:13px;font-weight:800;color:var(--ink);margin-bottom:1px;">시리즈 A+ 기업 <em class="accent">(가장 많은 비율)</em></p>
+                  <p style="font-size:12px;color:var(--muted);">성장 중인 창업가, 자문이 필요한 단계</p>
+                </div>
+                <span style="background:var(--blue-wash);color:var(--blue-key);font-size:10px;font-weight:800;border-radius:999px;padding:2px 9px;white-space:nowrap;flex-shrink:0;">C레벨 모집</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px;background:var(--hl-soft);border:1.5px solid var(--hl);border-radius:12px;padding:12px 14px;">
+                <div style="width:7px;height:7px;border-radius:50%;background:#f5c400;flex-shrink:0;"></div>
+                <div style="flex:1;">
+                  <p style="font-size:13px;font-weight:800;color:var(--ink);margin-bottom:1px;">엑시트 창업가 · 업계 임원진 <em class="accent">(멘토)</em></p>
+                  <p style="font-size:12px;color:var(--muted);">도메인 선배, 2명 배치 · 상시 자문 가능</p>
+                </div>
+                <div style="display:flex;gap:3px;flex-shrink:0;">
+                  <span style="background:var(--blue-wash);color:var(--blue-key);font-size:10px;font-weight:800;border-radius:999px;padding:2px 9px;white-space:nowrap;">엑시트</span>
+                  <span style="background:var(--hl);color:var(--ink);font-size:10px;font-weight:800;border-radius:999px;padding:2px 9px;white-space:nowrap;">C레벨</span>
+                </div>
+              </div>
+            </div>
+            <div class="divider"></div>
+            <p class="blk">아이덴티티 <span style="font-weight:400;color:var(--muted);">(창업가 위주)</span></p>
+            <p style="font-size:14px;line-height:1.75;"><mark>사업 성장.</mark> 나의 도메인에 있는 사람들과 네트워크를 빠르게 확장하고, KPI를 함께 달성한다.</p>
+          </div>
+          <!-- 8주 프로그램 -->
+          <div class="card" style="padding:24px 28px;flex:1;min-width:0;">
+            <p class="blk">8주 프로그램 흐름</p>
+            <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:14px;">
+              <div style="display:flex;gap:14px;align-items:flex-start;">
+                <div style="width:42px;height:42px;min-width:42px;background:var(--blue);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;">0주</div>
+                <div style="padding-top:8px;">
+                  <p style="font-size:13px;font-weight:800;color:var(--ink);margin-bottom:1px;">디너 네트워킹</p>
+                  <p style="font-size:12px;color:var(--muted);">그룹 첫 만남, 서로 알아가기</p>
+                </div>
+              </div>
+              <div style="display:flex;gap:14px;align-items:flex-start;">
+                <div style="width:42px;height:42px;min-width:42px;background:var(--blue);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;">2주</div>
+                <div style="padding-top:8px;">
+                  <p style="font-size:13px;font-weight:800;color:var(--ink);margin-bottom:1px;">첫 번째 미팅 — KPI 설정</p>
+                  <p style="font-size:12px;color:var(--muted);">멘토 + 멤버 전원, 각자 목표 지수 논의</p>
+                </div>
+              </div>
+              <div style="display:flex;gap:14px;align-items:flex-start;">
+                <div style="width:42px;height:42px;min-width:42px;background:var(--blue-key);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;">매주</div>
+                <div style="padding-top:8px;">
+                  <p style="font-size:13px;font-weight:800;color:var(--ink);margin-bottom:1px;">핫시트 — KPI 경과 공유</p>
+                  <p style="font-size:12px;color:var(--muted);">"이번 주에 뭘 했고, 어디서 막혔는지" — 업계 전문가와 함께 토의 토론.</p>
+                </div>
+              </div>
+            </div>
+            <div style="background:var(--hl-soft);border:1.5px solid var(--hl);border-radius:12px;padding:14px 16px;">
+              <p style="font-size:13px;line-height:1.75;">멘토가 직접 팀을 선별하고, 격주마다 KPI 목표 설정 &amp; 핫시트 자리를 갖는다. = 해리온도 마찬가지.</p>
+              <a href="https://www.ycombinator.com/about" target="_blank" style="display:inline-block;margin-top:8px;font-size:12px;font-weight:800;color:var(--blue-key);text-decoration:none;">→ YC에서 벌어지는 일 (클릭)</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── DIVIDER ── -->
+      <div style="width:1px;background:var(--line);flex-shrink:0;align-self:stretch;margin:0 8px;"></div>
+
+      <!-- ── RIGHT: 스폰서형 ── -->
+      <div style="min-width:460px;flex:1;display:flex;flex-direction:column;gap:14px;padding-left:40px;">
+        <div>
+          <p style="font-size:12px;font-weight:800;color:var(--blue-key);letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px;">스폰서형 서클 모델</p>
+          <p style="font-size:15px;color:var(--body);line-height:1.7;"><mark>헤더가 1,500만원을 내고 자기를 위한 서클(=사업파트너들)을 꾸리게 해준다.</mark></p>
+        </div>
+        <div class="card" style="padding:24px 28px;">
+          <p class="blk">기본 구조</p>
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <div style="background:var(--ink);border-radius:14px;padding:18px 20px;">
+              <p style="font-size:12px;font-weight:800;color:rgba(255,255,255,.5);margin-bottom:5px;">헤더 (Header)</p>
+              <p style="font-size:15px;font-weight:800;color:#fff;line-height:1.65;">업계 전문가, 사업파트너즈가 필요한 클라이언트.</p>
+            </div>
+            <div style="text-align:center;font-size:20px;font-weight:900;color:var(--blue);line-height:1;">+</div>
+            <div style="background:var(--blue-soft);border:1.5px solid var(--blue-line);border-radius:14px;padding:18px 20px;">
+              <p style="font-size:12px;font-weight:800;color:var(--blue-key);margin-bottom:5px;">나머지 7명</p>
+              <p style="font-size:14px;color:var(--body);line-height:1.75;">운영진이 헤더의 니즈에 맞게 직접 큐레이션. 헤더의 문제를 <strong>해결해줄 수 있는 사람들</strong>로 구성한다.</p>
+              <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:10px;">
+                <span style="background:var(--blue-wash);color:var(--blue-key);font-size:11px;font-weight:800;border-radius:999px;padding:3px 10px;">파트너</span>
+                <span style="background:var(--blue-wash);color:var(--blue-key);font-size:11px;font-weight:800;border-radius:999px;padding:3px 10px;">잠재 고객</span>
+                <span style="background:var(--blue-wash);color:var(--blue-key);font-size:11px;font-weight:800;border-radius:999px;padding:3px 10px;">투자자</span>
+                <span style="background:var(--blue-wash);color:var(--blue-key);font-size:11px;font-weight:800;border-radius:999px;padding:3px 10px;">유통사</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════
+  SLIDE 5 — 왜 멈췄는가
+════════════════════════════════ -->
+<section class="slide" id="s4">
+  <span class="slide-num">05 / 05</span>
+  <span class="brandmark">MOIMMOIM</span>
+  <div class="slide-inner">
+    <p class="eyebrow">⏸ 보류 이유</p>
+    <h1 class="slide-title">왜 ver.2도 멈췄는가</h1>
+    <p class="slide-lead" style="margin-bottom:32px;"><mark>큰 그림은 그려졌다. 하지만 지금 단계에서 실행하기엔 너무 컸다.</mark></p>
+    <div class="grid-2" style="gap:24px;align-items:start;">
+      <div class="hold-card">
+        <div class="hold-item">
+          <div class="hold-num">1</div>
+          <div>
+            <p class="hold-title">규모가 너무 크다</p>
+            <p class="hold-desc">CMO · CFO · CTO · 엑시트 창업가 — 각 그룹을 개별적으로 운영해야 한다. 한 달에 맞춰야 할 이벤트가 최소 10개 이상. 초기에 포커싱이 불가능하다.</p>
+          </div>
+        </div>
+        <div class="hold-item">
+          <div class="hold-num">2</div>
+          <div>
+            <p class="hold-title">처음의 방향에서 너무 멀어졌다</p>
+            <p class="hold-desc">사업가 커뮤니티를 만들려 했는데, 너무 많은 타겟을 노리다 보니 정체성이 흐려졌다. 비즈니스적인 목표를 향해 달리다 원점을 잃어버린 것.</p>
+          </div>
+        </div>
+        <div class="hold-item">
+          <div class="hold-num">3</div>
+          <div>
+            <p class="hold-title">포럼 형식은 여전히 문제다</p>
+            <p class="hold-desc">C레벨 임원진도 한국 문화상 고민을 공개하기 어렵다. CEO라고 안 그러겠냐 — CMO도 CFO도 똑같다. ver.1의 문제가 반복된다.</p>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:20px;">
+        <div class="note">
+          <span class="note-icon">💡</span>
+          <div><strong>결론:</strong> 타겟을 넓힐수록 실행력이 떨어진다.<br>무엇을 포기할 것인가, 다시 물어야 한다.</div>
+        </div>
+        <div class="card" style="text-align:center;padding:48px 40px;">
+          <p style="font-size:13px;font-weight:800;color:var(--blue-key);letter-spacing:0.05em;margin-bottom:20px;">NEXT</p>
+          <p style="font-size:32px;font-weight:900;color:var(--ink);letter-spacing:-0.025em;margin-bottom:16px;">ver.3 재기획</p>
+          <p style="font-size:17px;color:var(--body);line-height:1.75;">타겟을 다시 좁힌다.<br>형식도, 운영 방식도 처음부터 다시.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+const dots = document.querySelectorAll('.dot');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const idx = Array.from(slides).indexOf(entry.target);
+      dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+    }
+  });
+}, { threshold: 0.5 });
+
+slides.forEach(s => observer.observe(s));
+
+function goTo(idx) {
+  slides[idx].scrollIntoView({ behavior: 'smooth' });
+}
+
+document.addEventListener('keydown', e => {
+  const cur = Array.from(dots).findIndex(d => d.classList.contains('active'));
+  if ((e.key === 'ArrowDown' || e.key === 'ArrowRight') && cur < slides.length - 1) goTo(cur + 1);
+  if ((e.key === 'ArrowUp' || e.key === 'ArrowLeft') && cur > 0) goTo(cur - 1);
+});
+</script>
+</body>
+</html>

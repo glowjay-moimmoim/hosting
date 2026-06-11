@@ -1,0 +1,847 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>해리온 ver.1 — 엑시트 창업가 커뮤니티</title>
+<style>
+@font-face { font-family:'Paperlogy'; src:url('file:///C:/Users/CJW/Desktop/main/00-system/design/font/paperlogy/Paperlogy-1Thin.ttf'); font-weight:100; }
+@font-face { font-family:'Paperlogy'; src:url('file:///C:/Users/CJW/Desktop/main/00-system/design/font/paperlogy/Paperlogy-4Regular.ttf'); font-weight:400; }
+@font-face { font-family:'Paperlogy'; src:url('file:///C:/Users/CJW/Desktop/main/00-system/design/font/paperlogy/Paperlogy-5Medium.ttf'); font-weight:500; }
+@font-face { font-family:'Paperlogy'; src:url('file:///C:/Users/CJW/Desktop/main/00-system/design/font/paperlogy/Paperlogy-6SemiBold.ttf'); font-weight:600; }
+@font-face { font-family:'Paperlogy'; src:url('file:///C:/Users/CJW/Desktop/main/00-system/design/font/paperlogy/Paperlogy-7Bold.ttf'); font-weight:700; }
+@font-face { font-family:'Paperlogy'; src:url('file:///C:/Users/CJW/Desktop/main/00-system/design/font/paperlogy/Paperlogy-8ExtraBold.ttf'); font-weight:800; }
+@font-face { font-family:'Paperlogy'; src:url('file:///C:/Users/CJW/Desktop/main/00-system/design/font/paperlogy/Paperlogy-9Black.ttf'); font-weight:900; }
+
+:root {
+  --ink: #1c2230;
+  --body: #414856;
+  --muted: #8b93a3;
+  --line: #e6eaf1;
+  --bg: #f3f5f9;
+  --card: #ffffff;
+  --blue: #3a6ee0;
+  --blue-key: #2f5fd0;
+  --blue-wash: #eaf1fd;
+  --blue-line: #cfe0fa;
+  --blue-soft: #f4f8ff;
+  --hl: #fff09e;
+  --hl-soft: #fffada;
+}
+
+*, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+
+html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+
+body {
+  font-family:'Paperlogy', sans-serif;
+  font-weight:400;
+  background: var(--bg);
+  color: var(--body);
+  letter-spacing:-0.01em;
+  word-break:keep-all;
+  overflow-wrap:break-word;
+  overflow-x: hidden;
+}
+
+/* ── 슬라이드 기본 ── */
+.slide {
+  scroll-snap-align: start;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 0;
+  position: relative;
+}
+.slide-inner {
+  max-width: 1080px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 64px;
+}
+
+/* ── 슬라이드 번호 & 워드마크 ── */
+.slide-num {
+  position: absolute;
+  top: 40px;
+  left: 64px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--blue);
+  letter-spacing: 0.05em;
+}
+.brandmark {
+  position: absolute;
+  top: 40px;
+  right: 64px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+/* ── 타이포 ── */
+.eyebrow {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--blue-key);
+  margin-bottom: 18px;
+  letter-spacing: 0.02em;
+}
+.slide-title {
+  font-size: 44px;
+  font-weight: 900;
+  color: var(--ink);
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  margin-bottom: 40px;
+  white-space: nowrap;
+}
+.slide-lead {
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--body);
+  line-height: 1.7;
+  margin-bottom: 48px;
+}
+
+mark {
+  background: linear-gradient(transparent 8%, #fff09e 8%, #fff09e 92%, transparent 92%);
+  color: var(--ink);
+  padding: 0 3px;
+  font-weight: 700;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+em.accent { font-style:normal; font-weight:800; color:var(--blue-key); }
+strong { font-weight: 800; color: var(--ink); }
+
+/* ── 카드 ── */
+.card {
+  background: var(--card);
+  border: 1.5px solid var(--line);
+  border-radius: 24px;
+  padding: 36px 40px;
+  box-shadow: 0 2px 4px rgba(40,60,110,.03), 0 18px 40px -24px rgba(40,60,110,.16);
+}
+
+/* ── 그리드 ── */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+
+/* ── 번호칩 행 ── */
+.row {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  background: var(--blue-soft);
+  border: 1.5px solid var(--blue-line);
+  border-radius: 18px;
+  padding: 22px 26px;
+}
+.row + .row { margin-top: 14px; }
+.n {
+  width: 40px; height: 40px; min-width: 40px;
+  background: var(--blue);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; font-weight: 800; color: #fff;
+}
+.row-title { font-size: 19px; font-weight: 800; color: var(--ink); margin-bottom: 8px; }
+.row-desc { font-size: 16px; color: var(--body); line-height: 1.75; }
+
+/* ── KV 박스 ── */
+.kv-list { display: flex; flex-direction: column; gap: 12px; }
+.kv-line {
+  display: flex; align-items: flex-start; gap: 16px;
+  background: var(--blue-soft);
+  border: 1.5px solid var(--blue-line);
+  border-radius: 14px;
+  padding: 16px 20px;
+  font-size: 16px;
+}
+.kv-line .k { min-width: 80px; font-weight: 800; color: var(--blue-key); flex-shrink: 0; }
+.kv-line .v { color: var(--body); line-height: 1.7; }
+
+/* ── 콜아웃 ── */
+.note {
+  background: var(--hl-soft);
+  border: 1.5px solid var(--hl);
+  border-radius: 18px;
+  padding: 22px 26px;
+  display: flex; align-items: flex-start; gap: 12px;
+  font-size: 17px; line-height: 1.75;
+}
+.note-icon { font-size: 18px; line-height: 1.85; flex-shrink: 0; }
+
+/* ── 블록 라벨 ── */
+.blk { font-size: 13px; font-weight: 800; color: var(--blue-key); margin-bottom: 14px; letter-spacing: 0.02em; }
+
+/* ── 인용 ── */
+.quote {
+  background: var(--card);
+  border: 1.5px solid var(--line);
+  border-radius: 18px;
+  padding: 48px 44px 40px;
+  position: relative;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.85;
+  box-shadow: 0 2px 4px rgba(40,60,110,.03), 0 18px 40px -24px rgba(40,60,110,.16);
+}
+.quote::before {
+  content:'"';
+  position:absolute; left:24px; top:20px;
+  font-size:100px; font-weight:900;
+  color: rgba(58,110,224,.13);
+  line-height:1;
+  font-family: Georgia, serif;
+}
+
+/* ── 다이어그램 ── */
+.diagram {
+  background: var(--blue-soft);
+  border: 1.5px solid var(--blue-line);
+  border-radius: 20px;
+  padding: 32px 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
+.diag-node {
+  background: var(--card);
+  border: 1.5px solid var(--blue-line);
+  border-radius: 16px;
+  padding: 20px 24px;
+  text-align: center;
+  flex: 1;
+}
+.diag-node .node-tag {
+  font-size: 11px; font-weight: 800; color: var(--blue);
+  background: var(--blue-wash);
+  border-radius: 999px;
+  padding: 3px 10px;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+.diag-node .node-name { font-size: 18px; font-weight: 900; color: var(--ink); margin-bottom: 6px; }
+.diag-node .node-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+.diag-link { text-decoration: none; cursor: pointer; transition: box-shadow 0.18s, border-color 0.18s; }
+.diag-link:hover { border-color: var(--blue); box-shadow: 0 4px 20px rgba(58,110,224,.15); }
+.node-url { display:block; margin-top:12px; font-size:12px; font-weight:700; color:var(--blue); letter-spacing:0.01em; }
+.diag-arrow {
+  font-size: 22px; font-weight: 800; color: var(--blue);
+  padding: 0 12px; flex-shrink: 0;
+}
+
+/* ── 이벤트 테이블 ── */
+.evt-table { width: 100%; border-collapse: collapse; border-radius: 20px; overflow: hidden; }
+.evt-table th {
+  background: var(--blue);
+  color: #fff;
+  font-weight: 800;
+  font-size: 15px;
+  padding: 16px 20px;
+  text-align: left;
+}
+.evt-table th:first-child { background: var(--blue-key); }
+.evt-table td {
+  padding: 14px 20px;
+  font-size: 15px;
+  color: var(--body);
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+  line-height: 1.7;
+}
+.evt-table tr:last-child td { border-bottom: none; }
+.evt-table tr:nth-child(even) td { background: #fafbfe; }
+.evt-table td:first-child { font-weight: 800; color: var(--blue-key); background: var(--blue-soft); font-size: 14px; }
+
+/* ── 보류 카드 ── */
+.hold-card {
+  background: var(--card);
+  border: 1.5px dashed var(--blue-line);
+  border-radius: 24px;
+  padding: 36px 40px;
+}
+.hold-item { display: flex; gap: 18px; padding: 18px 0; border-bottom: 1px solid var(--line); }
+.hold-item:last-child { border-bottom: none; padding-bottom: 0; }
+.hold-num {
+  width: 30px; height: 30px; min-width: 30px;
+  background: var(--muted);
+  border-radius: 9px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; font-weight: 800; color: #fff;
+  margin-top: 2px;
+}
+.hold-title { font-size: 18px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
+.hold-desc { font-size: 15px; color: var(--body); line-height: 1.7; }
+
+/* ── 포럼 원칙 2×2 ── */
+.principle-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.principle {
+  display: flex; align-items: flex-start; gap: 16px;
+  background: var(--blue-soft);
+  border: 1.5px solid var(--blue-line);
+  border-radius: 16px;
+  padding: 20px 22px;
+}
+.p-num {
+  width: 36px; height: 36px; min-width: 36px;
+  background: var(--blue); border-radius: 11px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; font-weight: 800; color: #fff;
+}
+.p-title { font-size: 17px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
+.p-desc { font-size: 14px; color: var(--body); line-height: 1.65; }
+
+/* ── Pill 태그 ── */
+.pill {
+  display: inline-block;
+  background: var(--blue);
+  color: #fff;
+  font-size: 11px; font-weight: 800;
+  border-radius: 999px;
+  padding: 3px 12px;
+  margin-right: 6px;
+}
+
+/* ── 구분선 ── */
+.divider { height: 1px; background: var(--line); margin: 24px 0; }
+
+/* ── 슬라이드별 배경 변형 ── */
+.slide-dark { background: var(--ink); }
+.slide-dark .slide-title { color: #fff; }
+.slide-dark .slide-lead { color: rgba(255,255,255,.7); }
+
+/* ── 네비 도트 ── */
+.nav {
+  position: fixed;
+  right: 28px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 100;
+}
+.dot {
+  width: 8px; height: 8px;
+  border-radius: 999px;
+  background: var(--blue-line);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.dot.active { background: var(--blue); height: 24px; }
+</style>
+</head>
+<body>
+
+<!-- 네비 도트 -->
+<nav class="nav" id="nav">
+  <div class="dot active" onclick="goTo(0)"></div>
+  <div class="dot" onclick="goTo(1)"></div>
+  <div class="dot" onclick="goTo(2)"></div>
+  <div class="dot" onclick="goTo(3)"></div>
+  <div class="dot" onclick="goTo(4)"></div>
+</nav>
+
+<!-- ════════════════════════════════
+  SLIDE 1 — 커뮤니티 컨셉
+════════════════════════════════ -->
+<section class="slide" id="s0">
+  <span class="slide-num">01 / 05</span>
+  <span class="brandmark">MOIMMOIM</span>
+  <div class="slide-inner">
+    <p class="eyebrow">🎯 커뮤니티 컨셉</p>
+    <h1 class="slide-title">왜 엑시트 창업가인가</h1>
+    <div class="grid-2" style="gap:24px; align-items:start;">
+      <div style="display:flex;flex-direction:column;gap:20px;">
+        <div class="card">
+          <p class="blk">전략적 배경</p>
+          <p style="font-size:17px;line-height:1.8;margin-bottom:16px;">서클형 스폰서 구조를 만들려면, 성장 중인 창업가 <em class="accent">(시리즈 A+)</em>들이 <mark>'만나고 싶어하는' 사람들 = 거인들</mark>을 먼저 모아야 한다.</p>
+          <p style="font-size:17px;line-height:1.8;margin-bottom:16px;">그 거인들은 결국 <em class="accent">엑시트를 경험한 대표들</em>이다.</p>
+          <p style="font-size:17px;line-height:1.8;"><mark>엑시트한 사람들을 먼저 모아두면 — 나중에 AC를 차릴 때 누구도 갖지 못한 경쟁력이 된다.</mark></p>
+        </div>
+        <div class="note">
+          <span class="note-icon">💡</span>
+          <div>그래서 핵심은, <strong>엑싯한 사람들끼리 인간 대 인간으로, 먼저 가까워지게 하는 것.</strong></div>
+        </div>
+        <div class="note">
+          <span class="note-icon">💡</span>
+          <div>성공적으로 보이는 그들은 —<br><strong>배우자, 오랜 친구, 직원들, 심지어 다른 CEO들도 이해하지 못하는 고민이 있다.</strong></div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:20px;">
+        <div class="card">
+          <p class="blk">타겟 & 가입</p>
+          <div class="kv-list" style="margin-bottom:20px;">
+            <div class="kv-line">
+              <span class="k">타겟</span>
+              <span class="v">엑시트(매각)를 해본 창업가 — 규모 무관, 100억이든 3,000억이든</span>
+            </div>
+            <div class="kv-line">
+              <span class="k">가입</span>
+              <span class="v">초대제 + 맨투맨 인터뷰. 플라야, PEF, YPO 모두 초대제로 운영</span>
+            </div>
+          </div>
+          <div style="height:1px;background:var(--line);margin-bottom:20px;"></div>
+          <!-- 엑싯 이후 3갈래 시각화 -->
+          <p class="blk">엑싯 이후, 그들의 선택지</p>
+          <div style="display:flex;gap:12px;margin-bottom:20px;">
+            <div style="flex:1;background:var(--blue-soft);border:1.5px solid var(--blue-line);border-radius:14px;padding:16px 14px;text-align:center;">
+              <div style="font-size:26px;margin-bottom:8px;">🚀</div>
+              <p style="font-size:15px;font-weight:800;color:var(--ink);margin-bottom:4px;">재창업</p>
+              <p style="font-size:13px;color:var(--muted);">다시 시작한다</p>
+            </div>
+            <div style="flex:1;background:var(--blue-soft);border:1.5px solid var(--blue-line);border-radius:14px;padding:16px 14px;text-align:center;">
+              <div style="font-size:26px;margin-bottom:8px;">💰</div>
+              <p style="font-size:15px;font-weight:800;color:var(--ink);margin-bottom:4px;">투자</p>
+              <p style="font-size:13px;color:var(--muted);">엔젤·VC로 전환</p>
+            </div>
+            <div style="flex:1;background:var(--blue-soft);border:1.5px solid var(--blue-line);border-radius:14px;padding:16px 14px;text-align:center;">
+              <div style="font-size:26px;margin-bottom:8px;">🌿</div>
+              <p style="font-size:15px;font-weight:800;color:var(--ink);margin-bottom:4px;">은퇴</p>
+              <p style="font-size:13px;color:var(--muted);">다음 삶을 찾는다</p>
+            </div>
+          </div>
+          <div style="background:var(--blue);border-radius:14px;padding:16px 20px;text-align:center;">
+            <p style="font-size:16px;font-weight:800;color:#fff;">그들끼리 서로의 고민을 나누는 커뮤니티가 필요하다.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════
+  SLIDE 2 — 레퍼런스 PEF
+════════════════════════════════ -->
+<section class="slide" id="s1">
+  <span class="slide-num">02 / 05</span>
+  <span class="brandmark">MOIMMOIM</span>
+  <div class="slide-inner">
+    <p class="eyebrow">🔗 레퍼런스 — PEF</p>
+    <h1 class="slide-title">엑시트 이후의 '삶'을 다루다</h1>
+    <p class="slide-lead" style="margin-bottom:32px;">Post Exit Founders — 창립자 Barak Kaufman. 5,000명+, 4년 만에 입소문으로만 성장.</p>
+
+    <!-- 3개 조직 구조도 -->
+    <div style="margin-bottom:24px;">
+      <p class="blk">Barak Kaufman의 3개 조직 — 맞물리는 생태계</p>
+      <div class="diagram">
+        <a href="https://pef.xyz/apply" target="_blank" class="diag-node diag-link">
+          <span class="node-tag">엑시트 경험자</span>
+          <p class="node-name">PEF</p>
+          <p class="node-desc">Post Exit Founders<br>엑시트 후 삶을 탐색하는<br>글로벌 커뮤니티</p>
+          <span class="node-url">pef.xyz ↗</span>
+        </a>
+        <div class="diag-arrow">⇄</div>
+        <a href="https://www.foundersclubny.org/" target="_blank" class="diag-node diag-link">
+          <span class="node-tag">현직 창업가</span>
+          <p class="node-name">NYC Club</p>
+          <p class="node-desc">뉴욕 기반 현직 창업가<br>일정 매출 이상 달성한<br>IT 업계 대표</p>
+          <span class="node-url">foundersclubny.org ↗</span>
+        </a>
+        <div class="diag-arrow">⇄</div>
+        <a href="https://vineventures.com/" target="_blank" class="diag-node diag-link">
+          <span class="node-tag">투자 연결</span>
+          <p class="node-name">Vine Ventures</p>
+          <p class="node-desc">벤처 투자사<br>엑시트 인재 네트워크를<br>투자 파이프라인으로 활용</p>
+          <span class="node-url">vineventures.com ↗</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- 행사 리스트 -->
+    <div>
+      <p class="blk">PEF 내부 행사 (Luma)</p>
+      <p style="font-size:17px;line-height:1.75;margin-bottom:16px;">사업적인 이야기만 나누는 곳이 아니다. <mark>자기 탐구 워크샵, 재무 관리, AI 사업 도입, 포커까지</mark> — 엑시트 이후의 삶 전반을 다루는 폭넓은 주제들.</p>
+      <table class="evt-table">
+        <thead>
+          <tr>
+            <th>카테고리</th>
+            <th>실제 행사 예시</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>엑시트 후 삶 / 자기발견</td>
+            <td>Post-Exit Sabbatical Workshop · What Comes After Success? · The Second Life Conversation</td>
+          </tr>
+          <tr>
+            <td>재무 / 자산 관리</td>
+            <td>Becoming Your Own CIO · How I Spend My £ Post Exit · Starting a Family Office</td>
+          </tr>
+          <tr>
+            <td>AI / 비즈니스 스킬</td>
+            <td>Agentic AI Workshop · Inside the AI Rollup Opportunity · 3,000 Deals Later</td>
+          </tr>
+          <tr>
+            <td>소셜 / 액티비티</td>
+            <td>Sunset Cruise · Poker Night · Hike + Lunch · Sauna + Dinner</td>
+          </tr>
+          <tr>
+            <td>건강 / 웰니스</td>
+            <td>Longevity Moonshot Workshop · Health as the Next Great Asset</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════
+  SLIDE 3 — 레퍼런스 YPO
+════════════════════════════════ -->
+<section class="slide" id="s2">
+  <span class="slide-num">03 / 05</span>
+  <span class="brandmark">MOIMMOIM</span>
+  <div class="slide-inner">
+    <p class="eyebrow">🌐 레퍼런스 — YPO</p>
+    <h1 class="slide-title">끈끈함의 원천을 찾아서</h1>
+
+    <!-- YPO 소개 영상 -->
+    <div style="display:flex;gap:24px;align-items:flex-start;margin-bottom:28px;">
+      <div style="flex:0 0 420px;">
+          <div style="position:relative;padding-bottom:56.25%;border-radius:18px;overflow:hidden;box-shadow:0 2px 4px rgba(40,60,110,.05),0 18px 40px -24px rgba(40,60,110,.2);">
+          <iframe
+            src="https://www.youtube.com/embed/Ugriq3Vup0w"
+            style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+      <div style="flex:1;display:flex;flex-direction:column;gap:12px;padding-top:4px;">
+        <p class="blk">YPO — 멤버 인터뷰</p>
+        <div style="background:var(--ink);border-radius:14px;padding:20px 22px;">
+          <p style="font-size:19px;font-weight:700;color:#fff;line-height:1.7;font-style:italic;">"It's a place where you can share your difficulties, or your constraints, or your worries."</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- YPO 스탯 3열 -->
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:28px;">
+      <div style="background:var(--hl-soft);border:1.5px solid var(--hl);border-radius:18px;padding:22px 24px;text-align:center;">
+        <div style="font-size:28px;margin-bottom:10px;">🌍</div>
+        <p style="font-size:13px;font-weight:800;color:var(--blue-key);margin-bottom:6px;">글로벌 규모</p>
+        <p style="font-size:18px;font-weight:900;color:var(--ink);">전 세계 3만 8,000명</p>
+      </div>
+      <div style="background:var(--hl-soft);border:1.5px solid var(--hl);border-radius:18px;padding:22px 24px;text-align:center;">
+        <div style="font-size:28px;margin-bottom:10px;">⏳</div>
+        <p style="font-size:13px;font-weight:800;color:var(--blue-key);margin-bottom:6px;">장기 참여</p>
+        <p style="font-size:18px;font-weight:900;color:var(--ink);">평균 10~15년씩 지속</p>
+      </div>
+      <div style="background:var(--hl-soft);border:1.5px solid var(--hl);border-radius:18px;padding:22px 24px;text-align:center;">
+        <div style="font-size:28px;margin-bottom:10px;">📈</div>
+        <p style="font-size:13px;font-weight:800;color:var(--blue-key);margin-bottom:6px;">경제 임팩트</p>
+        <p style="font-size:18px;font-weight:900;color:var(--ink);">창조경제 임팩트 전세계 3위</p>
+      </div>
+    </div>
+
+    <div class="grid-2" style="gap:24px;align-items:start;">
+      <div style="display:flex;flex-direction:column;gap:20px;">
+        <div class="card">
+          <p class="blk">왜 YPO인가</p>
+          <p style="font-size:16px;line-height:1.8;margin-bottom:20px;"><mark>해외판 전경련 같은 조직.</mark> 장하일 대표가 지향한 것은 전경련 같은 조직이었다. 해외에서 그에 상응하는 커뮤니티를 탐색하다 YPO를 발견했다.</p>
+          <div style="height:1px;background:var(--line);margin-bottom:20px;"></div>
+          <p class="blk">핵심 가치</p>
+          <p style="font-size:16px;line-height:1.8;margin-bottom:12px;"><mark>나를 온전히 이해하는 탑급 리더들과 매달 고민을 털어놓고, 소규모로 깊게 친해질 수 있다는 것.</mark></p>
+          <p style="font-size:16px;line-height:1.8;">사업적인 것뿐 아니라, <strong>한 사람으로서 엄청난 성장</strong>을 경험.</p>
+          <!-- LinkedIn 코멘트 카드 -->
+          <div style="margin-top:16px;background:#f9fafb;border:1px solid #e0e0e0;border-radius:12px;padding:16px 18px;">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+              <div style="width:36px;height:36px;border-radius:50%;background:#c8d0dc;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;color:#fff;flex-shrink:0;">T</div>
+              <div style="flex:1;">
+                <p style="font-size:13px;font-weight:800;color:#000;margin-bottom:2px;">Thomas Promny <span style="font-weight:400;color:#666;">· Follow</span></p>
+                <p style="font-size:11px;color:#666;line-height:1.4;">Worked at Entrepreneurs' Organization (EO) · Upvoted by Conor Neill, Founder of 4... <span style="margin-left:8px;">· 9y</span></p>
+              </div>
+            </div>
+            <p style="font-size:13px;color:#1a1a1a;line-height:1.7;">For me the by far most important benefit is the forum.<br><br>Mine is a very stable group of currently 7 entrepreneurs from very diverse industries that have been meeting for about 8 years now.<br><br>This is my main peer group and I learn from and grow together with them. <strong>Not only my business but also personally.</strong></p>
+            <div style="margin-top:10px;padding-top:10px;border-top:1px solid #e0e0e0;display:flex;gap:16px;font-size:12px;color:#666;">
+              <span>👍 Upvote · 2</span>
+              <span>💬 1</span>
+            </div>
+          </div>
+        </div>
+        <div class="note" style="font-size:15px;">
+          <span class="note-icon">💬</span>
+          <div>해외 출장 중 아들이 다쳤을 때 — 다른 나라 YPO 멤버가 <strong>대신 병원에 데려다줄 정도의 연결</strong>이 일어난다.</div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:20px;">
+        <div class="card">
+          <p class="blk">끈끈함의 원천 → 포럼(Forum)</p>
+          <p style="font-size:16px;line-height:1.8;margin-bottom:16px;"><strong>YPO와 EO(Entrepreneurs' Organization)</strong>가 공통적으로 핵심 서비스로 운영하는 방식이 <mark>바로 포럼.</mark></p>
+          <div class="kv-list" style="margin-bottom:16px;">
+            <div class="kv-line">
+              <span class="k">구성</span>
+              <span class="v">6~9명 + 퍼실리테이터 1명</span>
+            </div>
+            <div class="kv-line">
+              <span class="k">주기</span>
+              <span class="v">매달 1회, 4~5시간 / 최소 수개월 지속</span>
+            </div>
+          </div>
+          <p class="blk">포럼에서 나오는 이야기들</p>
+          <div style="display:flex;flex-direction:column;gap:8px;font-size:15px;color:var(--body);">
+            <div style="padding:10px 14px;background:var(--blue-soft);border-radius:10px;border:1px solid var(--blue-line);">· 공동창업자를 내보내고 싶은데 어떻게 해야 할지</div>
+            <div style="padding:10px 14px;background:var(--blue-soft);border-radius:10px;border:1px solid var(--blue-line);">· 바쁜 스케줄로 아내와의 관계 문제 → 이혼 위기</div>
+            <div style="padding:10px 14px;background:var(--blue-soft);border-radius:10px;border:1px solid var(--blue-line);">· 아버지의 죽음 <span style="color:var(--muted);font-size:13px;">(멤버 모두 장례식에 와줌)</span></div>
+            <div style="padding:10px 14px;background:var(--blue-soft);border-radius:10px;border:1px solid var(--blue-line);">· 자산을 어떻게 관리하는지 (어디서도 말 못 하는 것)</div>
+          </div>
+        </div>
+        <div class="card">
+          <p class="blk">입장 자격 & 가입 프로세스</p>
+          <div style="background:var(--blue-soft);border:1.5px solid var(--blue-line);border-radius:14px;padding:16px 20px;margin-bottom:16px;font-size:15px;line-height:1.9;">
+            <span style="font-weight:800;color:var(--blue-key);">나이</span> 45세 이하 &nbsp;·&nbsp;
+            <span style="font-weight:800;color:var(--blue-key);">직급</span> CEO / Chairman / MD급 &nbsp;·&nbsp;
+            <span style="font-weight:800;color:var(--blue-key);">규모</span> 50명 이상 고용 또는 15명 풀타임 + 연봉 기준
+          </div>
+          <div style="background:var(--blue-soft);border:1.5px solid var(--blue-line);border-radius:14px;padding:16px 18px;font-size:15px;line-height:1.8;margin-bottom:12px;">
+            기준 통과 → <strong>즉시 가입 ✕</strong><br>
+            이벤트 1회 참여 → 만족 시 정식 지원 → 심사 → 합류
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- YPO 가족·커플 이벤트 -->
+    <div style="margin-top:28px;">
+      <p class="blk">YPO S7 — 가족·커플 이벤트까지 운영한다</p>
+      <p style="font-size:15px;color:var(--body);margin-bottom:16px;line-height:1.7;">YPO 이벤트는 단순한 비즈니스 모임이 아니다. 배우자, 자녀, 가족 전체를 아우르는 프로그램이 연중 운영된다.</p>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;">
+        <div style="background:var(--blue-soft);border:1.5px solid var(--blue-line);border-radius:14px;padding:18px 18px;">
+          <p style="font-size:12px;font-weight:800;color:var(--blue);letter-spacing:0.04em;margin-bottom:8px;">BIG 3 COUPLES MEETINGS</p>
+          <p style="font-size:14px;line-height:1.7;color:var(--body);">전 세계 · 가을·겨울<br>커플 대상 3~4일 컨퍼런스<br><span style="color:var(--muted);">100~150명 멤버 + 파트너</span></p>
+        </div>
+        <div style="background:var(--blue-soft);border:1.5px solid var(--blue-line);border-radius:14px;padding:18px 18px;">
+          <p style="font-size:12px;font-weight:800;color:var(--blue);letter-spacing:0.04em;margin-bottom:8px;">BIG 3 FAMILY MEETINGS</p>
+          <p style="font-size:14px;line-height:1.7;color:var(--body);">전 세계 · 여름<br>가족 전체 대상 4일 프로그램<br><span style="color:var(--muted);">100~150가족 · 부모+자녀</span></p>
+        </div>
+        <div style="background:var(--blue-soft);border:1.5px solid var(--blue-line);border-radius:14px;padding:18px 18px;">
+          <p style="font-size:12px;font-weight:800;color:var(--blue);letter-spacing:0.04em;margin-bottom:8px;">SIGNATURE EVENTS</p>
+          <p style="font-size:14px;line-height:1.7;color:var(--body);">챕터 지역 · 연중<br>여행·액티비티·교육 중심<br><span style="color:var(--muted);">50~500명 · 파트너 동반</span></p>
+        </div>
+        <div style="background:var(--blue-soft);border:1.5px solid var(--blue-line);border-radius:14px;padding:18px 18px;">
+          <p style="font-size:12px;font-weight:800;color:var(--blue);letter-spacing:0.04em;margin-bottom:8px;">STATE EVENTS</p>
+          <p style="font-size:14px;line-height:1.7;color:var(--body);">주(State) 단위 · 연중<br>소규모 친밀 모임 중심<br><span style="color:var(--muted);">멤버 + 파트너</span></p>
+        </div>
+        <div style="background:var(--blue-soft);border:1.5px solid var(--blue-line);border-radius:14px;padding:18px 18px;">
+          <p style="font-size:12px;font-weight:800;color:var(--blue);letter-spacing:0.04em;margin-bottom:8px;">SPOUSE / PARTNER EVENTS</p>
+          <p style="font-size:14px;line-height:1.7;color:var(--body);">챕터·주 단위 · 연중<br>비즈니스 너머 삶·가족 주제<br><span style="color:var(--muted);">배우자·파트너 전용</span></p>
+        </div>
+        <div style="background:var(--blue-soft);border:1.5px solid var(--blue-line);border-radius:14px;padding:18px 18px;">
+          <p style="font-size:12px;font-weight:800;color:var(--blue);letter-spacing:0.04em;margin-bottom:8px;">FAMILY EVENTS</p>
+          <p style="font-size:14px;line-height:1.7;color:var(--body);">챕터·주 단위 · 연중<br>가족 전체 교육·유대 프로그램<br><span style="color:var(--muted);">부모 + 자녀 전원</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════
+  SLIDE 4 — 기획안
+════════════════════════════════ -->
+<section class="slide" id="s3">
+  <span class="slide-num">04 / 05</span>
+  <span class="brandmark">MOIMMOIM</span>
+  <div class="slide-inner">
+    <p class="eyebrow">🛠️ 기획안</p>
+    <h1 class="slide-title">해리온의 메인서비스 (ver.1)</h1>
+    <p class="slide-lead" style="margin-bottom:32px;">엑싯한 사업가들의 커뮤니티 — 코어 그룹과 이벤트, 두 축으로 운영한다.</p>
+
+    <!-- 코어 그룹 -->
+    <div style="margin-bottom:24px;">
+      <p class="blk">① 메인 코어 그룹 구성 — 포럼</p>
+      <div class="grid-2" style="gap:20px;align-items:start;">
+        <!-- 왼쪽: 기본 구성 + 브랜드 메시지 -->
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <div style="background:var(--blue-soft);border:1.5px solid var(--blue-line);border-radius:16px;padding:20px 22px;">
+            <p style="font-size:13px;font-weight:800;color:var(--blue-key);margin-bottom:12px;">기본 구성</p>
+            <div style="display:flex;gap:16px;font-size:15px;">
+              <div style="flex:1;text-align:center;padding:12px;background:var(--card);border-radius:10px;border:1px solid var(--blue-line);">
+                <p style="font-weight:900;font-size:22px;color:var(--blue);">6~9명</p>
+                <p style="color:var(--muted);font-size:13px;">+ 퍼실리테이터</p>
+              </div>
+              <div style="flex:1;text-align:center;padding:12px;background:var(--card);border-radius:10px;border:1px solid var(--blue-line);">
+                <p style="font-weight:900;font-size:22px;color:var(--blue);">월 1회</p>
+                <p style="color:var(--muted);font-size:13px;">4~5시간</p>
+              </div>
+              <div style="flex:1;text-align:center;padding:12px;background:var(--card);border-radius:10px;border:1px solid var(--blue-line);">
+                <p style="font-weight:900;font-size:22px;color:var(--blue);">장기</p>
+                <p style="color:var(--muted);font-size:13px;">수개월 이상 지속</p>
+              </div>
+            </div>
+          </div>
+          <div class="card" style="padding:20px 22px;">
+            <p style="font-size:13px;font-weight:800;color:var(--blue-key);margin-bottom:12px;">핵심 — 엑싯 경험자의 삶과 정서에 초점</p>
+
+            <div style="background:var(--ink);border-radius:12px;padding:16px 18px;margin-bottom:14px;">
+              <p style="font-size:14px;color:rgba(255,255,255,.85);line-height:1.8;font-style:italic;">"내 삶의 비전은 무엇인가 —<br>평생 믿고 갈 가족 같은 모임."</p>
+            </div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;">
+              <span style="background:var(--blue-wash);color:var(--blue-key);font-size:12px;font-weight:800;border-radius:999px;padding:4px 12px;">사업적 기회 ✕</span>
+              <span style="background:var(--blue-wash);color:var(--blue-key);font-size:12px;font-weight:800;border-radius:999px;padding:4px 12px;">개인 전체 경험 ○</span>
+              <span style="background:var(--hl-soft);color:var(--ink);font-size:12px;font-weight:800;border-radius:999px;padding:4px 12px;border:1px solid var(--hl);">엑싯한 사람들 + 가족</span>
+            </div>
+            <div class="note" style="margin:0;">
+              <p style="line-height:1.9;">한국에서 엑싯을 경험한 사람은 수천 명대 — <strong>인구 대비 약 0.01% 미만의 극소수</strong>다.<br>같은 경험을 가진 동료 창업가들이 연결되어, <strong>그 다음 인생을 함께한다.</strong></p>
+            </div>
+          </div>
+        </div>
+        <!-- 오른쪽: 포럼 4원칙 + 딥다이브 -->
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <div class="card" style="padding:20px 22px;">
+            <p style="font-size:13px;font-weight:800;color:var(--blue-key);margin-bottom:12px;">포럼 4원칙</p>
+            <div class="principle-grid">
+              <div class="principle">
+                <div class="p-num">1</div>
+                <div><p class="p-title">신뢰</p><p class="p-desc">테이블의 대화는 테이블에만 남는다</p></div>
+              </div>
+              <div class="principle">
+                <div class="p-num">2</div>
+                <div><p class="p-title">불완전성</p><p class="p-desc">어려운 것을 드러낼수록 더 많이 얻어간다</p></div>
+              </div>
+              <div class="principle">
+                <div class="p-num">3</div>
+                <div><p class="p-title">비판 금지</p><p class="p-desc">"나는 이런 경험을 했는데" 형식으로만</p></div>
+              </div>
+              <div class="principle">
+                <div class="p-num">4</div>
+                <div><p class="p-title">마인드셋</p><p class="p-desc">경청할수록 더 배우고 성장한다</p></div>
+              </div>
+            </div>
+          </div>
+          <div style="background:var(--blue-soft);border:1.5px solid var(--blue-line);border-radius:16px;padding:20px 22px;">
+            <p style="font-size:13px;font-weight:800;color:var(--blue-key);margin-bottom:10px;">딥다이브 포럼 (고급 버전)</p>
+            <p style="font-size:14px;color:var(--body);line-height:1.75;">모더레이터 사전 질문 준비 → 각자 생각 공유 → 고민 꺼내기 → <mark>"내 경우엔 이랬다"</mark>로 유도하는 코칭형 포럼</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 이벤트 -->
+    <div>
+      <p class="blk">② 이벤트</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;">
+        <div style="background:var(--card);border:1.5px solid var(--line);border-radius:16px;padding:20px 20px;box-shadow:0 2px 4px rgba(40,60,110,.03),0 8px 24px -12px rgba(40,60,110,.1);">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
+            <span style="background:var(--blue);color:#fff;font-size:11px;font-weight:800;border-radius:999px;padding:3px 11px;">월별</span>
+            <span style="font-size:13px;color:var(--muted);">인사이트 중심</span>
+          </div>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:7px;font-size:14px;color:var(--body);">
+            <li>· AI 도입 사례</li>
+            <li>· 엑시트 창업가의 재무설계</li>
+            <li>· M&A 관련 사업 인사이트</li>
+            <li>· LC 후 투자 vs 재창업 토론</li>
+            <li>· 자산 관리 방법 토론</li>
+          </ul>
+          <p style="margin-top:12px;font-size:12px;color:var(--blue-key);font-weight:700;">멤버의 집에서 프라이빗하게</p>
+        </div>
+        <div style="background:var(--card);border:1.5px solid var(--line);border-radius:16px;padding:20px 20px;box-shadow:0 2px 4px rgba(40,60,110,.03),0 8px 24px -12px rgba(40,60,110,.1);">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
+            <span style="background:var(--blue);color:#fff;font-size:11px;font-weight:800;border-radius:999px;padding:3px 11px;">분기별</span>
+            <span style="font-size:13px;color:var(--muted);">액티비티 중심</span>
+          </div>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:7px;font-size:14px;color:var(--body);">
+            <li>· 사우나 + 식사</li>
+            <li>· 하이킹</li>
+            <li>· 프라이빗 바베큐 파티</li>
+            <li>· 저녁 식사</li>
+          </ul>
+        </div>
+        <div style="background:var(--card);border:1.5px solid var(--line);border-radius:16px;padding:20px 20px;box-shadow:0 2px 4px rgba(40,60,110,.03),0 8px 24px -12px rgba(40,60,110,.1);">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
+            <span style="background:var(--blue);color:#fff;font-size:11px;font-weight:800;border-radius:999px;padding:3px 11px;">연간</span>
+            <span style="font-size:13px;color:var(--muted);">관계 심화</span>
+          </div>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:7px;font-size:14px;color:var(--body);">
+            <li>· 가족 동반 워크샵 (여행)</li>
+            <li>· 코어 그룹 멤버끼리 워크샵</li>
+            <li>· 코어 그룹 캠핑</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════
+  SLIDE 5 — 보류 이유
+════════════════════════════════ -->
+<section class="slide" id="s4">
+  <span class="slide-num">05 / 05</span>
+  <span class="brandmark">MOIMMOIM</span>
+  <div class="slide-inner">
+    <p class="eyebrow">⚠️ 보류 이유</p>
+    <h1 class="slide-title">왜 이 기획은 멈췄는가</h1>
+    <p class="slide-lead" style="margin-bottom:32px;"><mark>포럼이라는 형식 자체가 한국 시장에서 작동하지 않을 가능성이 높다</mark>는 판단.</p>
+    <div class="grid-2" style="gap:24px;align-items:start;">
+      <div class="hold-card">
+        <div class="hold-item">
+          <div class="hold-num">1</div>
+          <div>
+            <p class="hold-title">포럼 방식이 한국 문화에 맞지 않는다</p>
+            <p class="hold-desc">한국인은 자기 얼굴, 사업, 가족 문제를 공개적으로 공유하지 않는다. 외국에 비해 개방성이 낮다.</p>
+          </div>
+        </div>
+        <div class="hold-item">
+          <div class="hold-num">2</div>
+          <div>
+            <p class="hold-title">한국은 어깨가 좁아 소문이 빠르다</p>
+            <p class="hold-desc">민감한 이야기를 꺼냈다가 소문날 위험이 크다. 그래서 공유 자체를 꺼린다.</p>
+          </div>
+        </div>
+        <div class="hold-item">
+          <div class="hold-num">3</div>
+          <div>
+            <p class="hold-title">타겟 자체가 너무 좁다</p>
+            <p class="hold-desc">엑싯한 사람들만 모으면 모객 자체가 어렵다. 시장이 작다. 그리고 결정적으로 — 그들이 과연 '고민을 나누러' 이 자리에 올까? 삶의 방향성이 그들의 진짜 관심사일까?</p>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:20px;">
+        <div class="note">
+          <span class="note-icon">💡</span>
+          <div><strong>결론:</strong> 엑싯 창업가라는 타겟, 재검토가 필요하다.</div>
+        </div>
+        <div class="card" style="text-align:center;padding:48px 40px;">
+          <p style="font-size:13px;font-weight:800;color:var(--blue-key);letter-spacing:0.05em;margin-bottom:20px;">NEXT</p>
+          <p style="font-size:32px;font-weight:900;color:var(--ink);letter-spacing:-0.025em;margin-bottom:16px;">ver.2 확장기획</p>
+          <p style="font-size:17px;color:var(--body);line-height:1.75;">타겟과 형식을 모두 재설계한다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+const dots = document.querySelectorAll('.dot');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const idx = Array.from(slides).indexOf(entry.target);
+      dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+    }
+  });
+}, { threshold: 0.5 });
+
+slides.forEach(s => observer.observe(s));
+
+function goTo(idx) {
+  slides[idx].scrollIntoView({ behavior: 'smooth' });
+}
+
+document.addEventListener('keydown', e => {
+  const cur = Array.from(dots).findIndex(d => d.classList.contains('active'));
+  if ((e.key === 'ArrowDown' || e.key === 'ArrowRight') && cur < slides.length - 1) goTo(cur + 1);
+  if ((e.key === 'ArrowUp' || e.key === 'ArrowLeft') && cur > 0) goTo(cur - 1);
+});
+</script>
+</body>
+</html>

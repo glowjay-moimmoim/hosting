@@ -1,0 +1,551 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>해리온 — 기획 제안서</title>
+<style>
+@font-face { font-family:'Paperlogy'; src:url('file:///C:/Users/CJW/Desktop/main/00-system/design/font/paperlogy/Paperlogy-1Thin.ttf'); font-weight:100; }
+@font-face { font-family:'Paperlogy'; src:url('file:///C:/Users/CJW/Desktop/main/00-system/design/font/paperlogy/Paperlogy-4Regular.ttf'); font-weight:400; }
+@font-face { font-family:'Paperlogy'; src:url('file:///C:/Users/CJW/Desktop/main/00-system/design/font/paperlogy/Paperlogy-5Medium.ttf'); font-weight:500; }
+@font-face { font-family:'Paperlogy'; src:url('file:///C:/Users/CJW/Desktop/main/00-system/design/font/paperlogy/Paperlogy-6SemiBold.ttf'); font-weight:600; }
+@font-face { font-family:'Paperlogy'; src:url('file:///C:/Users/CJW/Desktop/main/00-system/design/font/paperlogy/Paperlogy-7Bold.ttf'); font-weight:700; }
+@font-face { font-family:'Paperlogy'; src:url('file:///C:/Users/CJW/Desktop/main/00-system/design/font/paperlogy/Paperlogy-8ExtraBold.ttf'); font-weight:800; }
+@font-face { font-family:'Paperlogy'; src:url('file:///C:/Users/CJW/Desktop/main/00-system/design/font/paperlogy/Paperlogy-9Black.ttf'); font-weight:900; }
+
+:root {
+  --ink: #1c2230;
+  --body: #414856;
+  --muted: #8b93a3;
+  --line: #e6eaf1;
+  --bg: #f3f5f9;
+  --card: #ffffff;
+  --blue: #3a6ee0;
+  --blue-key: #2f5fd0;
+  --blue-wash: #eaf1fd;
+  --blue-line: #cfe0fa;
+  --blue-soft: #f4f8ff;
+  --hl: #fff09e;
+  --hl-soft: #fffada;
+}
+
+*, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family:'Paperlogy', sans-serif;
+  font-weight:400;
+  background: var(--bg);
+  color: var(--body);
+  letter-spacing:-0.01em;
+  word-break:keep-all;
+  min-height: 100vh;
+}
+
+.wrap {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 64px;
+}
+
+mark {
+  background: linear-gradient(transparent 8%, #fff09e 8%, #fff09e 92%, transparent 92%);
+  color: var(--ink); padding: 0 3px; font-weight: 700;
+}
+strong { font-weight: 800; color: var(--ink); }
+
+/* ── HERO ── */
+.hero {
+  padding: 80px 0 64px;
+  border-bottom: 1.5px solid var(--line);
+  margin-bottom: 56px;
+}
+.hero-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 36px;
+}
+.hero-badge {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--blue-key);
+  background: var(--blue-soft);
+  border: 1.5px solid var(--blue-line);
+  border-radius: 999px;
+  padding: 6px 16px;
+  letter-spacing: 0.02em;
+}
+.hero-date {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 500;
+}
+.hero h1 {
+  font-size: 56px;
+  font-weight: 900;
+  color: var(--ink);
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  margin-bottom: 20px;
+}
+.hero-sub {
+  font-size: 18px;
+  color: var(--body);
+  line-height: 1.7;
+  max-width: 640px;
+}
+
+/* ── CONTEXT ── */
+.context {
+  margin-bottom: 56px;
+}
+.section-label {
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--blue-key);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.context-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+}
+.context-item {
+  background: var(--card);
+  border: 1.5px solid var(--line);
+  border-radius: 16px;
+  padding: 22px 24px;
+}
+.context-item .num {
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--blue-line);
+  letter-spacing: -0.04em;
+  margin-bottom: 8px;
+}
+.context-item p {
+  font-size: 14px;
+  color: var(--body);
+  line-height: 1.7;
+}
+
+/* ── VERSION GRID ── */
+.versions {
+  margin-bottom: 80px;
+}
+.ver-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.ver-grid-prev {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+/* ver 카드 공통 */
+.ver-card {
+  background: var(--card);
+  border: 1.5px solid var(--line);
+  border-radius: 20px;
+  padding: 26px 28px;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  cursor: pointer;
+  transition: border-color 0.18s, box-shadow 0.18s, transform 0.15s;
+  box-shadow: 0 2px 4px rgba(40,60,110,.03), 0 10px 24px -14px rgba(40,60,110,.12);
+  position: relative;
+}
+.ver-card:hover {
+  border-color: var(--blue-line);
+  box-shadow: 0 4px 8px rgba(40,60,110,.06), 0 20px 40px -16px rgba(40,60,110,.2);
+  transform: translateY(-3px);
+}
+.ver-card .badge-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+.ver-badge {
+  font-size: 11px;
+  font-weight: 900;
+  color: #fff;
+  background: var(--muted);
+  border-radius: 7px;
+  padding: 3px 10px;
+}
+.status-hold {
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--muted);
+  background: var(--bg);
+  border: 1.5px solid var(--line);
+  border-radius: 999px;
+  padding: 2px 9px;
+}
+.ver-card .ver-title {
+  font-size: 17px;
+  font-weight: 900;
+  color: var(--ink);
+  line-height: 1.25;
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+}
+.ver-card .ver-desc {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 18px;
+  flex: 1;
+}
+.ver-card .ver-fail {
+  font-size: 11px;
+  color: #c0392b;
+  background: #fff5f5;
+  border: 1.5px solid #fdd;
+  border-radius: 8px;
+  padding: 8px 10px;
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+.ver-cta {
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--blue-key);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: auto;
+}
+.ver-cta::after {
+  content: '→';
+  transition: transform 0.15s;
+}
+.ver-card:hover .ver-cta::after {
+  transform: translateX(4px);
+}
+
+/* ver5 카드 — 와이드, 강조 */
+.ver5-card {
+  background: var(--ink);
+  border: none;
+  border-radius: 24px;
+  padding: 36px 42px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  cursor: pointer;
+  transition: box-shadow 0.18s, transform 0.15s;
+  box-shadow: 0 4px 8px rgba(28,34,48,.1), 0 24px 48px -20px rgba(28,34,48,.4);
+}
+.ver5-card:hover {
+  box-shadow: 0 8px 16px rgba(28,34,48,.15), 0 32px 56px -20px rgba(28,34,48,.5);
+  transform: translateY(-3px);
+}
+.ver5-left {
+  flex-shrink: 0;
+  width: 280px;
+}
+.ver5-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.ver5-badge {
+  font-size: 11px;
+  font-weight: 900;
+  color: var(--ink);
+  background: #fff;
+  border-radius: 7px;
+  padding: 3px 10px;
+}
+.status-final {
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--hl);
+  background: rgba(255,240,158,.15);
+  border: 1.5px solid rgba(255,240,158,.4);
+  border-radius: 999px;
+  padding: 2px 9px;
+}
+.ver5-title {
+  font-size: 26px;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  margin-bottom: 8px;
+}
+.ver5-sub {
+  font-size: 13px;
+  color: rgba(255,255,255,.5);
+  line-height: 1.6;
+}
+.ver5-divider {
+  width: 1px;
+  align-self: stretch;
+  background: rgba(255,255,255,.1);
+  flex-shrink: 0;
+}
+.ver5-right {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.ver5-point p:first-child {
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+.ver5-point .pt-title {
+  font-size: 12px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 3px;
+}
+.ver5-point .pt-desc {
+  font-size: 11px;
+  color: rgba(255,255,255,.5);
+  line-height: 1.55;
+}
+.ver5-cta {
+  margin-top: 10px;
+  font-size: 12px;
+  font-weight: 800;
+  color: rgba(255,255,255,.5);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: color 0.15s;
+}
+.ver5-card:hover .ver5-cta {
+  color: #fff;
+}
+.ver5-cta::after { content: '→'; }
+
+/* footer */
+.footer {
+  padding: 40px 0;
+  border-top: 1.5px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.footer-brand {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted);
+}
+.footer-note {
+  font-size: 12px;
+  color: var(--muted);
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- ── HERO ── -->
+  <div class="hero">
+    <div class="hero-top">
+      <span class="hero-badge">📋 기획 제안서</span>
+      <span class="hero-date">MOIMMOIM × 장하일 대표님</span>
+    </div>
+    <h1>해리온<br>커뮤니티 기획안</h1>
+    <p class="hero-sub">
+      ver.1부터 ver.5까지 — <mark>5번의 시도가 만들어낸 최종 기획</mark>입니다.<br>
+      각 버전을 클릭하면 슬라이드 발표 자료로 이동합니다.
+    </p>
+  </div>
+
+  <!-- ── CONTEXT ── -->
+  <div class="context">
+    <p class="section-label">기획 배경</p>
+
+    <!-- 대표 인용 -->
+    <div style="background:var(--ink);border-radius:20px;padding:32px 40px;margin-bottom:20px;display:flex;align-items:flex-start;gap:24px;">
+      <div style="font-size:48px;line-height:1;color:rgba(255,255,255,.15);font-weight:900;flex-shrink:0;margin-top:-8px;">"</div>
+      <div>
+        <p style="font-size:20px;font-weight:800;color:#fff;line-height:1.6;margin-bottom:14px;letter-spacing:-0.02em;">부자들이 만날 때는<br>자기가 <mark>가지지 않은 것</mark>이 있어야만 만나요.</p>
+        <p style="font-size:13px;color:rgba(255,255,255,.4);">— 장하일 대표님 · 2026.03.25 초기 미팅</p>
+      </div>
+    </div>
+
+    <!-- 3개 배경 카드 -->
+    <div class="context-grid">
+
+      <div class="context-item">
+        <p style="font-size:12px;font-weight:800;color:var(--blue-key);margin-bottom:12px;letter-spacing:0.04em;">지금의 문제의식</p>
+        <p style="font-size:14px;color:var(--body);line-height:1.75;margin-bottom:14px;">네트워크는 광범위하다. 재벌 3·4세, 천억 매각 창업가, 시리즈 A+ 대표들을 알고 있다. 하지만 <strong>명분 있는 연결 창구</strong>가 없다. 관계가 깊어지는 구조가 없다.</p>
+      </div>
+
+      <div class="context-item">
+        <p style="font-size:12px;font-weight:800;color:var(--blue-key);margin-bottom:12px;letter-spacing:0.04em;">장기 비전 — 두 가지</p>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;gap:10px;align-items:flex-start;">
+            <span style="font-size:16px;flex-shrink:0;">🏦</span>
+            <div>
+              <p style="font-size:13px;font-weight:800;color:var(--ink);margin-bottom:3px;">AC 설립</p>
+              <p style="font-size:12px;color:var(--body);line-height:1.6;">커뮤니티 → 관계 검증 → 초기 투자 집행. 해리온이 미래 AC의 딜소싱 채널이 된다.</p>
+            </div>
+          </div>
+          <div style="display:flex;gap:10px;align-items:flex-start;">
+            <span style="font-size:16px;flex-shrink:0;">🏛</span>
+            <div>
+              <p style="font-size:13px;font-weight:800;color:var(--ink);margin-bottom:3px;">한국의 전경련</p>
+              <p style="font-size:12px;color:var(--body);line-height:1.6;">스타트업·창업가 계층의 이익을 대변하는 민간 경제 네트워크 조직. 단순 친목이 아닌 의사결정자들의 연합.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="context-item">
+        <p style="font-size:12px;font-weight:800;color:var(--blue-key);margin-bottom:12px;letter-spacing:0.04em;">멤버 설계 기준</p>
+        <p style="font-size:14px;color:var(--body);line-height:1.75;margin-bottom:14px;">처음부터 <strong>멤버의 질과 관계의 밀도</strong>가 중요하다. 규모 확장보다 신뢰 구조 구축이 우선이다.</p>
+        <div style="display:flex;flex-direction:column;gap:6px;">
+          <div style="display:flex;gap:8px;align-items:flex-start;">
+            <span style="color:var(--blue-key);font-size:12px;font-weight:900;flex-shrink:0;margin-top:1px;">→</span>
+            <p style="font-size:12px;color:var(--body);line-height:1.55;">미래 AC의 투자 대상이 될 수 있는 사람</p>
+          </div>
+          <div style="display:flex;gap:8px;align-items:flex-start;">
+            <span style="color:var(--blue-key);font-size:12px;font-weight:900;flex-shrink:0;margin-top:1px;">→</span>
+            <p style="font-size:12px;color:var(--body);line-height:1.55;">장기적으로 이 네트워크의 영향력을 구성할 사람</p>
+          </div>
+          <div style="display:flex;gap:8px;align-items:flex-start;">
+            <span style="color:var(--blue-key);font-size:12px;font-weight:900;flex-shrink:0;margin-top:1px;">→</span>
+            <p style="font-size:12px;color:var(--body);line-height:1.55;">자기가 가지지 않은 것을 상대에게서 발견할 수 있는 사람</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── VERSION GRID ── -->
+  <div class="versions">
+    <div class="ver-label">
+      <p class="section-label">기획 변천사</p>
+      <p style="font-size:12px;color:var(--muted);">각 카드를 클릭하면 해당 버전 발표 자료가 새 탭으로 열립니다</p>
+    </div>
+
+    <!-- ver.1~4 -->
+    <div class="ver-grid-prev">
+
+      <a class="ver-card" href="ver1.html" target="_blank">
+        <div class="badge-row">
+          <span class="ver-badge">ver.1</span>
+          <span class="status-hold">보류</span>
+        </div>
+        <p class="ver-title">엑시트<br>창업가 포럼</p>
+        <p class="ver-desc">글로벌 YPO 모델 벤치마킹. 엑시트 경험자들만의 프라이빗 포럼 커뮤니티.</p>
+        <p class="ver-fail">✗ 포럼 방식이 한국 문화에 맞지 않음 · 타겟이 너무 좁음</p>
+        <span class="ver-cta">발표 자료 보기 </span>
+      </a>
+
+      <a class="ver-card" href="ver2.html" target="_blank">
+        <div class="badge-row">
+          <span class="ver-badge">ver.2</span>
+          <span class="status-hold">보류</span>
+        </div>
+        <p class="ver-title">C레벨<br>포럼 확장</p>
+        <p class="ver-desc">엑시트 창업가 + C레벨 임원으로 타겟을 확장. 규모 문제 해결 시도.</p>
+        <p class="ver-fail">✗ 같은 포럼 구조 한계 · 초기 포커싱 불가능</p>
+        <span class="ver-cta">발표 자료 보기 </span>
+      </a>
+
+      <a class="ver-card" href="ver3.html" target="_blank">
+        <div class="badge-row">
+          <span class="ver-badge">ver.3</span>
+          <span class="status-hold">보류</span>
+        </div>
+        <p class="ver-title">교육형<br>AC 모델</p>
+        <p class="ver-desc">강의 + 커뮤니티 + 투자 파이프라인. 네스트컴퍼니 모델 벤치마킹.</p>
+        <p class="ver-fail">✗ 퍼스널 브랜딩 의존 — 대표가 앞에 나서야만 작동</p>
+        <span class="ver-cta">발표 자료 보기 </span>
+      </a>
+
+      <a class="ver-card" href="ver4.html" target="_blank">
+        <div class="badge-row">
+          <span class="ver-badge">ver.4</span>
+          <span class="status-hold">보류</span>
+        </div>
+        <p class="ver-title">CEO 북클럽<br>(트레바리 기반)</p>
+        <p class="ver-desc">책을 매개로 사업가를 모음. 입장 허들 설계 개념 최초 도입.</p>
+        <p class="ver-fail">✗ 책만으론 관계가 깊어지지 않음 · BM 연결 어색</p>
+        <span class="ver-cta">발표 자료 보기 </span>
+      </a>
+
+    </div>
+
+    <!-- ver.5 화살표 -->
+    <div style="display:flex;flex-direction:column;align-items:center;gap:6px;padding:28px 0 24px;">
+      <p style="font-size:12px;font-weight:700;color:var(--muted);letter-spacing:0.08em;">4번의 시도가 가리킨 곳</p>
+      <svg width="36" height="48" viewBox="0 0 36 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="18" y1="0" x2="18" y2="32" stroke="#1A2AE8" stroke-width="2.5" stroke-linecap="round"/>
+        <polyline points="6,28 18,44 30,28" fill="none" stroke="#1A2AE8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+
+    <!-- ver.5 와이드 카드 -->
+    <a class="ver5-card" href="ver5.html" target="_blank">
+
+      <div class="ver5-left">
+        <div class="ver5-badge-row">
+          <span class="ver5-badge">ver.5</span>
+          <span class="status-final">최종 기획안</span>
+        </div>
+        <p class="ver5-title">해리온<br>최종 기획</p>
+        <p class="ver5-sub">사람이 먼저다 — 살 부대끼는 경험으로 관계를 만들고, 그 위에 비즈니스를 얹는다. 8슬라이드 상세 기획안.</p>
+        <span class="ver5-cta">발표 자료 보기 </span>
+      </div>
+
+      <div class="ver5-divider"></div>
+
+      <div class="ver5-right">
+        <div class="ver5-point">
+          <p>🎙</p>
+          <p class="pt-title">리더 세션 12개</p>
+          <p class="pt-desc">매달 1회 · 연사 2명 + 라운드테이블</p>
+        </div>
+        <div class="ver5-point">
+          <p>🍽</p>
+          <p class="pt-title">식사 자리 7개</p>
+          <p class="pt-desc">매주 1회 · 7개 주제 순환 앵커 게스트</p>
+        </div>
+        <div class="ver5-point">
+          <p>⚡</p>
+          <p class="pt-title">반나절 액티비티</p>
+          <p class="pt-desc">살 부대끼기 + 비즈니스 인사이트</p>
+        </div>
+        <div class="ver5-point">
+          <p>🧳</p>
+          <p class="pt-title">합숙형 여행 4개</p>
+          <p class="pt-desc">연 4회 · 가족 동반 3회 + 단독 1회</p>
+        </div>
+      </div>
+
+    </a>
+
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <div class="footer">
+    <span class="footer-brand">MOIMMOIM</span>
+    <span class="footer-note">해리온 커뮤니티 기획 제안서 · 2026</span>
+  </div>
+
+</div>
+
+</body>
+</html>
