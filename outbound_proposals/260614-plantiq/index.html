@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PLANTIQ · 아사겔 종합 브랜딩 제안서</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green:#205344;
+    --mint:#B8E3D1;
+    --sand:#E6D6B8;
+    --ink:#16241f;
+    --paper:#FBFAF6;
+    --paper2:#F2EFE6;
+    --line:rgba(32,83,68,.14);
+    --muted:#5d6c66;
+    --maxw:1080px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Noto Sans KR","Inter",sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+    letter-spacing:-.01em;
+  }
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px}
+  section{padding:120px 0;border-bottom:1px solid var(--line)}
+  .eng{font-family:"Inter",sans-serif;letter-spacing:.02em}
+
+  /* ---- Nav ---- */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(251,250,246,.82);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  nav .logo{font-family:"Inter";font-weight:800;letter-spacing:.18em;color:var(--green);font-size:16px}
+  nav .menu{display:flex;gap:28px}
+  nav .menu a{font-size:13px;color:var(--muted);text-decoration:none;transition:.2s}
+  nav .menu a:hover{color:var(--green)}
+  @media(max-width:760px){nav .menu{display:none}}
+
+  /* ---- Hero ---- */
+  .hero{
+    background:
+      radial-gradient(120% 90% at 80% -10%, rgba(184,227,209,.55), transparent 55%),
+      radial-gradient(100% 80% at 0% 110%, rgba(230,214,184,.5), transparent 50%),
+      var(--paper);
+    text-align:center;padding:160px 0 150px;border-bottom:1px solid var(--line);
+  }
+  .hero .kicker{
+    display:inline-block;font-family:"Inter";font-size:12px;letter-spacing:.34em;
+    color:var(--green);padding:8px 18px;border:1px solid var(--green);border-radius:40px;margin-bottom:38px;
+  }
+  .hero h1{
+    font-family:"Inter";font-weight:800;color:var(--green);
+    font-size:clamp(40px,7vw,86px);line-height:.98;letter-spacing:.04em;
+  }
+  .hero .sub{
+    font-family:"Inter";font-weight:300;font-size:clamp(16px,2.4vw,24px);
+    color:var(--ink);margin-top:24px;letter-spacing:.06em;
+  }
+  .hero .desc{margin:40px auto 0;max-width:520px;color:var(--muted);font-size:16px}
+  .hero .meta{margin-top:54px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .hero .meta span{
+    font-size:12px;color:var(--green);background:rgba(255,255,255,.6);
+    border:1px solid var(--line);border-radius:30px;padding:7px 16px;
+  }
+
+  /* ---- Section heading ---- */
+  .sec-no{font-family:"Inter";font-size:13px;letter-spacing:.28em;color:var(--mint);filter:brightness(.7);font-weight:600}
+  .sec-no b{color:var(--green)}
+  .sec-title{font-size:clamp(28px,4vw,44px);font-weight:700;color:var(--green);line-height:1.18;margin:16px 0 8px;letter-spacing:-.02em}
+  .sec-lead{color:var(--muted);font-size:17px;max-width:680px}
+  .sec-head{margin-bottom:64px}
+
+  /* ---- Big statement ---- */
+  .statement{
+    background:var(--green);color:#fff;text-align:center;
+    border-bottom:none;
+  }
+  .statement h2{
+    font-weight:300;font-size:clamp(26px,4.4vw,46px);line-height:1.45;letter-spacing:.01em;
+  }
+  .statement h2 b{font-weight:700;color:var(--mint)}
+  .statement .tag{font-family:"Inter";letter-spacing:.3em;font-size:12px;color:var(--mint);margin-bottom:30px;display:block}
+
+  /* ---- Cards ---- */
+  .grid{display:grid;gap:24px}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  .g4{grid-template-columns:repeat(4,1fr)}
+  @media(max-width:860px){.g3,.g4{grid-template-columns:1fr 1fr}}
+  @media(max-width:600px){.g2,.g3,.g4{grid-template-columns:1fr}}
+  .card{
+    background:#fff;border:1px solid var(--line);border-radius:18px;padding:32px 28px;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(32,83,68,.1)}
+  .card .ic{font-size:22px;margin-bottom:16px}
+  .card h4{color:var(--green);font-size:18px;font-weight:700;margin-bottom:8px}
+  .card p{color:var(--muted);font-size:14.5px}
+  .card .n{font-family:"Inter";font-weight:800;color:var(--mint);filter:brightness(.85);font-size:30px;margin-bottom:6px}
+
+  /* value pill list */
+  .vals{display:flex;flex-wrap:wrap;gap:12px}
+  .vals .v{border:1px solid var(--green);color:var(--green);border-radius:40px;padding:10px 22px;font-size:14px;font-weight:500}
+  .vals .v .e{font-family:"Inter";font-size:11px;letter-spacing:.15em;opacity:.6;margin-left:8px}
+
+  /* we are / are not */
+  .twocol{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  @media(max-width:680px){.twocol{grid-template-columns:1fr}}
+  .panel{border-radius:18px;padding:34px 32px}
+  .panel.yes{background:rgba(184,227,209,.32);border:1px solid var(--mint)}
+  .panel.no{background:var(--paper2);border:1px solid var(--line)}
+  .panel h5{font-size:15px;letter-spacing:.04em;margin-bottom:18px;display:flex;align-items:center;gap:8px}
+  .panel.yes h5{color:var(--green)}
+  .panel.no h5{color:#9a7b3e}
+  .panel ul{list-style:none}
+  .panel li{padding:7px 0;font-size:15px;border-bottom:1px dashed var(--line)}
+  .panel li:last-child{border:none}
+
+  /* ---- Color system ---- */
+  .swatches{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  @media(max-width:680px){.swatches{grid-template-columns:1fr}}
+  .sw{border-radius:18px;overflow:hidden;border:1px solid var(--line)}
+  .sw .chip{height:150px;display:flex;align-items:flex-end;padding:16px;color:#fff;font-family:"Inter";font-size:12px;letter-spacing:.1em}
+  .sw .info{padding:18px 20px;background:#fff}
+  .sw .info b{display:block;color:var(--green);font-size:15px}
+  .sw .info code{font-family:"Inter";font-size:13px;color:var(--muted);letter-spacing:.05em}
+  .sw .info span{display:block;color:var(--muted);font-size:13px;margin-top:8px}
+
+  /* logo lab */
+  .logolab{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:stretch}
+  @media(max-width:760px){.logolab{grid-template-columns:1fr}}
+  .logobox{border:1px solid var(--line);border-radius:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:54px 20px;min-height:200px;gap:10px}
+  .logobox .mark{font-family:"Inter";font-weight:800;letter-spacing:.2em;font-size:34px}
+  .logobox .tl{font-family:"Inter";font-weight:300;font-size:11px;letter-spacing:.28em}
+  .logobox.dark{background:var(--green)}
+  .logobox.dark .mark{color:#fff}.logobox.dark .tl{color:var(--mint)}
+  .logobox.mint{background:var(--mint)}
+  .logobox.mint .mark{color:var(--green)}.logobox.mint .tl{color:var(--green)}
+  .logobox.sand{background:var(--sand)}
+  .logobox.sand .mark{color:var(--green)}.logobox.sand .tl{color:var(--green)}
+  .logobox.light{background:#fff}.logobox.light .mark{color:var(--green)}.logobox.light .tl{color:var(--muted)}
+
+  /* flow */
+  .flow{counter-reset:step;display:grid;gap:0}
+  .step{display:grid;grid-template-columns:64px 1fr;gap:24px;padding:22px 0;border-bottom:1px solid var(--line);align-items:baseline}
+  .step:last-child{border:none}
+  .step .num{font-family:"Inter";font-weight:800;font-size:22px;color:var(--mint);filter:brightness(.82)}
+  .step h4{color:var(--green);font-size:18px;font-weight:700;margin-bottom:4px}
+  .step p{color:var(--muted);font-size:14.5px}
+
+  /* product spec */
+  .spec{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+  @media(max-width:680px){.spec{grid-template-columns:1fr}}
+  .spec .cell{background:var(--paper);padding:30px 26px}
+  .spec .cell .lab{font-family:"Inter";font-size:11px;letter-spacing:.2em;color:var(--muted)}
+  .spec .cell .big{font-size:24px;font-weight:700;color:var(--green);margin-top:8px}
+  .spec .cell .big small{font-size:13px;font-weight:400;color:var(--muted)}
+
+  /* naming break */
+  .naming{background:linear-gradient(135deg,rgba(184,227,209,.28),rgba(230,214,184,.28));border:1px solid var(--line);border-radius:20px;padding:42px 38px;margin-bottom:54px}
+  .naming .tit{font-family:"Inter";font-size:12px;letter-spacing:.24em;color:var(--green);font-weight:600;margin-bottom:8px}
+  .naming .word{font-size:clamp(34px,6vw,56px);font-weight:800;color:var(--green);letter-spacing:.04em;line-height:1;margin-bottom:28px}
+  .naming .parts{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  @media(max-width:600px){.naming .parts{grid-template-columns:1fr}}
+  .naming .p{background:rgba(255,255,255,.65);border:1px solid var(--line);border-radius:14px;padding:22px 20px;text-align:center}
+  .naming .p .syl{font-size:34px;font-weight:800;color:var(--green);font-family:"Noto Sans KR"}
+  .naming .p b{display:block;color:var(--green);font-size:16px;margin:8px 0 4px}
+  .naming .p span{color:var(--muted);font-size:13.5px}
+  .naming .eq{margin-top:24px;color:var(--muted);font-size:14.5px}
+  .naming .eq b{color:var(--green)}
+
+  /* timeline / deliverables */
+  .phase{border-left:2px solid var(--mint);padding:0 0 0 28px;margin-left:8px}
+  .phase .item{position:relative;padding:0 0 40px}
+  .phase .item:last-child{padding-bottom:0}
+  .phase .item::before{content:"";position:absolute;left:-37px;top:4px;width:14px;height:14px;border-radius:50%;background:var(--green);border:3px solid var(--paper)}
+  .phase .ph{font-family:"Inter";font-size:12px;letter-spacing:.2em;color:var(--green);font-weight:600}
+  .phase h4{color:var(--ink);font-size:19px;font-weight:700;margin:6px 0 6px}
+  .phase p{color:var(--muted);font-size:14.5px}
+  .phase .tags{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap}
+  .phase .tags span{font-size:12px;background:var(--paper2);border:1px solid var(--line);padding:5px 12px;border-radius:20px;color:var(--green)}
+
+  /* schedule cta */
+  .sched-cta{margin-top:48px;text-align:center}
+  .btn-sched{
+    display:inline-flex;align-items:center;gap:12px;
+    background:var(--green);color:#fff;text-decoration:none;
+    font-size:15px;font-weight:600;letter-spacing:.01em;
+    padding:18px 34px;border-radius:48px;
+    transition:transform .22s ease, box-shadow .22s ease, background .22s ease;
+    box-shadow:0 10px 28px rgba(32,83,68,.22);
+  }
+  .btn-sched:hover{transform:translateY(-3px);background:#1a4538;box-shadow:0 16px 40px rgba(32,83,68,.3)}
+  .btn-sched .cal{font-size:18px}
+  .btn-sched .arr{font-family:"Inter";font-weight:700;transition:transform .22s ease}
+  .btn-sched:hover .arr{transform:translateX(4px)}
+  .sched-cta .note{margin-top:14px;color:var(--muted);font-size:13px}
+
+  /* deliverable grid */
+  .del{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  @media(max-width:680px){.del{grid-template-columns:1fr}}
+  .del .d{display:flex;gap:14px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 22px}
+  .del .d .k{font-family:"Inter";font-weight:800;color:var(--mint);filter:brightness(.85);font-size:18px}
+  .del .d b{color:var(--green);font-size:15px;display:block}
+  .del .d p{color:var(--muted);font-size:13.5px}
+
+  /* closing */
+  .closing{background:var(--green);color:#fff;text-align:center;border:none;padding:140px 0}
+  .closing h2{font-family:"Inter";font-weight:800;font-size:clamp(36px,6vw,64px);letter-spacing:.04em;line-height:1}
+  .closing .tl{font-family:"Inter";font-weight:300;letter-spacing:.14em;color:var(--mint);margin-top:22px;font-size:clamp(14px,2vw,18px)}
+  .closing .cta{margin-top:48px;color:rgba(255,255,255,.7);font-size:14px}
+
+  footer{background:var(--ink);color:rgba(255,255,255,.5);text-align:center;padding:40px 0;font-size:12.5px;letter-spacing:.04em}
+  footer b{color:var(--mint);font-family:"Inter";letter-spacing:.18em}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="logo">PLANTIQ</div>
+    <div class="menu">
+      <a href="#brand">Brand</a>
+      <a href="#identity">Identity</a>
+      <a href="#design">Design</a>
+      <a href="#product">아사겔</a>
+      <a href="#launch">Launch</a>
+      <a href="#scope">Scope</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <span class="kicker">BRAND &amp; PRODUCT PROPOSAL</span>
+    <h1>PLANTIQ</h1>
+    <div class="sub">Plant Your Routine. Eat Living Nature.</div>
+    <p class="desc">자연의 생명력을 일상의 루틴으로 만드는 식물 기반 라이프스타일 브랜드.<br>브랜드 코어부터 아사겔 제품 디자인, 와디즈 런칭까지 종합 제안합니다.</p>
+    <div class="meta">
+      <span>Brand Core</span><span>Visual Identity</span><span>Product Design</span><span>Wadiz Launch</span>
+    </div>
+  </div>
+</header>
+
+<!-- 01 BRAND SOUL -->
+<section id="brand">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <div class="sec-no"><b>01</b> &nbsp;/ &nbsp;BRAND SOUL</div>
+      <h2 class="sec-title">PLANTIQ는<br>건강을 판매하지 않습니다.</h2>
+      <p class="sec-lead">자연과 사람의 거리를 줄이고, 자연의 생명력을 현대인의 일상 속 루틴으로 연결합니다. 식물을 특별하게 포장하기보다, 가장 쉽고 지속 가능한 방식으로 경험하게 만듭니다.</p>
+    </div>
+    <div class="grid g3">
+      <div class="card"><div class="ic">🌱</div><h4>Purpose</h4><p>자연의 생명력을 일상 속 가장 쉬운 루틴으로 만든다.</p></div>
+      <div class="card"><div class="ic">🤝</div><h4>Mission</h4><p>사람들이 자연을 더 가깝게 경험할 수 있는 제품과 문화를 만든다.</p></div>
+      <div class="card"><div class="ic">☕</div><h4>Vision</h4><p>식물을 먹는 문화가 커피를 마시는 문화만큼 자연스러워지는 세상.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- BELIEF statement -->
+<section class="statement">
+  <div class="wrap reveal">
+    <span class="tag">BELIEF</span>
+    <h2>건강은 이벤트가 아니라 <b>습관</b>입니다.<br>좋은 루틴은 <b>단순</b>해야 하며,<br>좋은 브랜드는 삶을 <b>강요하지 않습니다.</b></h2>
+  </div>
+</section>
+
+<!-- Core values -->
+<section>
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <div class="sec-no"><b>02</b> &nbsp;/ &nbsp;CORE VALUES &amp; ARCHETYPE</div>
+      <h2 class="sec-title">우리가 지키는 다섯 가지</h2>
+    </div>
+    <div class="vals" style="margin-bottom:48px">
+      <div class="v">Nature<span class="e">자연으로부터</span></div>
+      <div class="v">Simplicity<span class="e">쉽게 시작</span></div>
+      <div class="v">Continuity<span class="e">반복되는 루틴</span></div>
+      <div class="v">Honesty<span class="e">과장하지 않음</span></div>
+      <div class="v">Balance<span class="e">균형 잡힌 삶</span></div>
+    </div>
+    <div class="grid g2">
+      <div class="card"><h4>Primary · Sage 🧭</h4><p>지혜로운 안내자. 가르치기보다 보여주고, 강요하기보다 제안합니다.</p></div>
+      <div class="card"><h4>Secondary · Caregiver 🌿</h4><p>돌보는 사람. 고객이 스스로를 돌볼 수 있도록 돕습니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 IDENTITY -->
+<section id="identity">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <div class="sec-no"><b>03</b> &nbsp;/ &nbsp;BRAND IDENTITY</div>
+      <h2 class="sec-title">PLANT + IQ</h2>
+      <p class="sec-lead">식물(PLANT)과 지성(IQ)의 결합. 자연을 단순히 소비하는 것이 아니라, 이해하고 현명하게 일상에 연결한다는 의미를 담았습니다.</p>
+    </div>
+    <div class="grid g3" style="margin-bottom:54px">
+      <div class="card"><h4>Calm</h4><p>차분하고 불필요한 소음을 만들지 않는다.</p></div>
+      <div class="card"><h4>Intelligent</h4><p>근거를 존중하고 쉽게 설명한다.</p></div>
+      <div class="card"><h4>Honest</h4><p>없는 가치를 만들어내지 않는다.</p></div>
+      <div class="card"><h4>Natural</h4><p>억지스럽지 않고 본질을 우선한다.</p></div>
+      <div class="card"><h4>Minimal</h4><p>불필요한 것을 덜어내고 간결하게 전달한다.</p></div>
+      <div class="card"><h4>Contemporary</h4><p>전통 건강식품보다 현대적이고 세련된 감각.</p></div>
+    </div>
+
+    <div class="twocol">
+      <div class="panel yes">
+        <h5>✓ We Are</h5>
+        <ul>
+          <li>루틴 · 균형 · 생명력 · 일상을 말합니다</li>
+          <li>지속 가능성을 추구합니다</li>
+          <li>작은 변화를 믿습니다</li>
+          <li>근거를 존중하고 쉽게 설명합니다</li>
+        </ul>
+      </div>
+      <div class="panel no">
+        <h5>✕ We Are Not</h5>
+        <ul>
+          <li>기적 · 완치 · 만병통치를 말하지 않습니다</li>
+          <li>두려움을 판매하지 않습니다</li>
+          <li>건강 강박을 조장하지 않습니다</li>
+          <li>유행만을 좇지 않습니다</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 DESIGN SYSTEM -->
+<section id="design">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <div class="sec-no"><b>04</b> &nbsp;/ &nbsp;VISUAL DESIGN SYSTEM</div>
+      <h2 class="sec-title">색으로 말하는 브랜드</h2>
+      <p class="sec-lead">세 가지 키 컬러는 아이스플랜트의 일대기를 그대로 담습니다. <b style="color:var(--green)">척박한 모래 땅(샌드)</b>에서 <b style="color:var(--green)">건조·염분의 스트레스를 견디며(민트의 생명력)</b>, 잎 표면에 수정처럼 결정을 맺어내는 식물 — 그 깊은 생명력이 <b style="color:var(--green)">딥 그린</b>입니다. <em>(컬러·로고는 추가 보강 예정)</em></p>
+    </div>
+
+    <h3 style="color:var(--green);font-size:15px;letter-spacing:.16em;margin-bottom:20px" class="eng">KEY COLOR PALETTE</h3>
+
+    <div class="color-story" style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:linear-gradient(90deg,rgba(230,214,184,.5),rgba(184,227,209,.5),rgba(32,83,68,.12));border:1px solid var(--line);border-radius:14px;padding:18px 24px;margin-bottom:28px">
+      <span style="font-size:14.5px;color:var(--green);font-weight:600">척박한 모래 땅</span>
+      <span style="color:var(--mint);filter:brightness(.7)">→</span>
+      <span style="font-size:14.5px;color:var(--green);font-weight:600">스트레스를 견딘 생명력</span>
+      <span style="color:var(--mint);filter:brightness(.7)">→</span>
+      <span style="font-size:14.5px;color:var(--green);font-weight:600">맺혀나온 결정의 깊이</span>
+      <span style="color:var(--muted);font-size:13px;margin-left:auto">아이스플랜트의 생애가 곧 컬러 시스템입니다</span>
+    </div>
+
+    <div class="swatches" style="margin-bottom:64px">
+      <div class="sw">
+        <div class="chip" style="background:#205344">DEEP GREEN</div>
+        <div class="info"><b>Forest</b><code>#205344</code><span>척박함을 견뎌낸 식물의 깊은 생명력. 신뢰 · 지성 · 자연. 로고와 핵심 메시지에 사용.</span></div>
+      </div>
+      <div class="sw">
+        <div class="chip" style="background:#B8E3D1;color:#205344">MINT</div>
+        <div class="info"><b>Living Mint</b><code>#B8E3D1</code><span>잎 표면에 맺힌 수정 같은 결정(BladderCell)의 산뜻함. 생명력의 빛. 포인트·그래픽 액센트.</span></div>
+      </div>
+      <div class="sw">
+        <div class="chip" style="background:#E6D6B8;color:#205344">SAND</div>
+        <div class="info"><b>Warm Sand</b><code>#E6D6B8</code><span>아이스플랜트가 뿌리내린 건조한 모래 땅. 생명이 시작되는 척박한 토양. 톤다운 배경·패키지 보조색.</span></div>
+      </div>
+    </div>
+
+    <h3 style="color:var(--green);font-size:15px;letter-spacing:.16em;margin-bottom:20px" class="eng">LOGO APPLICATION (시안 방향)</h3>
+    <div class="logolab">
+      <div class="logobox dark">
+        <div class="mark">PLANTIQ</div>
+        <div class="tl">PLANT YOUR ROUTINE</div>
+      </div>
+      <div style="display:grid;grid-template-rows:1fr 1fr;gap:24px">
+        <div class="logobox mint"><div class="mark">PLANTIQ</div></div>
+        <div class="logobox sand"><div class="mark">PLANTIQ</div></div>
+      </div>
+    </div>
+    <p style="color:var(--muted);font-size:13.5px;margin-top:18px">↑ 그린 베이스를 기본으로, 민트·샌드·화이트 버전을 상황별로 운용. 타이포그래피는 자간을 넓힌 산세리프로 차분하고 현대적인 인상을 유지합니다.</p>
+  </div>
+</section>
+
+<!-- 05 PRODUCT 아사겔 -->
+<section id="product">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <div class="sec-no"><b>05</b> &nbsp;/ &nbsp;PRODUCT · 아사겔</div>
+      <h2 class="sec-title">아이스플랜트를<br>가장 부드러운 형태로.</h2>
+      <p class="sec-lead">아이스플랜트와 사과즙을 담은 식물성 겔 스틱. 저속노화 루틴을 지향하는 사람들에게 새로운 식물성 웰니스 경험을 제안합니다.</p>
+    </div>
+
+    <div class="naming">
+      <div class="tit">THE NAME · 이름의 의미</div>
+      <div class="word">아 · 사 · 겔</div>
+      <div class="parts">
+        <div class="p"><div class="syl">아</div><b>아이스플랜트</b><span>제품의 중심이 되는 식물 원료</span></div>
+        <div class="p"><div class="syl">사</div><b>사과</b><span>매일 즐길 수 있게 더한 산뜻한 맛</span></div>
+        <div class="p"><div class="syl">겔</div><b>겔(Gel)</b><span>부드럽게 넘어가는 겔 스틱 제형</span></div>
+      </div>
+      <p class="eq">원물 · 맛 · 제형을 한 이름에 담았습니다. &nbsp;<b>아이스플랜트 + 사과 + 겔 = 아사겔</b></p>
+    </div>
+
+    <div class="grid g3" style="margin-bottom:54px">
+      <div class="card"><div class="n">01</div><h4>Why Ice Plant</h4><p>피니톨·이노시톨 계열 성분, 폴리페놀·플라보노이드 등 식물성 항산화 성분. 혈당 대사·항산화 관점에서 연구되어 온 식물 원료입니다.</p></div>
+      <div class="card"><div class="n">02</div><h4>Why Apple Juice</h4><p>지속되는 루틴은 맛있어야 합니다. 사과즙을 더해 식물성 원료를 친숙하고 산뜻하게 즐길 수 있도록 설계했습니다.</p></div>
+      <div class="card"><div class="n">03</div><h4>Why Gel</h4><p>씹는 제품도, 마시는 음료도 아닌 겔 텍스처. 입안에서 부드럽게, 목에서 편안하게 넘어가도록 했습니다.</p></div>
+    </div>
+
+    <h3 style="color:var(--green);font-size:15px;letter-spacing:.16em;margin-bottom:20px" class="eng">TEXTURE &amp; TECHNOLOGY</h3>
+    <div class="spec" style="margin-bottom:30px">
+      <div class="cell"><div class="lab">IDDSI</div><div class="big">Level 2</div></div>
+      <div class="cell"><div class="lab">VISCOSITY</div><div class="big">268 <small>mPa·s</small></div></div>
+      <div class="cell"><div class="lab">FORMAT</div><div class="big">Gel Stick</div></div>
+    </div>
+    <div class="vals">
+      <div class="v">초미세 균질화 공정</div>
+      <div class="v">동결 공정</div>
+      <div class="v">재분쇄 공정</div>
+      <div class="v">겔화 처리</div>
+    </div>
+    <p style="color:var(--muted);font-size:14px;margin-top:22px">식물 원료의 특성을 담으면서도 부드러운 겔 텍스처를 구현하기 위한 공정 설계. 단순한 점도가 아니라 목 넘김까지 고려한 섭취 경험을 구현했습니다.</p>
+  </div>
+</section>
+
+<!-- statement product -->
+<section class="statement">
+  <div class="wrap reveal">
+    <span class="tag">PRODUCT PRINCIPLE</span>
+    <h2>좋은 원료도 <b>루틴이 되지 못하면</b><br>의미가 없습니다.</h2>
+  </div>
+</section>
+
+<!-- 06 LAUNCH -->
+<section id="launch">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <div class="sec-no"><b>06</b> &nbsp;/ &nbsp;WADIZ LAUNCH STRATEGY</div>
+      <h2 class="sec-title">상세페이지 스토리 흐름</h2>
+      <p class="sec-lead">저속노화에 관심 있는 20대 후반~40대 여성을 타겟으로, 공감 → 원료 → 제품 → 라이프스타일로 이어지는 설득 구조를 설계합니다.</p>
+    </div>
+
+    <div class="grid g4" style="margin-bottom:56px">
+      <div class="card"><div class="ic">🎯</div><h4>Target</h4><p>20대 후반~40대 여성 · 저속노화/혈당 관리/웰니스 루틴 관심층</p></div>
+      <div class="card"><div class="ic">💡</div><h4>Insight</h4><p>칼로리를 넘어 '어떻게 천천히 나이 들 것인가'를 고민하는 시대</p></div>
+      <div class="card"><div class="ic">🌿</div><h4>Mood</h4><p>화이트 &amp; 그린 · 자연광 · 아침 루틴 · 웰니스</p></div>
+      <div class="card"><div class="ic">🗣️</div><h4>Key Message</h4><p>저속노화를 위한 식물 루틴, 부드러운 웰니스 겔 스틱</p></div>
+    </div>
+
+    <div class="flow">
+      <div class="step"><div class="num">01</div><div><h4>저속노화 시대</h4><p>건강의 패러다임 전환 — 공감으로 진입</p></div></div>
+      <div class="step"><div class="num">02</div><div><h4>혈당 스파이크와 식후 컨디션</h4><p>문제 정의 — 당화 스트레스라는 키워드</p></div></div>
+      <div class="step"><div class="num">03</div><div><h4>왜 아이스플랜트인가</h4><p>원료의 근거 제시</p></div></div>
+      <div class="step"><div class="num">04</div><div><h4>아사겔 소개</h4><p>해법으로서의 제품 등장</p></div></div>
+      <div class="step"><div class="num">05</div><div><h4>Why Apple Juice / Why Gel</h4><p>맛과 텍스처 — 지속 가능성의 근거</p></div></div>
+      <div class="step"><div class="num">06</div><div><h4>Texture &amp; Manufacturing</h4><p>기술 신뢰 — 공정과 점성 설계</p></div></div>
+      <div class="step"><div class="num">07</div><div><h4>Lifestyle Scene</h4><p>아침 루틴 · 책상 위 · 가방 속 일상 연출</p></div></div>
+      <div class="step"><div class="num">08</div><div><h4>리워드</h4><p>펀딩 전환 — 와디즈 리워드 구성</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 SCOPE / DELIVERABLES -->
+<section id="scope">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <div class="sec-no"><b>07</b> &nbsp;/ &nbsp;SCOPE &amp; DELIVERABLES</div>
+      <h2 class="sec-title">제안 범위와 산출물</h2>
+      <p class="sec-lead">브랜드 코어 정립부터 비주얼 아이덴티티, 제품 패키지, 와디즈 런칭까지 — 하나의 일관된 흐름으로 리드합니다.</p>
+    </div>
+
+    <div class="del" style="margin-bottom:64px">
+      <div class="d"><div class="k">A</div><div><b>Brand Core</b><p>Soul · Identity · Story · Tone &amp; Voice 정립</p></div></div>
+      <div class="d"><div class="k">B</div><div><b>Visual Identity</b><p>로고 · 컬러 시스템 · 타이포그래피 · 그래픽 가이드</p></div></div>
+      <div class="d"><div class="k">C</div><div><b>Product Design</b><p>아사겔 패키지 · 스틱 디자인 · 제품 메시지</p></div></div>
+      <div class="d"><div class="k">D</div><div><b>Wadiz Launch</b><p>상세페이지 기획 · 비주얼 · 리워드 구성</p></div></div>
+    </div>
+
+    <h3 style="color:var(--green);font-size:15px;letter-spacing:.16em;margin-bottom:30px" class="eng">PROCESS TIMELINE</h3>
+    <div class="phase">
+      <div class="item">
+        <div class="ph">PHASE 01</div>
+        <h4>브랜드 코어 &amp; 아이덴티티 확정</h4>
+        <p>이미 정립된 Soul·Identity·Story를 기반으로 비주얼 방향을 확정합니다.</p>
+        <div class="tags"><span>브랜드 정의</span><span>톤앤보이스</span><span>키 컬러 확정</span></div>
+      </div>
+      <div class="item">
+        <div class="ph">PHASE 02</div>
+        <h4>비주얼 아이덴티티 &amp; 로고 보강</h4>
+        <p>로고 시안, 컬러 적용 시스템, 타이포·그래픽 가이드를 구체화합니다.</p>
+        <div class="tags"><span>로고 시안</span><span>컬러 시스템</span><span>디자인 가이드</span></div>
+      </div>
+      <div class="item">
+        <div class="ph">PHASE 03</div>
+        <h4>아사겔 제품 디자인</h4>
+        <p>패키지·스틱 디자인과 제품 메시지를 브랜드 톤에 맞춰 완성합니다.</p>
+        <div class="tags"><span>패키지</span><span>제품 카피</span><span>목업</span></div>
+      </div>
+      <div class="item">
+        <div class="ph">PHASE 04</div>
+        <h4>와디즈 런칭 실행</h4>
+        <p>상세페이지 기획·비주얼·리워드까지 런칭을 마무리합니다.</p>
+        <div class="tags"><span>상세페이지</span><span>비주얼 촬영</span><span>리워드</span></div>
+      </div>
+    </div>
+
+    <div class="sched-cta">
+      <a class="btn-sched" href="https://moimmoim-clients-collab.vercel.app/assets/%ED%8C%8C%EB%A8%B8%ED%94%84%EB%A0%8C%EC%A6%88/2605_%EC%95%84%ED%94%8C%EB%B8%8C%EB%9E%9C%EB%94%A9/%EC%8A%A4%EC%BC%80%EC%A4%84%EB%A7%81_%EC%BA%98%EB%A6%B0%EB%8D%94.html" target="_blank" rel="noopener noreferrer">
+        <span class="cal">📅</span>
+        <span>전체 일정 상세히 보기</span>
+        <span class="arr">→</span>
+      </a>
+      <p class="note">캘린더 형식의 상세 프로젝트 스케줄이 새 창에서 열립니다</p>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<section class="closing">
+  <div class="wrap reveal">
+    <h2>PLANTIQ</h2>
+    <div class="tl">Plant Your Routine. &nbsp;·&nbsp; Eat Living Nature.</div>
+    <p class="cta">건강은 하루 만에 만들어지지 않습니다. 작은 선택이 반복될 때 루틴이 됩니다.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <b>PLANTIQ</b><br>
+    Brand &amp; Product Proposal · 2026 &nbsp;|&nbsp; 아사겔 종합 브랜딩 제안서
+  </div>
+</footer>
+
+<script>
+  const obs=new IntersectionObserver((es)=>{
+    es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)}})
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
